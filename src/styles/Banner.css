@@ -1,7 +1,9 @@
-#nodi {
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
-  font-weight: bold;
-  color: rgb(152, 94, 219);
-  margin: 10px;
-  font-size: 40px;
+.banner {
+  margin-top: -40px !important;
+}
+.button-group {
+  margin-right: 100px;
+  margin-top: -200px;
+  display: flex;
+  justify-content: flex-end;
 }

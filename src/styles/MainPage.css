@@ -1,8 +1,18 @@
 .larger-container {
-  margin: 10px !important;
+  margin: 100px !important;
   width: 75% !important;
 }
 
 .search-bar {
-  width: 75% !important;
+}
+h3 {
+  font-family: Lato !important;
+}
+
+#dataset {
+  height: 50px;
+  background-color: rgb(198, 178, 212);
+}
+.featured-datasets {
+  margin-top: 100px;
 }
