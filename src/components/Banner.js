@@ -6,8 +6,9 @@ const Banner = () => {
   return (
   <Container className="banner">
     <div class="ui-buttons" className="button-group">
+      <Link to={{ pathname: `/` }}>
         <img src={logo} alt="Northwestern Open Data Portal" width="180px" className="logo"/>
-      
+      </Link>
       <button id="buttons" class="ui button">
         Datasets{" "}
       </button>
