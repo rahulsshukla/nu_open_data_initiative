@@ -1,3 +1,61 @@
+
 .about-us {
   margin-top: 100px;
+  width: 75%;
+}
+
+header {
+  margin-top: 100px;
+  margin-bottom: 50px;
+  text-align: center;
+  /*font-family: Lato;*/
+  font-size: 200%;
+}
+
+td{
+  width:33%;
+}
+
+.profpic {
+  margin: 25%;
+  margin-bottom: 5%;
+  width: 50%;
+  height: width;
+  border-radius:50%;
+}
+
+body {
+  margin: auto;
+  width: 90%;
+}
+
+hr {
+  width: 60%;
+}
+
+#rect{
+  padding: 5%;
+  margin: auto;
+  background-image: linear-gradient(rgb(029,002,053), rgb(078,042,132));
+  color: rgb(204, 196, 223);
+}
+
+#teamtable{
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 200px;
+}
+
+p {
+  margin: auto;
+  margin-top: 30px;
+  font-size: 24px;
+  font-family: 'Roboto', san-serif;
+}
+
+emph {
+  font-size: 36px;
+  color: white;
+  margin-bottom: 40px;
 }
