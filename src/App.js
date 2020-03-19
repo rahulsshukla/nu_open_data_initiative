@@ -3,6 +3,7 @@ import React from "react";
 //component imports
 import MainPage from "../src/components/MainPage";
 import Banner from "../src/components/Banner";
+import AboutUs from "../src/components/AboutUs";
 
 //firebase imports
 
@@ -17,6 +18,7 @@ const App = () => {
       <Banner></Banner>
       <Switch>
         <Route path="/" exact component={MainPage} />
+        <Route path="/aboutus" exact component={AboutUs} />
       </Switch>
     </Router>
   );

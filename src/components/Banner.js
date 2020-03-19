@@ -12,17 +12,24 @@ import {
   Row,
   Button
 } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
     <Container className="banner">
-      <img
-        className="logo"
-        src={logo}
-        alt="Northwestern Open Data POrtal"
-        height="300"
-        width="300"
-      />
+      <Link
+        to={{
+          pathname: `/`
+        }}
+      >
+        <img
+          className="logo"
+          src={logo}
+          alt="Northwestern Open Data POrtal"
+          height="300"
+          width="300"
+        />
+      </Link>
       <div class="ui buttons" className="button-group">
         <button id="buttons" class="ui button">
           Datasets{" "}
@@ -31,9 +38,15 @@ const Banner = () => {
         <button id="buttons" class="ui button">
           Contribute a Dataset
         </button>
-        <button id="buttons" class="ui button">
-          About Us
-        </button>
+        <Link
+          to={{
+            pathname: `/aboutus`
+          }}
+        >
+          <button id="buttons" class="ui button">
+            About Us
+          </button>
+        </Link>
       </div>
     </Container>
   );
