@@ -14,22 +14,12 @@ const MainPage = () => {
   //states and such here
   return (
     <Container className="larger-container">
-      <h3 id="search-bar"> Search for a dataset: </h3>
-      <Search
-        id="search-bar"
-        input={{ fluid: true }}
-        placeholder="Ex. 2019 Financial Report"
-        /*
-          loading={isLoading}
-          onResultSelect={this.handleResultSelect}
-          onSearchChange={_.debounce(this.handleSearchChange, 500, {
-            leading: true
-          })}
-          results={results}
-          value={value}
-          {...this.props}
-          */
-      />
+      <div className="Fullsearch">
+        <h3 id="search-bar"> Search for a dataset: </h3>
+        <Search id="search-bar" input={{ fluid: true }} placeholder="Ex. 2019 Financial Report"
+          /* loading={isLoading} onResultSelect={this.handleResultSelect} onSearchChange={_.debounce(this.handleSearchChange, 500, { leading: true })} results={results} value={value} {...this.props} */
+        />
+      </div>
       <div class="ui buttons" className="featured-datasets">
         <h3> Featured datasets:</h3>
         <button id="dataset" class="ui button">

@@ -1,10 +1,9 @@
-.larger-container {
-  margin: 100px !important;
-  width: 75% !important;
-}
 
 .search-bar {
+  align-content: center;
 }
+
+
 h3 {
   font-family: Lato !important;
 }
@@ -12,12 +11,20 @@ h3 {
 #dataset {
   width: 25%;
   border-radius: 10px;
-  padding: 35px 35px;
-  background-color: rgb(198, 178, 212);
-  height: 90px;
+  padding: 14px 35px;
+  background-color: rgb(208, 207, 232);
+  height: 70px;
   justify-content: center;
   align-content: center;
 }
+
 .featured-datasets {
-  margin-top: 100px;
+  margin-top: 25px;
+}
+
+.Fullsearch{
+  background-color: rgb(198, 178, 212);
+  margin-top: 10px;
+  padding: 100px;
+  padding-bottom: 90px !important;
 }
