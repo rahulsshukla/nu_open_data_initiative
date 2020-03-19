@@ -34,7 +34,12 @@ const AboutUs = () => {
     
     <p>
       NODP will work in collaboration with The Northwestern Daily, Northwestern's premier
-      publication. Student journalists are constantly trying to write impactful stories about the university, but they often struggle to find relevant data that would strengthen their naratives. Even if this data can be located, it is often unprocessed and difficult to use. Additionally, there are many stories that wouldn't be discovered without seeing the data first. As a result, NODP's convenient access to Stanford data will be immensely valuable for The Northwestern Daily.
+      publication. Student journalists are constantly trying to write impactful stories 
+      about the university, but they often struggle to find relevant data that would 
+      strengthen their naratives. Even if this data can be located, it is often 
+      unprocessed and difficult to use. Additionally, there are many stories that wouldn't 
+      be discovered without seeing the data first. As a result, NODP's convenient access 
+      to Northwestern data will be immensely valuable for The Northwestern Daily.
     </p>
 
     <h1>
