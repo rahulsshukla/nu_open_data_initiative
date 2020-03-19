@@ -1,9 +1,13 @@
-.banner {
-  margin-top: -40px !important;
+
+.button-group{
+  position: relative;
 }
-.button-group {
-  margin-right: 100px;
-  margin-top: -200px;
-  display: flex;
-  justify-content: flex-end;
+
+#buttons{
+  margin-left: 5px;
+}
+
+.logo{
+  /* bottom: -30px !important; */
+  vertical-align: bottom;
 }
