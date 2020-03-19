@@ -19,9 +19,14 @@ td{
 .profpic {
   margin: 25%;
   margin-bottom: 5%;
+  transition: transform .2s;
   width: 50%;
   height: width;
   border-radius:50%;
+}
+
+.profpic:hover {
+  transform: scale(1.5);
 }
 
 body {

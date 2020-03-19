@@ -9,7 +9,6 @@ import {
   Row
 } from "semantic-ui-react";
 import "../styles/AboutUs.css";
-
 const AboutUs = () => {
   return (
   
@@ -20,6 +19,9 @@ const AboutUs = () => {
   <header><strong>About Us</strong></header>
   <hr></hr>
   <body>
+    <h1>
+      Our Mission
+    </h1>
     <div id="rect">
       <p align='left'>   <emph>Northwestern Open Data Project (NODP)</emph> aims to  </p>
       <p align='center'> increase the <emph> transparency </emph> and <emph> accessibility </emph> </p>
@@ -41,16 +43,13 @@ const AboutUs = () => {
     <table id="teamtable">
       <tr>
         <td>
-          <img src="logo192.png" class="profpic"/>
-          Emily Weintraub
+          <img src="logo192.png" class="profpic"/> Emily Weintraub
         </td>
         <td>
-          <img src="logo192.png" class="profpic"/>
-          Rahul Shukla
+          <img src="logo192.png" class="profpic"/> Rahul Shukla
         </td>
         <td>
-          <img src="logo192.png" class="profpic"/>
-          Jenna Jubeir
+          <img src="logo192.png" class="profpic"/> Jenna Jubeir
         </td>
       </tr>
       <tr>
@@ -58,7 +57,7 @@ const AboutUs = () => {
         <img src="logo192.png" class="profpic"/> Alex Lee
         </td>
         <td>
-        <img src="logo192.png" class="profpic"/>Luke Choe
+        <img src="logo192.png" class="profpic"/> Luke Choe
         </td>
         <td>
         <img src="logo192.png" class="profpic"/> Bradley Ramos
