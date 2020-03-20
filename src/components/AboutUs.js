@@ -69,8 +69,11 @@ const AboutUs = () => {
         </td>
       </tr>
     </table>
-    
   
+  <h1>
+    Contact Us
+  </h1>
+  <p>E-mail: </p>
   </body>
   </Container>
   );
