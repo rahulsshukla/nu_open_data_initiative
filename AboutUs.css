@@ -1,0 +1,88 @@
+
+.about-us {
+  margin-top: 100px;
+  width: 75%;
+}
+
+header {
+  margin-bottom: 50px;
+  text-align: center;
+  /*font-family: Lato;*/
+  font-size: 200%;
+}
+
+.media-left{
+  display: table-cell;
+  vertical-align: top;
+  padding-right: 2px;
+}
+
+.media-body{
+  display: table-cell;
+  vertical-align: top;
+  margin: 0;
+}
+
+#gg{
+  padding: 0.5em;
+  margin: 0em;
+  float: left;
+}
+
+.profile_pic{
+  width: 60px;
+  height: width;
+  border-radius: 40%;
+}
+
+.cc{
+  padding: 1em; background-color: #eeeeee; border-radius: 5px;
+  width: 100%;
+}
+
+body {
+  margin: auto;
+  padding: 3%;
+  margin-bottom: 100px;
+}
+
+hr {
+  width: 60%;
+  padding: 1em;
+}
+
+#rect{
+  padding: 5%;
+  margin: auto;
+  margin-bottom: 5%;
+  background-image: linear-gradient(rgb(029,002,053), rgb(078,042,132));
+  color: rgb(204, 196, 223);
+}
+
+#teamtable{
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 200px;
+}
+td{
+  width:33%;
+}
+
+p {
+  margin: auto;
+  margin-top: 30px;
+  font-size: 20px;
+  font-family: 'Roboto', san-serif;
+}
+
+#centered {
+  margin: 20px;
+  text-align: center;
+}
+
+emph {
+  font-size: 36px;
+  color: white;
+  margin-bottom: 40px;
+}
