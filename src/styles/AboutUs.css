@@ -5,39 +5,55 @@
 }
 
 header {
-  margin-top: 100px;
   margin-bottom: 50px;
   text-align: center;
   /*font-family: Lato;*/
   font-size: 200%;
 }
 
-.profpic {
-  margin: 25%;
-  margin-bottom: 5%;
-  transition: transform .2s;
-  width: 50%;
-  height: width;
-  border-radius:50%;
+.media-left{
+  display: table-cell;
+  vertical-align: top;
 }
 
-.profpic:hover {
-  transform: scale(1.2);
+.media-body{
+  display: table-cell;
+  vertical-align: top;
+  margin: 0;
+}
+
+#gg{
+  padding: 0.5em;
+  margin: 0em;
+  float: left;
+}
+
+.profile_pic{
+  width: 60px;
+  height: width;
+  border-radius: 50%;
+}
+
+.cc{
+  padding: 1em; background-color: #eeeeee; border-radius: 5px;
+  width: 100%;
 }
 
 body {
   margin: auto;
-  width: 90%;
+  padding: 3%;
   margin-bottom: 100px;
 }
 
 hr {
   width: 60%;
+  padding: 1em;
 }
 
 #rect{
   padding: 5%;
   margin: auto;
+  margin-bottom: 5%;
   background-image: linear-gradient(rgb(029,002,053), rgb(078,042,132));
   color: rgb(204, 196, 223);
 }
@@ -55,8 +71,13 @@ td{
 p {
   margin: auto;
   margin-top: 30px;
-  font-size: 24px;
+  font-size: 20px;
   font-family: 'Roboto', san-serif;
+}
+
+#centered {
+  margin: 20px;
+  text-align: center;
 }
 
 emph {
