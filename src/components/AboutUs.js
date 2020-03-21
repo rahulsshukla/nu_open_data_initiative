@@ -98,7 +98,7 @@ const AboutUs = () => {
                 </div>
                 <div class="media-body">
           
-                  <h6 >McCormick 2021</h6>
+                  <h6 >McCormick 2020</h6>
                   <h4 class="media-heading" >Luke Choe</h4>
                   I'm a senior in McCormick studying Computer Science. I joined HODP because...
                 </div>
