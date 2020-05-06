@@ -1,13 +1,16 @@
-
-.button-group{
+.button-group {
   position: relative;
 }
 
-#buttons{
+#buttons {
   margin-left: 5px;
 }
 
-.logo{
+.logo {
   /* bottom: -30px !important; */
   vertical-align: bottom;
+}
+.banner {
+  margin-bottom: 40px;
+  margin-top: 30px;
 }

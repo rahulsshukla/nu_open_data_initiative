@@ -11,6 +11,7 @@ import AboutUs from "../src/components/AboutUs";
 
 //router
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Contribute from "./components/Contribute";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
       <Switch>
         <Route path="/" exact component={MainPage} />
         <Route path="/aboutus" exact component={AboutUs} />
+        <Route path="/contribute" exact component={Contribute} />
       </Switch>
     </Router>
   );
