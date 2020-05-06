@@ -6,34 +6,49 @@ import {
   Grid,
   Header,
   Segment,
-  Row
+  Row,
+  Button,
 } from "semantic-ui-react";
 import "../styles/MainPage.css";
-
+import nu from "../nu.jpg";
+import db from "../database.png";
 const MainPage = () => {
-  //states and such here
   return (
-    <Container className="larger-container">
+    <div>
       <div className="Fullsearch">
-        <h3 id="search-bar"> Search for a dataset: </h3>
-        <Search id="search-bar" input={{ fluid: true }} placeholder="Ex. 2019 Financial Report"
+        <img
+          id="image"
+          height="350px"
+          src={nu}
+          alt="Northwestern Image"
+          className="logo"
+        />
+        <h3 id="search-bar2"> Welcome to the Northwestern Open Data Portal!</h3>
+        <Search
+          input={{ fluid: true }}
+          id="search-bar1"
+          placeholder="Search for a dataset"
           /* loading={isLoading} onResultSelect={this.handleResultSelect} onSearchChange={_.debounce(this.handleSearchChange, 500, { leading: true })} results={results} value={value} {...this.props} */
         />
       </div>
-      <div class="ui buttons" className="featured-datasets">
-        <h3> Featured datasets:</h3>
-        <button id="dataset" class="ui button">
-          2019 Financial Report
-        </button>
 
-        <button id="dataset" class="ui button">
-          Admission Rates 2017
-        </button>
-        <button id="dataset" class="ui button">
-          Library Inventory 2000-2010
-        </button>
+      <div class="ui buttons" className="featured-datasets">
+        <img
+          id="icon"
+          height="350px"
+          src={db}
+          alt="Northwestern Image"
+          className="logo"
+        />
+
+        <h3 id="data"> Featured datasets</h3>
+        <div id="center">
+          <Button className="help">2019 Financial Report</Button>
+          <Button className="help">Admission Rates 2017</Button>
+          <Button className="help">Library Volumes 2010-2020</Button>
+        </div>
       </div>
-    </Container>
+    </div>
   );
 };
 export default MainPage;
