@@ -4,6 +4,7 @@ import React from "react";
 import MainPage from "../src/components/MainPage";
 import Banner from "../src/components/Banner";
 import AboutUs from "../src/components/AboutUs";
+import Datasets from "../src/components/Datasets";
 
 //firebase imports
 
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/" exact component={MainPage} />
         <Route path="/aboutus" exact component={AboutUs} />
         <Route path="/contribute" exact component={Contribute} />
+        <Route path="/datasets" exact component={Datasets} />
       </Switch>
     </Router>
   );
