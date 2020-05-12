@@ -4,14 +4,13 @@ import React from "react";
 import MainPage from "../src/components/MainPage";
 import Banner from "../src/components/Banner";
 import AboutUs from "../src/components/AboutUs";
-
+import Contribute from "../src/components/Contribute";
 //firebase imports
 
 //react + css
 
 //router
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Contribute from "./components/Contribute";
 
 const App = () => {
   return (

@@ -7,11 +7,40 @@ import {
   Header,
   Segment,
   Row,
+  Button,
+  ButtonGroup,
 } from "semantic-ui-react";
 import "../styles/Contribute.css";
 
 const Contribute = () => {
-  return <Container className="contribute"> add stuff to meeee</Container>;
+  return (
+    <div>
+      <div className="Fullsearch">
+        <h2 id="image" className="logo">
+          {" "}
+          Contribute a dataset!
+          <h5>
+            The Northwestern Open Data Portal filters through all Datasets added
+            through the NODI webpage.If any questions or concerns arise, please
+            contact nodi@u.northwestern.edu
+          </h5>
+        </h2>
+      </div>
+      <Container id="purple">
+        <h3>Upload or Request a Northwestern Dataset</h3>
+        <ButtonGroup id="button-group">
+          <Button id="request" className="formbut">
+            {" "}
+            Request
+          </Button>
+          <Button id="upload" className="formbut">
+            {" "}
+            Upload
+          </Button>
+        </ButtonGroup>
+      </Container>
+    </div>
+  );
 };
 
 export default Contribute;
