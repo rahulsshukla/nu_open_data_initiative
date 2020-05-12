@@ -1,5 +1,52 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Django Setup
+
+Activate venv: 
+```
+$ python -m venv venv # only run first time
+$ venv/bin/activate
+``` 
+
+Install packages
+```
+$ pip install -r requirements.txt
+
+# If build errors with psycopg2:
+$ env LDFLAGS='-L/usr/local/lib -L/usr/local/opt/openssl/lib
+-L/usr/local/opt/readline/lib' pip install -r requirements.txt
+```
+
+Add local env variables to `.env` file
+```
+SETTINGS_ENV=DEVELOPMENT
+DB_HOST=localhost
+DB_USER=<your user here>
+DB_PSWD=
+```
+
+### DB setup
+Install postgresql
+```
+$ brew install postgresql
+$ brew services start postgresql
+```
+
+Create DB
+```
+$ psql postgres
+postgres=# CREATE DATABASE nodi;
+```
+Run migrations
+```
+$ python manage.py migrate
+```
+
+Start server
+```
+$ python manage.py runserver
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
