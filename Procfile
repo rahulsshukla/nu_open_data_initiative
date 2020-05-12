@@ -1,2 +1,2 @@
 release: python manage.py migrate
-web: gunicorn dealdock-backend.wsgi --log-file -
+web: gunicorn nodi_backend.wsgi --log-file -
