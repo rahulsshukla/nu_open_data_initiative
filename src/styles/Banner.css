@@ -1,16 +1,24 @@
-.button-group {
-  position: relative;
+.button-group{
+  align-self: flex-end;
 }
 
-#buttons {
-  margin-left: 5px;
+#button {
+  margin-left: 20px;
+  background-color: white;
+  font-family: OpenSans;
+  font-size: 19px;
+  color: #4e2a84;
+  padding-bottom: 10px;
 }
 
-.logo {
-  /* bottom: -30px !important; */
-  vertical-align: bottom;
-}
 .banner {
-  margin-bottom: 40px;
-  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 15px;
+  border-bottom: 3px solid #4e2a84;
+}
+
+.logonav {
+  padding-left: 20px;
+  padding-bottom: 5px;
 }

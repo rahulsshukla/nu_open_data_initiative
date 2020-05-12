@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'OpenSans';
+  src: local('OpenSans'), url(./fonts/OpenSans-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src: local('OpenSans'), url(./fonts/OpenSans-Bold.ttf);
+  font-style: bold;
+}

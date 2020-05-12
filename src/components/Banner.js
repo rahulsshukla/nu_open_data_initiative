@@ -16,28 +16,28 @@ import { Link } from "react-router-dom";
 const Banner = () => {
   return (
     <div className="banner">
-      <div class="ui-buttons" className="button-group">
-        <Link to={{ pathname: `/` }}>
-          <img
-            src={logo}
-            alt="Northwestern Open Data Portal"
-            width="180px"
-            className="logo"
-          />
-        </Link>
-        <button id="buttons" class="ui button">
+      <Link to={{ pathname: `/` }}>
+        <img
+          src={logo}
+          alt="Northwestern Open Data Portal"
+          width="180px"
+          className="logonav"
+        />
+      </Link>
+      <div className="button-group ui-buttons">
+        <button id="button" className="ui button">
           Datasets{" "}
         </button>
         <Link to={{ pathname: `/contribute` }}>
-          <button id="buttons" class="ui button">
+          <button id="button" className="ui button">
             Contribute a Dataset
           </button>
         </Link>
         <Link to={{ pathname: `/aboutus` }}>
-          <button id="buttons" class="ui button">
+          <button id="button" class="ui button">
             About Us
           </button>
-        </Link>
+        </Link> 
       </div>
     </div>
   );
