@@ -1,3 +1,40 @@
-.about-us {
-  margin-top: 100px;
+
+#header{
+  font-family: OpenSans;
+  font-size: 25px;
+  color: #4e2a84;
+  justify-content: left !important;
+  padding-top: 40px;
+  padding-left: 0 !important;
+}
+
+.ui.grid{
+  padding: 0 9% 0 9%;
+  text-align: center;
+  margin-top: 0;
+}
+
+.start{
+  padding-bottom: 40px !important;
+}
+
+.eight{
+  text-align: left;
+}
+
+.ui.centered.four.column.grid#one {
+  background-color: #f2f2f2;
+  padding-bottom: 15px;
+  font-family: OpenSans;
+  color: #6d6f73;
+}
+
+.first {
+  padding-bottom: 60px !important;
+}
+
+.next{
+  border-bottom: #4e2a84 solid 3px;
+  line-height: 2px;
+  margin-bottom: 20px;
 }
