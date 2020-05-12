@@ -4,6 +4,8 @@ import React from "react";
 import MainPage from "../src/components/MainPage";
 import Banner from "../src/components/Banner";
 import AboutUs from "../src/components/AboutUs";
+import Contribute from "../src/components/Contribute";
+import Datasets from "../src/components/Datasets";
 
 //firebase imports
 
@@ -11,7 +13,6 @@ import AboutUs from "../src/components/AboutUs";
 
 //router
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Contribute from "./components/Contribute";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/" exact component={MainPage} />
         <Route path="/aboutus" exact component={AboutUs} />
         <Route path="/contribute" exact component={Contribute} />
+        <Route path="/datasets" exact component={Datasets} />
       </Switch>
     </Router>
   );

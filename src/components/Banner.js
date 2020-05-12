@@ -25,9 +25,11 @@ const Banner = () => {
         />
       </Link>
       <div className="button-group ui-buttons">
-        <button id="button" className="ui button">
-          Datasets{" "}
-        </button>
+        <Link to={{ pathname: `/contribute` }}>
+          <button id="button" className="ui button">
+            Datasets{" "}
+          </button>
+        </Link>
         <Link to={{ pathname: `/contribute` }}>
           <button id="button" className="ui button">
             Contribute a Dataset
