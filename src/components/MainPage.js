@@ -51,7 +51,7 @@ const MainPage = () => {
               <Grid.Column width={3} textAlign="center">
                 <Icon name={c.icon} size="large" style={{ color: "#FFFFFF" }} />
                 <Header
-                  className="header"
+                  className="header1"
                   content={c.name}
                   style={{ color: "#FFFFFF" }}
                 />
