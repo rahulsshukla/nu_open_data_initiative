@@ -25,7 +25,7 @@ const Banner = () => {
         />
       </Link>
       <div className="button-group ui-buttons">
-        <Link to={{ pathname: `/contribute` }}>
+        <Link to={{ pathname: `/datasets` }}>
           <button id="button" className="ui button">
             Datasets{" "}
           </button>
@@ -39,7 +39,7 @@ const Banner = () => {
           <button id="button" class="ui button">
             About Us
           </button>
-        </Link> 
+        </Link>
       </div>
     </div>
   );
