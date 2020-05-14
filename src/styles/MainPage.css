@@ -6,6 +6,7 @@
   border: 3px white solid;
   width: 50% !important;
   height: 50px !important;
+
   font-family: Arial, Helvetica, sans-serif;
   font-size: 18px;
   color: white;
@@ -13,10 +14,29 @@
   border-radius: 0px !important;
   margin-left: 25% !important;
 }
+#cats {
+  position: absolute !important;
+  margin-left: 15% !important;
+  margin-right: 15% !important;
+  bottom: 0px !important;
+  background-color: transparent;
+  align-items: center !important;
+  margin-top: 0px !important;
+}
 #icon {
   width: 5% !important;
   height: 5% !important;
   margin-left: 47% !important;
+}
+Icon {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+.header1 {
+  color: white !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  margin: 0px !important;
 }
 #search-bar2 {
   position: absolute !important;
@@ -49,6 +69,7 @@ h3 {
   width: 100% !important;
   object-fit: fill !important;
   min-width: 100vh;
+  filter: brightness(80%) !important;
 }
 
 #dataset {

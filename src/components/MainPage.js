@@ -6,13 +6,28 @@ import {
   Grid,
   Header,
   Segment,
-  Row,
+  Icon,
+  Divider,
+  Accordion,
+  List,
+  Form,
+  Input,
+  Menu,
   Button,
 } from "semantic-ui-react";
 import "../styles/MainPage.css";
 import nu from "../nu.jpg";
 import db from "../database.png";
 const MainPage = () => {
+  const categories = [
+    { name: "Safety", icon: "heartbeat" },
+    { name: "Campus", icon: "sun" },
+    { name: "Admission", icon: "graduation" },
+    { name: "Finances", icon: "dollar sign" },
+    { name: "Academic", icon: "dna" },
+    { name: "Student Life", icon: "futbol" },
+  ];
+
   return (
     <div>
       <div className="Fullsearch">
@@ -30,6 +45,33 @@ const MainPage = () => {
           placeholder="Search for a dataset"
           /* loading={isLoading} onResultSelect={this.handleResultSelect} onSearchChange={_.debounce(this.handleSearchChange, 500, { leading: true })} results={results} value={value} {...this.props} */
         />
+        <Grid centered id="cats" padded>
+          <Grid.Row centered>
+            {categories.slice(0, 3).map((c) => (
+              <Grid.Column width={3} textAlign="center">
+                <Icon name={c.icon} size="large" style={{ color: "#FFFFFF" }} />
+                <Header
+                  className="header"
+                  content={c.name}
+                  style={{ color: "#FFFFFF" }}
+                />
+              </Grid.Column>
+            ))}
+          </Grid.Row>
+          <Grid.Row centered>
+            {categories.slice(3, 7).map((c) => (
+              <Grid.Column width={3} textAlign="center">
+                <Icon name={c.icon} size="large" style={{ color: "#FFFFFF" }} />
+                <Header
+                  className="header1"
+                  content={c.name}
+                  style={{ color: "#FFFFFF" }}
+                />
+              </Grid.Column>
+            ))}
+          </Grid.Row>
+          <Divider />
+        </Grid>
       </div>
 
       <div class="ui buttons" className="featured-datasets">
