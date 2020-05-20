@@ -69,6 +69,7 @@ const Datasets = () => {
         </Grid.Column>
         <Grid.Column width={12}>
           <Header content="Search for a Dataset:" />
+
           <Input icon="search" fluid label="Datasets" />
           <Menu vertical text fluid>
             {[...Array(10)].map((x) => (
