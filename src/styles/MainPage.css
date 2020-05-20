@@ -1,7 +1,7 @@
-#search-bar1 {
+/* #search-bar1 {
   position: absolute !important;
-  bottom: 200px !important;
-  background-color: transparent;
+  bottom: 160px !important;
+  background-color: yellow !important;
   font-weight: bold !important;
   border: 3px white solid;
   width: 50% !important;
@@ -9,9 +9,21 @@
 
   font-family: Arial, Helvetica, sans-serif;
   font-size: 18px;
-  color: white;
+  color: black;
   margin-top: 100px;
   border-radius: 0px !important;
+  margin-left: 25% !important;
+  z-index: -1
+} */
+
+#search-bar1 {
+  position: relative;
+  bottom: 180px !important;
+  width: 50% !important;
+  height: 50px !important;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  color: black !important;
   margin-left: 25% !important;
 }
 #cats {
@@ -38,15 +50,21 @@ Icon {
   padding-bottom: 0px !important;
   margin: 0px !important;
 }
-#search-bar2 {
+#top {
+  bottom: 63% !important;
+}
+#bottom {
+  bottom: 56% !important;
+  font-size: 24pt;
+}
+.search-bar2 {
   position: absolute !important;
-  bottom: 220px !important;
-  font-weight: bold !important;
+
+  font-weight: bolder !important;
   color: white !important;
   width: 50% !important;
   height: 50px !important;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 22px;
   color: white;
   margin-top: 100px;
   border-radius: 0px !important;
