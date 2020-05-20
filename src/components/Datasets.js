@@ -16,14 +16,12 @@ import {
 } from "semantic-ui-react";
 
 const categories = [
-  { name: "Health", icon: "heartbeat" },
-  { name: "Weather", icon: "sun" },
-  { name: "Tech", icon: "laptop" },
-  { name: "Campus", icon: "graduation" },
-  { name: "Transport", icon: "bus" },
-  { name: "Money", icon: "dollar sign" },
-  { name: "Science", icon: "dna" },
-  { name: "Sports", icon: "futbol" },
+  { name: "Safety", icon: "heartbeat" },
+  { name: "Campus", icon: "sun" },
+  { name: "Admission", icon: "graduation" },
+  { name: "Finances", icon: "dollar sign" },
+  { name: "Academic", icon: "dna" },
+  { name: "Student Life", icon: "futbol" },
 ];
 
 const fileTypes = [

@@ -20,7 +20,6 @@ import nu from "../nu.jpg";
 import db from "../database.png";
 const MainPage = () => {
   const categories = [
-
     { name: "Safety", icon: "heartbeat" },
     { name: "Campus", icon: "sun" },
     { name: "Admission", icon: "graduation" },
@@ -28,7 +27,6 @@ const MainPage = () => {
     { name: "Academic", icon: "dna" },
     { name: "Student Life", icon: "futbol" },
   ];
-
 
   return (
     <div>
@@ -47,33 +45,6 @@ const MainPage = () => {
           placeholder="Search for a dataset"
           /* loading={isLoading} onResultSelect={this.handleResultSelect} onSearchChange={_.debounce(this.handleSearchChange, 500, { leading: true })} results={results} value={value} {...this.props} */
         />
-        <Grid centered id="cats" padded>
-          <Grid.Row centered>
-            {categories.slice(0, 3).map((c) => (
-              <Grid.Column width={3} textAlign="center">
-                <Icon name={c.icon} size="large" style={{ color: "#FFFFFF" }} />
-                <Header
-                  className="header1"
-                  content={c.name}
-                  style={{ color: "#FFFFFF" }}
-                />
-              </Grid.Column>
-            ))}
-          </Grid.Row>
-          <Grid.Row centered>
-            {categories.slice(3, 7).map((c) => (
-              <Grid.Column width={3} textAlign="center">
-                <Icon name={c.icon} size="large" style={{ color: "#FFFFFF" }} />
-                <Header
-                  className="header1"
-                  content={c.name}
-                  style={{ color: "#FFFFFF" }}
-                />
-              </Grid.Column>
-            ))}
-          </Grid.Row>
-          <Divider />
-        </Grid>
       </div>
 
       <div class="ui buttons" className="featured-datasets">
@@ -97,7 +68,7 @@ const MainPage = () => {
           <Header size="large">Explore one of our popular categories!</Header>
         </Grid.Row>
         <Grid.Row>
-          {categories.slice(0, 4).map((c) => (
+          {categories.slice(0, 3).map((c) => (
             <Grid.Column width={3} textAlign="center">
               <Icon name={c.icon} size="huge" style={{ color: "#4e2a8f" }} />
               <Header content={c.name} style={{ color: "#4e2a8f" }} />
@@ -105,7 +76,7 @@ const MainPage = () => {
           ))}
         </Grid.Row>
         <Grid.Row>
-          {categories.slice(4, 8).map((c) => (
+          {categories.slice(3, 7).map((c) => (
             <Grid.Column width={3} textAlign="center">
               <Icon name={c.icon} size="huge" style={{ color: "#4e2a8f" }} />
               <Header content={c.name} style={{ color: "#4e2a8f" }} />
