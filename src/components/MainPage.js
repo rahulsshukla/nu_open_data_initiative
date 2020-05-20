@@ -20,15 +20,16 @@ import nu from "../nu.jpg";
 import db from "../database.png";
 const MainPage = () => {
   const categories = [
-    { name: "Health", icon: "heartbeat" },
-    { name: "Weather", icon: "sun" },
-    { name: "Tech", icon: "laptop" },
-    { name: "Campus", icon: "graduation" },
-    { name: "Transport", icon: "bus" },
-    { name: "Money", icon: "dollar sign" },
-    { name: "Science", icon: "dna" },
-    { name: "Sports", icon: "futbol" },
+
+    { name: "Safety", icon: "heartbeat" },
+    { name: "Campus", icon: "sun" },
+    { name: "Admission", icon: "graduation" },
+    { name: "Finances", icon: "dollar sign" },
+    { name: "Academic", icon: "dna" },
+    { name: "Student Life", icon: "futbol" },
   ];
+
+
   return (
     <div>
       <div className="Fullsearch">
@@ -46,6 +47,33 @@ const MainPage = () => {
           placeholder="Search for a dataset"
           /* loading={isLoading} onResultSelect={this.handleResultSelect} onSearchChange={_.debounce(this.handleSearchChange, 500, { leading: true })} results={results} value={value} {...this.props} */
         />
+        <Grid centered id="cats" padded>
+          <Grid.Row centered>
+            {categories.slice(0, 3).map((c) => (
+              <Grid.Column width={3} textAlign="center">
+                <Icon name={c.icon} size="large" style={{ color: "#FFFFFF" }} />
+                <Header
+                  className="header1"
+                  content={c.name}
+                  style={{ color: "#FFFFFF" }}
+                />
+              </Grid.Column>
+            ))}
+          </Grid.Row>
+          <Grid.Row centered>
+            {categories.slice(3, 7).map((c) => (
+              <Grid.Column width={3} textAlign="center">
+                <Icon name={c.icon} size="large" style={{ color: "#FFFFFF" }} />
+                <Header
+                  className="header1"
+                  content={c.name}
+                  style={{ color: "#FFFFFF" }}
+                />
+              </Grid.Column>
+            ))}
+          </Grid.Row>
+          <Divider />
+        </Grid>
       </div>
 
       <div class="ui buttons" className="featured-datasets">

@@ -14,7 +14,6 @@ import {
   Input,
   Menu,
 } from "semantic-ui-react";
-import "../styles/Contribute.css";
 
 const categories = [
   { name: "Health", icon: "heartbeat" },
@@ -58,25 +57,6 @@ const filters = [
 const Datasets = () => {
   return (
     <Grid centered>
-      <Grid.Row>
-        <Header size="large">Explore one of our popular categories!</Header>
-      </Grid.Row>
-      <Grid.Row>
-        {categories.slice(0, 4).map((c) => (
-          <Grid.Column width={3} textAlign="center">
-            <Icon name={c.icon} size="huge" style={{ color: "#4e2a8f" }} />
-            <Header content={c.name} style={{ color: "#4e2a8f" }} />
-          </Grid.Column>
-        ))}
-      </Grid.Row>
-      <Grid.Row>
-        {categories.slice(4, 8).map((c) => (
-          <Grid.Column width={3} textAlign="center">
-            <Icon name={c.icon} size="huge" style={{ color: "#4e2a8f" }} />
-            <Header content={c.name} style={{ color: "#4e2a8f" }} />
-          </Grid.Column>
-        ))}
-      </Grid.Row>
       <Divider />
       <Grid.Row>
         <Grid.Column width={3}>
@@ -88,7 +68,8 @@ const Datasets = () => {
           />
         </Grid.Column>
         <Grid.Column width={12}>
-          <Header content="...or check out all our datasets here." />
+          <Header content="Search for a Dataset:" />
+
           <Input icon="search" fluid label="Datasets" />
           <Menu vertical text fluid>
             {[...Array(10)].map((x) => (
