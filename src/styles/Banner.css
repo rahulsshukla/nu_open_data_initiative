@@ -44,7 +44,7 @@
     margin: 67.42px 0 -135px -130px;
     padding-bottom: 130px;
     width: 100%;
-    border-top: 3px solid #4e2a84;
+    border-bottom: 3px solid #4e2a84;
   }
   .logonav {
     width: 130px;
@@ -52,7 +52,7 @@
   #button.ui.button{
     margin: 0;
     width: 100%;
-    border-bottom: 1px solid #4e2a84;
+    border-top: 1px solid #4e2a84;
     border-radius: 0;
   }
 }
