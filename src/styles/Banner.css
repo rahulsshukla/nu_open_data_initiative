@@ -1,4 +1,4 @@
-.button-group{
+.topnav{
   align-self: flex-end;
 }
 
@@ -14,7 +14,7 @@
 .banner {
   display: flex;
   justify-content: space-between;
-  padding-right: 15px;
+  /* padding-right: 15px; */
   border-bottom: 3px solid #4e2a84;
 }
 
@@ -22,3 +22,38 @@
   padding-left: 20px;
   padding-bottom: 5px;
 }
+
+.icon {
+  padding-left: 20px;
+  padding-top: 22px;
+  color: #690aa4;
+  font-size: 35px;
+  position: absolute;
+  right: 12px;
+  display: none;
+}
+
+
+@media screen and (max-width: 815px) {
+  #myTopnav {display: none;}
+  .banner .icon {
+    display: block;
+  }
+  .topnav.responsive {
+    display: block !important;
+    margin: 67.42px 0 -135px -130px;
+    padding-bottom: 130px;
+    width: 100%;
+    border-top: 3px solid #4e2a84;
+  }
+  .logonav {
+    width: 130px;
+  }
+  #button.ui.button{
+    margin: 0;
+    width: 100%;
+    border-bottom: 1px solid #4e2a84;
+    border-radius: 0;
+  }
+}
+
