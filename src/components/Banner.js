@@ -34,7 +34,7 @@ const Banner = () => {
       </Link>
       <a href="javascript:void(0);" class="icon" onClick={sayHello}>&#9776;</a>
       <div className="topnav" id="myTopnav"> 
-        <Link to={{ pathname: `/contribute` }}>
+        <Link to={{ pathname: `/datasets` }}>
           <button id="button" className="ui button">
             Datasets{" "}
           </button>
@@ -45,9 +45,9 @@ const Banner = () => {
           </button>
         </Link>
         <Link to={{ pathname: `/aboutus` }}>
-            <button id="button" class="ui button">
-              About Us
-            </button>
+          <button id="button" class="ui button">
+            About Us
+          </button>
         </Link>
       </div>
   </div>

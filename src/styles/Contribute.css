@@ -16,6 +16,7 @@
 
 .Fullsearch {
   position: relative;
+  background-color: #f2f2f2 !important;
 }
 h3 {
   font-family: Lato !important;
@@ -24,7 +25,6 @@ h3 {
   width: 100% !important;
   object-fit: fill !important;
   min-width: 100vh;
-  background-color: #c5d5ea !important;
 }
 
 h2 {
