@@ -1,0 +1,20 @@
+.fd {
+  height: 200px !important;
+  width: 300px;
+}
+.cs {
+  display: flex;
+  align-items: center !important;
+  justify-content: center;
+  background-color: yellow !important;
+  width: 330px;
+}
+.c {
+  padding: 30px;
+  display: grid;
+  display: flex;
+  align-items: center !important;
+  justify-content: center;
+  width: 100%;
+  grid-template-columns: 1fr;
+}
