@@ -38,13 +38,18 @@ const MainPage = () => {
           alt="Northwestern Image"
           className="logo"
         />
-        <h3 id="search-bar2"> Welcome to the Northwestern Open Data Portal!</h3>
-        <Search
-          input={{ fluid: true }}
-          id="search-bar1"
-          placeholder="Search for a dataset"
-          /* loading={isLoading} onResultSelect={this.handleResultSelect} onSearchChange={_.debounce(this.handleSearchChange, 500, { leading: true })} results={results} value={value} {...this.props} */
-        />
+        <h3 id="top" className="search-bar2">
+          {" "}
+          Welcome to{" "}
+        </h3>
+        <h1 id="bottom" className="search-bar2">
+          {" "}
+          The Northwestern Open Data Portal
+        </h1>
+        <div id="search-bar1" class="ui icon input">
+          <input type="text" placeholder="Search for a dataset.." />
+          <i class="search icon"></i>
+        </div>
       </div>
 
       <div class="ui buttons" className="featured-datasets">
