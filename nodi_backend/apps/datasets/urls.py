@@ -5,7 +5,6 @@ from django.conf.urls import url
 
 router = DefaultRouter()
 router.register('datasets', DataSetViewSet)
-# import pdb; pdb.set_trace()
 
 urlpatterns = [
     url(r'^api/', include(router.urls)),
