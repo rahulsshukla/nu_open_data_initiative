@@ -50,8 +50,7 @@ const MainPage = () => {
           The Northwestern Open Data Portal
         </h1>
         <div id="search-bar1" class="ui icon input">
-        <input type="text" placeholder="Search for a dataset.." />
-        <i class="search icon"></i>
+          <Input fluid icon="search" />
         </div>
       </div>
       <div>
