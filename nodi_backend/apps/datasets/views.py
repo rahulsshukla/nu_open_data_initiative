@@ -69,3 +69,12 @@ class DataSetViewSet(viewsets.ModelViewSet):
         Retrieves an s3 upload url
         """
         return HttpResponseNotFound("Not Implemented Yet")
+    
+    @action(detail=False, methods=['get'])
+    def search(self, request, pk=None):
+        """
+        +GET+
+        Searches for a list of datasets
+        @AlexLee Here you go
+        """
+        return HttpResponseNotFound("Not Implemented Yet")
