@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
-import "semantic-ui-css/semantic.min.css";
 import {
-  Container,
-  Search,
   Grid,
   Header,
-  Segment,
   Icon,
   Divider,
   Accordion,
-  List,
   Form,
   Input,
   Menu,
+  Label,
+  Button,
+  Container,
+  Card
 } from "semantic-ui-react";
+import nu from "../nu.jpg";
+import "../styles/MainPage.css";
 
 const categories = [
   { name: "Safety", icon: "heartbeat" },
@@ -54,8 +55,12 @@ const filters = [
 
 const Datasets = () => {
   return (
-    <Grid centered>
-      <Divider />
+    <Grid stackable divided>
+      <Grid.Row>
+        <Grid.Column>
+          <Input fluid icon="search" />
+        </Grid.Column>
+      </Grid.Row>
       <Grid.Row>
         <Grid.Column width={3}>
           <Accordion
@@ -66,14 +71,12 @@ const Datasets = () => {
           />
         </Grid.Column>
         <Grid.Column width={12}>
-          <Header content="Search for a Dataset:" />
-
-          <Input icon="search" fluid label="Datasets" />
           <Menu vertical text fluid>
             {[...Array(10)].map((x) => (
               <Menu.Item>
                 <Grid>
                   <Grid.Column width={13}>
+                    <Grid.Row>
                     <Header size="small">
                       This is is a Dataset
                       <Header.Subheader>
@@ -81,6 +84,13 @@ const Datasets = () => {
                         Morbi semper sagittis sapien at posuere. Cras at nisi.
                       </Header.Subheader>
                     </Header>
+                    </Grid.Row>
+                    <Grid.Row> 
+                      <Label.Group style={{ marginTop: "10px"}}>
+                        <Label content="Safety" style={{ backgroundColor: "#4e2a84", color: "white"}} />
+                        <Label content="CSV" />                       
+                      </Label.Group>
+                    </Grid.Row>
                   </Grid.Column>
                   <Grid.Column width={1}>
                     <Icon name="file excel" />
@@ -94,9 +104,30 @@ const Datasets = () => {
             ))}
           </Menu>
         </Grid.Column>
-      </Grid.Row>
+        </Grid.Row>
     </Grid>
   );
 };
 
-export default Datasets;
+const DatasetsPage = () => {
+  return (
+    <React.Fragment>
+      <div className="Fullsearch">
+        <img
+          id="image"
+          height="350px"
+          src={nu}
+          alt="Northwestern Image"
+          className="logo"
+        />
+        <h1 id="bottom" className="search-bar2">
+          {" "}
+          Search for Datasets
+        </h1>
+      </div>
+      <Datasets />
+    </React.Fragment>
+  )
+};
+
+export default DatasetsPage;
