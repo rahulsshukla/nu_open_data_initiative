@@ -11,6 +11,7 @@ import {
   ButtonGroup,
 } from "semantic-ui-react";
 import "../styles/Contribute.css";
+import Upload from "./Upload";
 
 const Contribute = () => {
   return (
@@ -33,10 +34,7 @@ const Contribute = () => {
             {" "}
             Request
           </Button>
-          <Button id="upload" className="formbut">
-            {" "}
-            Upload
-          </Button>
+          <Upload></Upload>
         </ButtonGroup>
       </Container>
     </div>

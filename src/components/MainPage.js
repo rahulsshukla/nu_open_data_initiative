@@ -49,6 +49,13 @@ const MainPage = () => {
           {" "}
           The Northwestern Open Data Portal
         </h1>
+        <Form>
+          <input
+            control={Input}
+            id="search-in"
+            placeholder="Search for a dataset... "
+          />
+        </Form>
       </div>
       <div>
         <div class="ui four column grid">

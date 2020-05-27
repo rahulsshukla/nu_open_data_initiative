@@ -35,7 +35,15 @@
   margin-right: 5% !important;
   margin-left: 5% !important;
 }
-
+#search-in {
+  width: 50%;
+  background-color: white;
+  position: absolute !important;
+  bottom: 140px !important;
+  margin-left: 25% !important;
+  color: black !important;
+  filter: brightness(100%) !important;
+}
 #cats {
   position: relative !important;
   margin-left: 15% !important;
