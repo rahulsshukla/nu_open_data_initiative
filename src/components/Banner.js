@@ -32,7 +32,7 @@ const Banner = () => {
       <Link to={{ pathname: `/` }}>
         <img src={logo} alt="Northwestern Open Data Portal" width="180px" className="logonav"/>
       </Link>
-      <a href="javascript:void(0);" class="icon" onClick={sayHello}>&#9776;</a>
+      <a href="javascript:void(0);" class="ico" onClick={sayHello}>&#9776;</a>
       <div className="topnav" id="myTopnav"> 
         <Link to={{ pathname: `/datasets` }}>
           <button id="button" className="ui button">
