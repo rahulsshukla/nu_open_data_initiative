@@ -3,9 +3,9 @@
   font-family: OpenSans;
   font-size: 25px;
   color: #4e2a84;
-  justify-content: left !important;
+  justify-content: center;
   padding-top: 40px;
-  margin-right: 14px !important;
+  /* margin-right: 14px !important; */
 }
 
 .ui.grid{
@@ -13,12 +13,9 @@
   margin-top: 0;
 }
 
-#two{
-  padding: 3%;
-}
-
 .start{
   padding-bottom: 40px !important;
+  justify-content: left !important;
 }
 
 #one {
@@ -31,17 +28,35 @@
 .next{
   border-bottom: #4e2a84 solid 3px;
   line-height: 2px;
-  /* margin-bottom: 20px; */
+  justify-content: left !important;
+  margin-bottom: 10px;
 }
 
 #person{
-  height: 47.39% !important;
-  width:100% !important;
+  height: 40.69% !important;
+  width: 100% !important;
   object-fit:cover;
   justify-content: center !important;
-  padding: 10% 15% 10% 15%;
+  padding-bottom: 10px;
+}
+
+#faculty{
+  height: 88.18% !important;
+  width: 100% !important;
+  object-fit:cover;
+  justify-content: left !important;
+  padding: 5%;
 }
 
 .four.wide.column{
-  padding: 0 !important;
+  padding: 0 10% 0 10%;
+}
+
+.name{
+  color: #6d6f73;
+  background-color: #f2f2f2;
+  text-align: center;
+  padding: 5px 0 5px 0;
+  font-family: OpenSans;
+  font-size: 1vw;
 }
