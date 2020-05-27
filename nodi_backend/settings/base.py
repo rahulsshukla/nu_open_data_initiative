@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'datasets.apps.DataSetConfig',
+    'datasets.apps.DatasetsConfig',
     'rest_framework'
 ]
 
