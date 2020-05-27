@@ -79,11 +79,11 @@ const AboutUs = () => {
         <div class="row" id="two">
           <div class="three wide column side">
             <img src={hammond} id="faculty"/>
-            <p class="name"></p>
+            <p class="name">Kristian Hammond</p>
           </div>
           <div class="three wide column">
             <img src={amit} id="faculty"/> 
-            <p class="name"></p>           
+            <p class="name">Amit Prachand</p>           
           </div>
         </div>
       </div>
