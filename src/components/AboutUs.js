@@ -15,6 +15,12 @@ import bradley from "../bradley.png";
 import rahul from "../rahul.png";
 import emily from "../Emily.jpg";
 import alex from "../Alex.png";
+import rishi from "../rishi.png";
+import jenna from "../jenna.png";
+import demitra from "../demitra.png";
+import alexr from "../alexr.jpeg";
+import hammond from "../hammond.jpg";
+import amit from "../amit.jpg";
 
 const AboutUs = () => {
   return (
@@ -31,28 +37,64 @@ const AboutUs = () => {
               The Northwestern Open Data Initiative (NODI) is making data about Northwestern University more accessible and transparent. Our Open Data Portal allows anyone to find and analyze Northwestern-related data, such as university finances, student life, and academics.
             </div>
           </div>
-        {/* <div class="ui divider"></div> */}
       </div>
-      <div class="ui four column grid">
+      <div class="ui eight column grid">
         <div class="row next" id="header">
-          Meet the team
+          Who We Are
+        </div>
+        <div class="row" id="header">
+          The Team
         </div>
         <div class="row" id="two">
-          <div class="four wide column">
+          <div class="four wide column side">
             <img src={bradley} id="person"/>
+            <p class="name">Bradley Ramos</p>
             <img src={rahul} id="person"/>
+            <p class="name">Rahul Shukla</p>
           </div>
           <div class="four wide column">
-            <img src={emily} id="person"/>            
+            <img src={emily} id="person"/>   
+            <p class="name">Emily Weintraub</p>         
+            <img src={jenna} id="person"/> 
+            <p class="name">Jenna Jubeir</p>
+          </div>
+          <div class="four wide column">
+            <img src={rishi} id="person"/>     
+            <p class="name">Rishi Gudivaka</p>     
             <img src={alex} id="person"/> 
+            <p class="name">Alex Lee</p>
           </div>
-          <div class="four wide column">
-            <img id="person" src="https://react.semantic-ui.com/images/wireframe/image.png" class="ui image" />
-            <img id="person" src="https://react.semantic-ui.com/images/wireframe/image.png" class="ui image" />
+          <div class="four wide column side">
+            <img src={demitra} id="person"/>   
+            <p class="name">Demitra Del Fiacco</p>         
+            <img src={alexr} id="person"/>
+            <p class="name">Alex Rhee</p>
           </div>
-          <div class="four wide column">
-            <img id="person" src="https://react.semantic-ui.com/images/wireframe/image.png" class="ui image" />
-            <img id="person" src="https://react.semantic-ui.com/images/wireframe/image.png" class="ui image" />
+        </div>
+      </div>
+      <div class="ui four column grid">
+        <div class="row" id="header">
+          Faculty and Advisors
+        </div>
+        <div class="row" id="two">
+          <div class="three wide column side">
+            <img src={hammond} id="faculty"/>
+            <p class="name"></p>
+          </div>
+          <div class="three wide column">
+            <img src={amit} id="faculty"/> 
+            <p class="name"></p>           
+          </div>
+        </div>
+      </div>
+      <div class="ui four column grid">
+        <div class="row" id="header">
+          Partnerships
+        </div>
+        <div class="row" id="two">
+          <div class="eight wide column side">
+          </div>
+          <div class="eight wide column">         
           </div>
         </div>
       </div>
