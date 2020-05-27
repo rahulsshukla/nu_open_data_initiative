@@ -112,7 +112,7 @@ const Datasets = () => {
 const DatasetsPage = () => {
   return (
     <React.Fragment>
-      <div>
+      <div className="Fullsearch">
         <img
           id="image"
           height="350px"
@@ -120,46 +120,10 @@ const DatasetsPage = () => {
           alt="Northwestern Image"
           className="logo"
         />
-        <div id="featured-cards">
-        <Card.Group itemsPerRow={3}>
-          <Card>
-            <Card.Header content="Featured Dataset" />
-            <Card.Content>
-              This is a featured data set. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi semper sagittis sapien at posuere. Cras at nisi.
-            </Card.Content>
-            <Card.Meta>
-              <Label.Group style={{ marginTop: "10px"}}>
-                <Label content="Safety" style={{ backgroundColor: "#4e2a84", color: "white"}} />
-                <Label content="CSV" />                       
-              </Label.Group>
-            </Card.Meta>
-          </Card>
-          <Card>
-            <Card.Header content="Featured Dataset" />
-            <Card.Content>
-              This is a featured data set. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi semper sagittis sapien at posuere. Cras at nisi.
-            </Card.Content>
-            <Card.Meta>
-              <Label.Group style={{ marginTop: "10px"}}>
-                <Label content="Safety" style={{ backgroundColor: "#4e2a84", color: "white"}} />
-                <Label content="CSV" />                       
-              </Label.Group>
-            </Card.Meta>
-          </Card>
-          <Card>
-            <Card.Header content="Featured Dataset" />
-            <Card.Content>
-              This is a featured data set. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi semper sagittis sapien at posuere. Cras at nisi.
-            </Card.Content>
-            <Card.Meta>
-              <Label.Group style={{ marginTop: "10px"}}>
-                <Label content="Safety" style={{ backgroundColor: "#4e2a84", color: "white"}} />
-                <Label content="CSV" />                       
-              </Label.Group>
-            </Card.Meta>
-          </Card>
-        </Card.Group>
-        </div>
+        <h1 id="bottom" className="search-bar2">
+          {" "}
+          Search for Datasets
+        </h1>
       </div>
       <Datasets />
     </React.Fragment>
