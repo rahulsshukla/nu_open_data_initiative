@@ -1,4 +1,5 @@
 from django.db import models
+from .utils.s3 import generate_presigned_get
 
 # Create your models here.
 # More fields here: https://docs.djangoproject.com/en/3.0/topics/db/models/#field-types
@@ -7,6 +8,7 @@ class DataSet(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     submitted_at = models.DateTimeField(auto_now_add=True)
+    approved_at = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
     
     categories = models.ManyToManyField('datasets.Category')
@@ -14,6 +16,9 @@ class DataSet(models.Model):
     
     key = models.CharField(max_length=100, default=None, null=True)
     bucket = models.CharField(max_length=100, default=None, null=True)
+    
+    def get_signed_url(self):
+        return generate_presigned_get(self.bucket, self.key)
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
