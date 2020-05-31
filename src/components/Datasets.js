@@ -11,10 +11,11 @@ import {
   Label,
   Button,
   Container,
-  Card
+  Card,
 } from "semantic-ui-react";
 import nu from "../nu.jpg";
 import "../styles/MainPage.css";
+import Dataset from "./Dataset";
 
 const categories = [
   { name: "Safety", icon: "heartbeat" },
@@ -77,18 +78,23 @@ const Datasets = () => {
                 <Grid>
                   <Grid.Column width={13}>
                     <Grid.Row>
-                    <Header size="small">
-                      This is is a Dataset
-                      <Header.Subheader>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Morbi semper sagittis sapien at posuere. Cras at nisi.
-                      </Header.Subheader>
-                    </Header>
+                      <Header size="small">
+                        This is is a Dataset
+                        <Dataset></Dataset>
+                        <Header.Subheader>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. Morbi semper sagittis sapien at posuere. Cras at
+                          nisi.
+                        </Header.Subheader>
+                      </Header>
                     </Grid.Row>
-                    <Grid.Row> 
-                      <Label.Group style={{ marginTop: "10px"}}>
-                        <Label content="Safety" style={{ backgroundColor: "#4e2a84", color: "white"}} />
-                        <Label content="CSV" />                       
+                    <Grid.Row>
+                      <Label.Group style={{ marginTop: "10px" }}>
+                        <Label
+                          content="Safety"
+                          style={{ backgroundColor: "#4e2a84", color: "white" }}
+                        />
+                        <Label content="CSV" />
                       </Label.Group>
                     </Grid.Row>
                   </Grid.Column>
@@ -104,7 +110,7 @@ const Datasets = () => {
             ))}
           </Menu>
         </Grid.Column>
-        </Grid.Row>
+      </Grid.Row>
     </Grid>
   );
 };
@@ -127,7 +133,7 @@ const DatasetsPage = () => {
       </div>
       <Datasets />
     </React.Fragment>
-  )
+  );
 };
 
 export default DatasetsPage;

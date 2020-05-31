@@ -1,0 +1,21 @@
+.m_but {
+  background-color: white !important;
+  color: black !important;
+}
+.def {
+  background-color: rgb(235, 235, 235);
+  border: 3px purple solid;
+  background-color: blue !important;
+}
+#des {
+  font-weight: bold;
+}
+
+#second {
+}
+
+#first {
+  margin-left: 0px;
+  font-weight: bold;
+  align-items: left;
+}
