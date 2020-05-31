@@ -37,6 +37,7 @@ const MainPage = () => {
         <img
           id="image"
           height="350px"
+          width="100%"
           src={nu}
           alt="Northwestern Image"
           className="logo"
