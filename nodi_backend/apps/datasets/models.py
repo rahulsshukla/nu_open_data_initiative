@@ -12,7 +12,7 @@ class DataSet(models.Model):
     approved = models.BooleanField(default=False)
     
     categories = models.ManyToManyField('datasets.Category')
-    datatypes = models.ManyToManyField('datasets.DataType')
+    datatypes = models.ForeignKey('datasets.DataType', on_delete=models.SET_NULL, null=True)
     
     key = models.CharField(max_length=100, default=None, null=True)
     bucket = models.CharField(max_length=100, default=None, null=True)
@@ -25,10 +25,10 @@ class Category(models.Model):
 
 class DataType(models.Model):
     name = models.CharField(max_length=100)
-    
 
 class MetaData(models.Model):
     publish_date = models.DateTimeField(null=True, default=None)
     department_ownership = models.CharField(max_length=100)
     raw_source_link = models.CharField(max_length=100)
     description = models.CharField(max_length=1000)
+    dataset = models.OneToOneField('datasets.DataSet', on_delete=models.CASCADE, related_name='metadata', null=True, default=None)
