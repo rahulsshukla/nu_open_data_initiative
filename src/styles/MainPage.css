@@ -136,6 +136,7 @@ h3 {
 
 .featured-datasets {
   margin-top: 25px;
+  width: 100px;
 }
 .d_container {
   align-content: center !important;
@@ -147,4 +148,10 @@ h3 {
   grid-template-columns: 1fr 1fr 1fr;
   justify-items: center;
   margin-top: 20px;
+}
+
+.featured{
+  height: 250px;
+  padding: 100px 0 0 !important;
+  width: 100%;
 }
