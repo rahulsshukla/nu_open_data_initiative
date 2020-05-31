@@ -4,8 +4,8 @@ from rest_framework import generics, viewsets
 from rest_framework.decorators import action
 from django.http import JsonResponse, HttpResponseNotFound, HttpResponseBadRequest
 
-from .models import DataSet
-from .serializers import DataSetSerializer
+from .models import DataSet, Category, DataType
+from .serializers import DataSetSerializer, CategorySerializer, DataTypeSerializer
 from .utils.s3 import generate_presigned_post
 
 class DataSetViewSet(viewsets.ModelViewSet):
@@ -95,3 +95,35 @@ class DataSetViewSet(viewsets.ModelViewSet):
         if len(missing_params) != 0:
             return HttpResponseBadRequest("Missing params in body: " + ", ".join(missing_params))
         return False
+    
+class CategoryViewSet(viewsets.ModelViewSet):
+    """
+    A viewset for viewing and editing DataSet instances.
+    """
+    serializer_class = CategorySerializer
+    queryset = Category.objects.all()
+
+    def list(self, request):
+        """
+        +GET+
+        Gets all datasets
+        """
+        queryset = Category.objects.all()
+        serializer = CategorySerializer(queryset, many=True)
+        return JsonResponse(serializer.data, safe=False)
+    
+class DataTypeViewSet(viewsets.ModelViewSet):
+    """
+    A viewset for viewing and editing DataSet instances.
+    """
+    serializer_class = DataTypeSerializer
+    queryset = DataType.objects.all()
+
+    def list(self, request):
+        """
+        +GET+
+        Gets all datasets
+        """
+        queryset = DataType.objects.all()
+        serializer = DataTypeSerializer(queryset, many=True)
+        return JsonResponse(serializer.data, safe=False)
