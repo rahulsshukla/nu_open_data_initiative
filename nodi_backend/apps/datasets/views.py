@@ -85,13 +85,15 @@ class DataSetViewSet(viewsets.ModelViewSet):
         fSet = DataSet.objects.all()
         name = request.query_params.get('name',None)
         categories = request.query_params.get('categories', [])
-        datatype = request.query_params.get('datatype', None)
+        datatypes = request.query_params.get('datatypes', [])
         if categories is not None:
             categories = eval(categories)
             for cat in categories:
                 fSet = fSet.filter(categories__name__in=[cat])
-        if datatype:
-            fSet = fSet.filter(datatype = datatype)
+        if datatypes is not None:
+            datatypes = eval(datatypes)
+            for dat in datatypes:
+                fSet = fSet.filter(datatypes__name__in=[dat])
         if name:
             fSet = fSet.filter(name__unaccent_icontains = name)
         
