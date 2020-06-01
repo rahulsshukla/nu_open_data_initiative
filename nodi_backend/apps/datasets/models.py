@@ -22,6 +22,8 @@ class DataSet(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
+    popular = models.BooleanField(default=True)
+    icon_name = models.CharField(max_length=100, default=None, null=True)
 
 class DataType(models.Model):
     name = models.CharField(max_length=100)
