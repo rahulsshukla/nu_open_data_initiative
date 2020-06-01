@@ -11,6 +11,8 @@
 .ui.grid{
   padding: 0 9% 0 9%;
   margin-top: 0;
+  /* width: 75%; */
+  /* align-content: center; */
 }
 
 .start{
@@ -43,6 +45,8 @@
 #faculty{
   height: 88.18% !important;
   width: 100% !important;
+  /* height: 137px !important;
+  width: 181px !important; */
   object-fit:cover;
   justify-content: left !important;
   padding: 5%;
@@ -58,5 +62,42 @@
   text-align: center;
   padding: 5px 0 5px 0;
   font-family: OpenSans;
-  font-size: 1vw;
+  font-size: 10px;
+  /* font-size: 1vw; */
+}
+
+#fixed1{
+  width: 820px !important;
+  height: 450px !important;
+}
+
+#fixed2{
+  width: 835px !important;
+  height: 194px !important;
+}
+
+.ui.eight.column.grid{justify-content: center;}
+
+.ui.four.column.grid{justify-content: center;}
+
+@media screen and (min-width: 1000px) {
+  .info{
+    width: 900px !important;
+  }
+
+  #header{
+    width: 1000px !important;
+  }
+}
+
+@media screen and (max-width: 965px) {
+  #fixed1{
+    width: 700px !important;
+    height: 400px !important;
+  }
+  
+  #fixed2{
+    width: 750px !important;
+    height: 150px !important;
+  }
 }

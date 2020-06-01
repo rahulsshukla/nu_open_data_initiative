@@ -14,7 +14,6 @@
 .banner {
   display: flex;
   justify-content: space-between;
-  /* padding-right: 15px; */
   border-bottom: 3px solid #4e2a84;
 }
 
