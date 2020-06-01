@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "semantic-ui-css/semantic.min.css";
 import {
   Container,
@@ -16,12 +16,18 @@ import {
   Button,
 } from "semantic-ui-react";
 import "../styles/MainPage.css";
+import { AppState } from "../data/context";
 import nu from "../nu.jpg";
 import db from "../database.png";
+import { Link } from "react-router-dom";
 
 import Featured from "./Featured";
 
 const MainPage = () => {
+  const state = useContext(AppState);
+  const { query, setQuery, setSearch } = state;
+  console.log(query);
+
   const categories = [
     { name: "Safety", icon: "heartbeat icon" },
     { name: "Campus", icon: "sun" },
@@ -30,6 +36,11 @@ const MainPage = () => {
     { name: "Academic", icon: "dna" },
     { name: "Student Life", icon: "futbol" },
   ];
+
+  const Search = (input) => {
+    var h = query;
+    window.location.href = "/datasets?search=" + h;
+  };
 
   return (
     <div>
@@ -51,7 +62,13 @@ const MainPage = () => {
         </h1>
         <div id="search-bar1" class="ui icon input">
           <Form onSubmit={Search}>
-            <Input fluid icon="search" />
+            <Input
+              fluid
+              icon="search"
+              onChange={(e) => {
+                setSearch(e.target.value);
+              }}
+            />
           </Form>
         </div>
       </div>
