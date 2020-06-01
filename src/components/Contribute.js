@@ -23,7 +23,7 @@ const Contribute = () => {
           <h5>
             Feel free to upload or request any Northwestern-related datasets.
             We will reach out to the relevant members in the Administration if the request is feasible.
-            If you have any question, email nuopendata@gmail.com
+            If you have any questions, email nuopendata@gmail.com
           </h5>
         </h2>
       </div>
