@@ -1,4 +1,4 @@
-.fd {
+/* .fd {
   height: 200px !important;
   width: 300px;
 }
@@ -17,4 +17,13 @@
   justify-content: center;
   width: 100%;
   grid-template-columns: 1fr;
+} */
+
+#carousel{
+  /* width: 5px !important; */
+  height: 100px !important;
 }
+
+/* .card{
+  height: 500px !important; 
+} */

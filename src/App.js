@@ -6,6 +6,7 @@ import Banner from "../src/components/Banner";
 import AboutUs from "../src/components/AboutUs";
 import Contribute from "../src/components/Contribute";
 import Datasets from "../src/components/Datasets";
+import Footer from "../src/components/Footer";
 
 //firebase imports
 
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/contribute" exact component={Contribute} />
         <Route path="/datasets" exact component={Datasets} />
       </Switch>
+      <Footer></Footer>
     </Router>
   );
 };

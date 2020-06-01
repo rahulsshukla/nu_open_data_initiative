@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import {
   Grid,
   Header,
@@ -17,6 +17,11 @@ import nu from "../nu.jpg";
 import "../styles/MainPage.css";
 import Dataset from "./Dataset";
 
+import { AppState } from "../data/context"
+
+
+
+/*
 const categories = [
   { name: "Safety", icon: "heartbeat" },
   { name: "Campus", icon: "sun" },
@@ -26,7 +31,7 @@ const categories = [
   { name: "Student Life", icon: "futbol" },
 ];
 
-const fileTypes = [
+const dataTypes = [
   { name: "CSV", icon: "file outline" },
   { name: "Excel", icon: "file excel outline" },
   { name: "Graph", icon: "line graph" },
@@ -34,6 +39,9 @@ const fileTypes = [
   { name: "API", icon: "aws" },
   { name: "Database", icon: "database" },
 ];
+*/
+
+
 
 const filterPanel = (filter) => (
   <Form>
@@ -45,16 +53,21 @@ const filterPanel = (filter) => (
   </Form>
 );
 
-const filters = [
-  { title: "File Types", content: { content: filterPanel(fileTypes) }, key: 0 },
-  {
-    title: "Categories",
-    content: { content: filterPanel(categories) },
-    key: 1,
-  },
-];
 
 const Datasets = () => {
+  const state = useContext(AppState);
+  const { categories, dataTypes } = state;
+  
+
+  const filters = [
+    { title: "File Types", content: { content: filterPanel(dataTypes) }, key: 0 },
+    {
+      title: "Categories",
+      content: { content: filterPanel(categories) },
+      key: 1,
+    },
+  ];
+
   return (
     <Grid stackable divided>
       <Grid.Row>

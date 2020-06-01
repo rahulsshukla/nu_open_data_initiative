@@ -10,7 +10,6 @@ import {
   Button
 } from "semantic-ui-react";
 import "../styles/AboutUs.css";
-import nu from "../nu.jpg";
 import bradley from "../bradley.png";
 import rahul from "../rahul.png";
 import emily from "../Emily.jpg";
@@ -30,22 +29,23 @@ const AboutUs = () => {
             Our Story
           </div>
           <div class="middle aligned row first">
-            <div class="six wide column">
+            {/* <div class="six wide column">
               <img src={nu} class="ui image" />
-            </div>
-            <div class="eight wide column">
-              The Northwestern Open Data Initiative (NODI) is making data about Northwestern University more accessible and transparent. Our Open Data Portal allows anyone to find and analyze Northwestern-related data, such as university finances, student life, and academics.
+            </div> */}
+            {/* <div class="fourteen wide column"> */}
+            <div class="info">
+            The Northwestern Open Data Initiative (NODI) is a team of committed, mission-driven students passionate about the idea of open data. Our mission is to give our community access to the data that serves them. We are working in collaboration with the Institutional Research Office at Northerstern to responsibly create an open data portal for the university's public data resources.            
             </div>
           </div>
       </div>
       <div class="ui eight column grid">
-        <div class="row next" id="header">
+        <div class="row next info" id="header">
           Who We Are
         </div>
         <div class="row" id="header">
           The Team
         </div>
-        <div class="row" id="two">
+        <div class="centered row" id="fixed1">
           <div class="four wide column side">
             <img src={bradley} id="person"/>
             <p class="name">Bradley Ramos</p>
@@ -76,7 +76,7 @@ const AboutUs = () => {
         <div class="row" id="header">
           Faculty and Advisors
         </div>
-        <div class="row" id="two">
+        <div class="row" id="fixed2">
           <div class="three wide column side">
             <img src={hammond} id="faculty"/>
             <p class="name">Kristian Hammond</p>
@@ -84,6 +84,8 @@ const AboutUs = () => {
           <div class="three wide column">
             <img src={amit} id="faculty"/> 
             <p class="name">Amit Prachand</p>           
+          </div>
+          <div class="ten wide column">
           </div>
         </div>
       </div>

@@ -3,9 +3,10 @@ from django.shortcuts import render, get_object_or_404
 from rest_framework import generics, viewsets
 from rest_framework.decorators import action
 from django.http import JsonResponse, HttpResponseNotFound, HttpResponseBadRequest
+from django.views.decorators.csrf import csrf_exempt
 
-from .models import DataSet
-from .serializers import DataSetSerializer
+from .models import DataSet, Category, DataType
+from .serializers import DataSetSerializer, CategorySerializer, DataTypeSerializer
 from .utils.s3 import generate_presigned_post
 
 class DataSetViewSet(viewsets.ModelViewSet):
@@ -15,6 +16,7 @@ class DataSetViewSet(viewsets.ModelViewSet):
     serializer_class = DataSetSerializer
     queryset = DataSet.objects.all()
 
+    @csrf_exempt
     def list(self, request):
         """
         +GET+
@@ -25,6 +27,7 @@ class DataSetViewSet(viewsets.ModelViewSet):
         serializer = DataSetSerializer(queryset, many=True)
         return JsonResponse(serializer.data, safe=False)
 
+    @csrf_exempt
     def retrieve(self, request, pk=None):
         """
         +GET+
@@ -62,7 +65,8 @@ class DataSetViewSet(viewsets.ModelViewSet):
         Updates a dataset
         """
         return HttpResponseNotFound("Not Implemented Yet")
-    
+
+    @csrf_exempt
     @action(detail=False, methods=['post'])
     def s3_upload_url(self, request):
         """
@@ -74,7 +78,8 @@ class DataSetViewSet(viewsets.ModelViewSet):
         if invalid:
             return invalid
         return JsonResponse(generate_presigned_post(body['fileType'], body['fileName']))
-    
+
+    @csrf_exempt
     @action(detail=False, methods=['get'])
     def search(self, request):
         """
@@ -95,3 +100,37 @@ class DataSetViewSet(viewsets.ModelViewSet):
         if len(missing_params) != 0:
             return HttpResponseBadRequest("Missing params in body: " + ", ".join(missing_params))
         return False
+    
+class CategoryViewSet(viewsets.ModelViewSet):
+    """
+    A viewset for viewing and editing DataSet instances.
+    """
+    serializer_class = CategorySerializer
+    queryset = Category.objects.all()
+
+    @csrf_exempt
+    def list(self, request):
+        """
+        +GET+
+        Gets all datasets
+        """
+        queryset = Category.objects.all()
+        serializer = CategorySerializer(queryset, many=True)
+        return JsonResponse(serializer.data, safe=False)
+    
+class DataTypeViewSet(viewsets.ModelViewSet):
+    """
+    A viewset for viewing and editing DataSet instances.
+    """
+    serializer_class = DataTypeSerializer
+    queryset = DataType.objects.all()
+
+    @csrf_exempt
+    def list(self, request):
+        """
+        +GET+
+        Gets all datasets
+        """
+        queryset = DataType.objects.all()
+        serializer = DataTypeSerializer(queryset, many=True)
+        return JsonResponse(serializer.data, safe=False)
