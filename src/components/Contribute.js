@@ -22,7 +22,7 @@ const Contribute = () => {
           Contribute a dataset!
           <h5>
             The Northwestern Open Data Portal filters through all Datasets added
-            through the NODI webpage.If any questions or concerns arise, please
+            through the NODI webpage. If any questions or concerns arise, please
             contact nodi@u.northwestern.edu
           </h5>
         </h2>

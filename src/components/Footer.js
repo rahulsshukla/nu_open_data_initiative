@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div class="footer">
-      Northwestern Open Data Initiative Copyright 2020
+      Northwestern Open Data Initiative &#169; 2020
     </div>
   );
 };
