@@ -58,8 +58,10 @@ const MainPage = () => {
         <div class="ui four column grid">
           <div class="row next" id="header">
             Featured Datasets
-          </div>{" "}
-          <Featured></Featured>
+          </div>
+          <div class="featured">
+            <Featured></Featured>
+          </div>
         </div>
         <div class="ui four column grid" id="one">
           <div class="row next" id="header">

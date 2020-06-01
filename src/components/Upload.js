@@ -72,13 +72,13 @@ const Upload = () => {
         <Form className="hi" success>
           <Grid>
             <Grid.Row>
-              <label for="dname"> DataSet Title</label>
+              <label for="dname"> DataSet Name</label>
               <input
                 id="dname"
                 control={Input}
                 required
-                label="Dataset Title"
-                placeholder="Dataset Title"
+                label="Dataset Name"
+                placeholder="Dataset Name"
               />
             </Grid.Row>
             <Grid.Row>
@@ -98,6 +98,17 @@ const Upload = () => {
                 label="Email"
                 required
                 placeholder="email@email.com"
+              ></input>
+            </Grid.Row>
+            <Grid.Row>
+              <label for="pd">Publish Date</label>
+              <input
+                control={Input}
+                type="date"
+                id="pd"
+                label="Dataset Publish Date"
+                required
+                placeholder="XX/XX/XXXX"
               ></input>
             </Grid.Row>
             <Grid.Row>
@@ -143,29 +154,93 @@ const Upload = () => {
               />
             </Grid.Row>
             <Grid.Row>
-              <label for="cont">Dataset Context</label>
+              <label for="cont">Dataset Description</label>
               <input
                 control={TextArea}
                 type="text"
                 id="cont"
                 className="textarea"
-                placeholder="Please give this dataset context here"
+                placeholder="Provide a 1-2 sentence high-level description of the dataset"
                 required
               ></input>
             </Grid.Row>
             <Grid.Row>
               {" "}
-              <label for="keyt">Defining Key Terms</label>
+              <label for="keyt">Define any key terms in this dataset:</label>
               <input
                 control={TextArea}
                 type="text"
                 id="keyt"
                 className="textarea"
                 rows="2"
-                placeholder="Please list key terms for this dataset. Ex: Library Records, Financial Aid"
                 required
               ></input>
             </Grid.Row>
+            <Grid.Row>
+              {" "}
+              <label for="a">Who is the primary audience?</label>
+              <input
+                control={TextArea}
+                type="text"
+                id="a"
+                className="textarea"
+                rows="2"
+                required
+              ></input>
+            </Grid.Row>
+            <Grid.Row>
+              {" "}
+              <label for="p">
+                What is the purpose of this dataset and why does it exist?{" "}
+              </label>
+              <input
+                control={TextArea}
+                type="text"
+                id="p"
+                className="textarea"
+                rows="2"
+                required
+              ></input>
+            </Grid.Row>
+            <Grid.Row>
+              {" "}
+              <label for="d">
+                What kind of decisions are being made with the dataset
+                (currently and in the future)?
+              </label>
+              <input
+                control={TextArea}
+                type="text"
+                id="d"
+                className="textarea"
+                rows="2"
+              ></input>
+            </Grid.Row>
+            <Grid.Row>
+              {" "}
+              <label for="e">Who is the resident expert?</label>
+              <input
+                control={TextArea}
+                type="text"
+                id="e"
+                className="textarea"
+                rows="2"
+              ></input>
+            </Grid.Row>
+            <Grid.Row>
+              {" "}
+              <label for="m">
+                Where does this dataset show up (i.e. in major reports)?
+              </label>
+              <input
+                control={TextArea}
+                type="text"
+                id="m"
+                className="textarea"
+                rows="2"
+              ></input>
+            </Grid.Row>
+
             <Grid.Row>
               <Form.Field
                 id="form-button-control-public"
