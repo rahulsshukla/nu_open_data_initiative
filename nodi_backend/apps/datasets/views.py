@@ -82,7 +82,21 @@ class DataSetViewSet(viewsets.ModelViewSet):
         Searches for a list of datasets
         @AlexLee Here you go
         """
-        return HttpResponseNotFound("Not Implemented Yet")
+        fSet = DataSet.objects.all()
+        name = request.query_params.get('name',None)
+        categories = request.query_params.get('categories', [])
+        datatype = request.query_params.get('datatype', None)
+        if categories is not None:
+            categories = eval(categories)
+            for cat in categories:
+                fSet = fSet.filter(categories__name__in=[cat])
+        if datatype:
+            fSet = fSet.filter(datatype = datatype)
+        if name:
+            fSet = fSet.filter(name__unaccent_icontains = name)
+        
+        serializer = DataSetSerializer(fSet, many=True)
+        return JsonResponse(serializer.data, safe=False)
     
     def validate_params(self, body, params):
         """
