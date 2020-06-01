@@ -62,15 +62,20 @@ const MainPage = () => {
           <Featured></Featured>
         </div>
         <div class="ui four column grid" id="one">
-          <div class="row start" id="header">
-            Explore one of our popular categories:
+          <div class="row next" id="header">
+            Popular Categories
           </div>
-          <div id="grid-container">
-            {categories.slice(0, 7).map((c) => (
-              <div className="small-grid">
-                <button className="cat-but">{c.name} </button>
-              </div>
-            ))}
+          <div className="small-grid">
+              {categories.slice(0,6).map(c => 
+                <Grid.Column width={3} textAlign="center">
+                   <div className="pop-cat">
+                    <button className="cat-but">
+                      <Icon name={c.icon} size="huge" style={{ color: "#4e2a8f"}}/>
+                      <div className="pop-title">{c.name}</div>
+                    </button>
+                  </div>
+                </Grid.Column>
+              )}
           </div>
           {/* <div class="ui divider"></div> */}
         </div>
