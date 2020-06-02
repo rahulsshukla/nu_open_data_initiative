@@ -1,5 +1,5 @@
 
-#one {
+#won {
   background-color: #f2f2f2;
   padding: 60px 10% 0;
   font-family: OpenSans;
@@ -11,6 +11,7 @@
   font-family: OpenSans;
   font-size: 25px;
   color: #4e2a84;
+  padding-top: 40px;
 } 
 
 /* formatting for upload  */

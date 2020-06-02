@@ -16,7 +16,7 @@ import Upload from "./Upload";
 const Contribute = () => {
   return (
     <div>
-      <div id="one">
+      <div id="won">
         <div class="row start" id="head">
           Contribute a dataset!
         </div>
