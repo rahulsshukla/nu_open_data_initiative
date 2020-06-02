@@ -9,11 +9,15 @@ import {
   Input,
   Menu,
   Label,
+  Button,
+  Container,
+  Card,
 } from "semantic-ui-react";
 import nu from "../nu.jpg";
 import "../styles/MainPage.css";
-import { AppState } from "../data/context"
+import Dataset from "./Dataset";
 
+import { AppState } from "../data/context";
 
 /*
 const categories = [
@@ -35,8 +39,6 @@ const dataTypes = [
 ];
 */
 
-
-
 const filterPanel = (filter) => (
   <Form>
     <Form.Group grouped>
@@ -47,26 +49,33 @@ const filterPanel = (filter) => (
   </Form>
 );
 
-
 const Datasets = () => {
   const state = useContext(AppState);
-  const { categories, dataTypes } = state;
-  
+  const { categories, dataTypes, query, setQuery, setSearch } = state;
 
   const filters = [
-    { title: "File Types", content: { content: filterPanel(dataTypes) }, key: 0 },
+    {
+      title: "File Types",
+      content: { content: filterPanel(dataTypes) },
+      key: 0,
+    },
     {
       title: "Categories",
       content: { content: filterPanel(categories) },
       key: 1,
     },
   ];
+  /* finding search from prev page*/
+
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  setSearch(urlParams.get("search"));
 
   return (
     <Grid stackable divided>
       <Grid.Row>
         <Grid.Column>
-          <Input fluid icon="search" />
+          <Input value={query} fluid icon="search" />
         </Grid.Column>
       </Grid.Row>
       <Grid.Row>
@@ -85,18 +94,23 @@ const Datasets = () => {
                 <Grid>
                   <Grid.Column width={13}>
                     <Grid.Row>
-                    <Header size="small">
-                      This is is a Dataset
-                      <Header.Subheader>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Morbi semper sagittis sapien at posuere. Cras at nisi.
-                      </Header.Subheader>
-                    </Header>
+                      <Header size="small">
+                        This is is a Dataset
+                        <Dataset></Dataset>
+                        <Header.Subheader>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. Morbi semper sagittis sapien at posuere. Cras at
+                          nisi.
+                        </Header.Subheader>
+                      </Header>
                     </Grid.Row>
-                    <Grid.Row> 
-                      <Label.Group style={{ marginTop: "10px"}}>
-                        <Label content="Safety" style={{ backgroundColor: "#4e2a84", color: "white"}} />
-                        <Label content="CSV" />                       
+                    <Grid.Row>
+                      <Label.Group style={{ marginTop: "10px" }}>
+                        <Label
+                          content="Safety"
+                          style={{ backgroundColor: "#4e2a84", color: "white" }}
+                        />
+                        <Label content="CSV" />
                       </Label.Group>
                     </Grid.Row>
                   </Grid.Column>
@@ -112,7 +126,7 @@ const Datasets = () => {
             ))}
           </Menu>
         </Grid.Column>
-        </Grid.Row>
+      </Grid.Row>
     </Grid>
   );
 };
@@ -135,7 +149,7 @@ const DatasetsPage = () => {
       </div>
       <Datasets />
     </React.Fragment>
-  )
+  );
 };
 
 export default DatasetsPage;
