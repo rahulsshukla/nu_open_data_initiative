@@ -17,7 +17,7 @@ const StateProvider = ({ children }) => {
 
     // once a GET for datasets exists:
     //getDatasets(query);
-  });
+  }, []);
 
   const api = { categories, dataTypes, setSearch, query };
   return <Provider value={api}>{children}</Provider>;
