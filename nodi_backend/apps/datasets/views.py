@@ -5,9 +5,10 @@ from rest_framework.decorators import action
 from django.http import JsonResponse, HttpResponseNotFound, HttpResponseBadRequest
 from django.views.decorators.csrf import csrf_exempt
 
-from .models import DataSet, Category, DataType
+from .models import DataSet, Category, DataType, MetaData
 from .serializers import DataSetSerializer, CategorySerializer, DataTypeSerializer
 from .utils.s3 import generate_presigned_post
+
 
 class DataSetViewSet(viewsets.ModelViewSet):
     """
@@ -22,7 +23,9 @@ class DataSetViewSet(viewsets.ModelViewSet):
         +GET+
         Gets all datasets
         """
+        """
         #TODO: add pagination
+        """
         queryset = DataSet.objects.all()
         serializer = DataSetSerializer(queryset, many=True)
         return JsonResponse(serializer.data, safe=False)
@@ -37,13 +40,21 @@ class DataSetViewSet(viewsets.ModelViewSet):
         dataset = get_object_or_404(queryset, pk=pk)
         serializer = DataSetSerializer(dataset)
         return JsonResponse(serializer.data)
-    
+
+    @action(detail=False, methods=['post'])
     def create(self, request):
         """
         +POST+
         Creates a dataset
         """
-        return HttpResponseNotFound("Not Implemented Yet")
+        body = json.loads(request.body)
+        d = DataSet(name=body.name, email=body.email,
+                    submitted_at=body.submitted_at, approved=False, bucket='nodi-unapproved-datasets', key=body.key, approved_at=None)
+        d.save()
+        m = MetaData(publish_date=body.metadata.publish_date, department_ownership=body.metadata.department_ownership,
+                     raw_source_link=body.metadata.raw_source_link, description=body.metadata.description)
+        m.save()
+        return self.s3_upload_url(request)
 
     def update(self, request, pk=None):
         """
@@ -88,7 +99,7 @@ class DataSetViewSet(viewsets.ModelViewSet):
         @AlexLee Here you go
         """
         return HttpResponseNotFound("Not Implemented Yet")
-    
+
     def validate_params(self, body, params):
         """
         Validates params in the body
@@ -100,7 +111,8 @@ class DataSetViewSet(viewsets.ModelViewSet):
         if len(missing_params) != 0:
             return HttpResponseBadRequest("Missing params in body: " + ", ".join(missing_params))
         return False
-    
+
+
 class CategoryViewSet(viewsets.ModelViewSet):
     """
     A viewset for viewing and editing DataSet instances.
@@ -117,7 +129,8 @@ class CategoryViewSet(viewsets.ModelViewSet):
         queryset = Category.objects.all()
         serializer = CategorySerializer(queryset, many=True)
         return JsonResponse(serializer.data, safe=False)
-    
+
+
 class DataTypeViewSet(viewsets.ModelViewSet):
     """
     A viewset for viewing and editing DataSet instances.
