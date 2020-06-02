@@ -80,7 +80,10 @@ class DataSetViewSet(viewsets.ModelViewSet):
         """
         +GET+
         Searches for a list of datasets
-        @AlexLee Here you go
+        - titles must have query as a substring
+        - datatypes must be exact match
+        - categories must include at least one from request
+        request example: GET https://nodi-backend.herokuapp.com/api/datasets/search?query=blahblahblah&categories=[blah1,blah2]&datatypes=blah3
         """
         fSet = DataSet.objects.all()
         sSet = DataSet.objects.none()
