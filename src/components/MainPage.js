@@ -25,15 +25,15 @@ const MainPage = () => {
   const categories = [
     { name: "Safety", icon: "heartbeat icon" },
     { name: "Campus", icon: "sun" },
-    { name: "Admission", icon: "graduation cap icon" },
+    { name: "Admissions", icon: "graduation cap icon" },
     { name: "Finances", icon: "dollar sign icon" },
-    { name: "Academic", icon: "dna" },
+    { name: "Academics", icon: "dna" },
     { name: "Student Life", icon: "futbol" },
   ];
 
   return (
     <div>
-      <div className="Fullsearch">
+      <div className="FullsearchMain">
         <img
           id="image"
           height="350px"
@@ -59,7 +59,7 @@ const MainPage = () => {
           <div class="row next" id="header">
             Featured Datasets
           </div>
-          <div class="featured">
+          <div class="featured-datasets">
             <Featured></Featured>
           </div>
         </div>

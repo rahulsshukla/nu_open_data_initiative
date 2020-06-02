@@ -1,29 +1,20 @@
-/* .fd {
-  height: 200px !important;
-  width: 300px;
-}
-.cs {
-  display: flex;
-  align-items: center !important;
-  justify-content: center;
-  background-color: yellow !important;
-  width: 330px;
-}
-.c {
-  padding: 30px;
-  display: grid;
-  display: flex;
-  align-items: center !important;
-  justify-content: center;
-  width: 100%;
-  grid-template-columns: 1fr;
-} */
-
-#carousel{
-  /* width: 5px !important; */
+/* #carousel{
+  /* width: 5px !important;
   height: 100px !important;
-}
-
-/* .card{
-  height: 500px !important; 
 } */
+
+.card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: space-around;
+  height: 150px; 
+  width: 150px;
+} 
+
+.feat-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+}
