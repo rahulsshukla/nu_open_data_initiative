@@ -80,8 +80,8 @@ class DataSetViewSet(viewsets.ModelViewSet):
         """
         +GET+
         Searches for a list of datasets
-        - titles must have query as a substring
-        - datatypes must be exact match
+        - titles must have query (in request) as a substring
+        - datatypes must be exact match with request
         - categories must include at least one from request
         request example: GET https://nodi-backend.herokuapp.com/api/datasets/search?query=blahblahblah&categories=[blah1,blah2]&datatypes=blah3
         """
@@ -103,6 +103,7 @@ class DataSetViewSet(viewsets.ModelViewSet):
         
         serializer = DataSetSerializer(fSet, many=True)
         return JsonResponse(serializer.data, safe=False)
+        
     
     def validate_params(self, body, params):
         """
