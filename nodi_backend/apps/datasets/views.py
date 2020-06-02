@@ -91,14 +91,14 @@ class DataSetViewSet(viewsets.ModelViewSet):
         datatypes = request.query_params.get('datatypes', None)
         categories = request.query_params.get('categories', [])
         if name:
-            fSet = fSet.objects.filter(name__unaccent__icontains = name)
+            fSet = fSet.filter(name__unaccent__icontains = name)
         if datatypes is not None:
-            fSet = fSet.objects.filter(datatypes = datatypes)
+            fSet = fSet.filter(datatypes = datatypes)
 
         if categories is not None:
             categories = eval(categories)
             for cat in categories:
-                sSet = sSet | fSet.objects.filter(categories__name__in=[cat])
+                sSet = sSet | fSet.filter(categories__name__in=[cat])
             fSet = sSet.distinct()
         
         serializer = DataSetSerializer(fSet, many=True)
