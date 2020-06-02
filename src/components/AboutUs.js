@@ -25,7 +25,7 @@ const AboutUs = () => {
   return (
     <div>
       <div class="ui four column grid" id="one">
-          <div class="row start" id="header">
+          <div class="row start" id="hdr">
             Our Story
           </div>
           <div class="middle aligned row first">
@@ -35,10 +35,10 @@ const AboutUs = () => {
           </div>
       </div>
       <div class="ui eight column grid">
-        <div class="row next info" id="header">
+        <div class="row next info" id="hdr">
           Who We Are
         </div>
-        <div class="row" id="header">
+        <div class="row" id="hdr">
           The Team
         </div>
         <div class="centered row" id="fixed1">
@@ -69,7 +69,7 @@ const AboutUs = () => {
         </div>
       </div>
       <div class="ui four column grid">
-        <div class="row" id="header">
+        <div class="row" id="hdr">
           Faculty and Advisors
         </div>
         <div class="row" id="fixed2">
@@ -86,7 +86,7 @@ const AboutUs = () => {
         </div>
       </div>
       <div class="ui four column grid">
-        <div class="row" id="header">
+        <div class="row" id="hdr">
           Partnerships
         </div>
         <div class="row" id="two">
