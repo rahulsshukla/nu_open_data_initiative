@@ -83,19 +83,20 @@ class DataSetViewSet(viewsets.ModelViewSet):
         @AlexLee Here you go
         """
         fSet = DataSet.objects.all()
+        sSet = DataSet.objects.none()
         name = request.query_params.get('name',None)
+        datatypes = request.query_params.get('datatypes', None)
         categories = request.query_params.get('categories', [])
-        datatypes = request.query_params.get('datatypes', [])
+        if name:
+            fSet = fSet.objects.filter(name__unaccent__icontains = name)
+        if datatypes is not None:
+            fSet = fSet.objects.filter(datatypes = datatypes)
+
         if categories is not None:
             categories = eval(categories)
             for cat in categories:
-                fSet = fSet.filter(categories__name__in=[cat])
-        if datatypes is not None:
-            datatypes = eval(datatypes)
-            for dat in datatypes:
-                fSet = fSet.filter(datatypes__name__in=[dat])
-        if name:
-            fSet = fSet.filter(name__unaccent_icontains = name)
+                sSet = sSet | fSet.objects.filter(categories__name__in=[cat])
+            fSet = sSet.distinct()
         
         serializer = DataSetSerializer(fSet, many=True)
         return JsonResponse(serializer.data, safe=False)
