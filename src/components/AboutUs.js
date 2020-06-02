@@ -29,10 +29,6 @@ const AboutUs = () => {
             Our Story
           </div>
           <div class="middle aligned row first">
-            {/* <div class="six wide column">
-              <img src={nu} class="ui image" />
-            </div> */}
-            {/* <div class="fourteen wide column"> */}
             <div class="info">
             The Northwestern Open Data Initiative (NODI) is a team of committed, mission-driven students passionate about the idea of open data. Our mission is to give our community access to the data that serves them. We are working in collaboration with the Institutional Research Office at Northerstern to responsibly create an open data portal for the university's public data resources.            
             </div>
