@@ -98,12 +98,11 @@ class DataSetViewSet(viewsets.ModelViewSet):
         if categories is not None:
             categories = eval(categories)
             for cat in categories:
-                sSet = sSet | fSet.filter(categories__name__in=[cat])
-            fSet = sSet.distinct()
+                sSet = sSet.union(fSet.filter(categories__name__in=[cat]))
         
         serializer = DataSetSerializer(fSet, many=True)
         return JsonResponse(serializer.data, safe=False)
-        
+
     
     def validate_params(self, body, params):
         """
