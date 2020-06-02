@@ -1,5 +1,5 @@
 
-#hdr{
+#header{
   font-family: OpenSans;
   font-size: 25px;
   color: #4e2a84;
@@ -87,7 +87,7 @@
     width: 900px !important;
   }
 
-  #hdr{
+  #header{
     width: 1000px !important;
   }
 }
