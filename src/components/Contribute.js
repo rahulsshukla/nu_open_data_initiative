@@ -31,7 +31,7 @@ const Contribute = () => {
       <Container id="purple">
         <h3 id="start">Upload or Request a Northwestern Dataset</h3>
         <ButtonGroup id="button-group">
-          <Button id="request" className="formbut">
+          <Button id="request" className="formbut" href = "https://forms.gle/XCFkSw6KMTxfzeZRA">
             {" "}
             Request
           </Button>

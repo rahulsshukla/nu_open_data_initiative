@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import {
   Grid,
   Header,
@@ -11,11 +11,15 @@ import {
   Label,
   Button,
   Container,
-  Card
+  Card,
 } from "semantic-ui-react";
 import nu from "../nu.jpg";
 import "../styles/MainPage.css";
+import Dataset from "./Dataset";
 
+import { AppState } from "../data/context";
+
+/*
 const categories = [
   { name: "Safety", icon: "heartbeat" },
   { name: "Campus", icon: "sun" },
@@ -25,7 +29,7 @@ const categories = [
   { name: "Student Life", icon: "futbol" },
 ];
 
-const fileTypes = [
+const dataTypes = [
   { name: "CSV", icon: "file outline" },
   { name: "Excel", icon: "file excel outline" },
   { name: "Graph", icon: "line graph" },
@@ -33,6 +37,7 @@ const fileTypes = [
   { name: "API", icon: "aws" },
   { name: "Database", icon: "database" },
 ];
+*/
 
 const filterPanel = (filter) => (
   <Form>
@@ -44,21 +49,33 @@ const filterPanel = (filter) => (
   </Form>
 );
 
-const filters = [
-  { title: "File Types", content: { content: filterPanel(fileTypes) }, key: 0 },
-  {
-    title: "Categories",
-    content: { content: filterPanel(categories) },
-    key: 1,
-  },
-];
-
 const Datasets = () => {
+  const state = useContext(AppState);
+  const { categories, dataTypes, query, setQuery, setSearch } = state;
+
+  const filters = [
+    {
+      title: "File Types",
+      content: { content: filterPanel(dataTypes) },
+      key: 0,
+    },
+    {
+      title: "Categories",
+      content: { content: filterPanel(categories) },
+      key: 1,
+    },
+  ];
+  /* finding search from prev page*/
+
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  setSearch(urlParams.get("search"));
+
   return (
     <Grid stackable divided>
       <Grid.Row>
         <Grid.Column>
-          <Input fluid icon="search" />
+          <Input value={query} fluid icon="search" />
         </Grid.Column>
       </Grid.Row>
       <Grid.Row>
@@ -77,18 +94,23 @@ const Datasets = () => {
                 <Grid>
                   <Grid.Column width={13}>
                     <Grid.Row>
-                    <Header size="small">
-                      This is is a Dataset
-                      <Header.Subheader>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Morbi semper sagittis sapien at posuere. Cras at nisi.
-                      </Header.Subheader>
-                    </Header>
+                      <Header size="small">
+                        This is is a Dataset
+                        <Dataset></Dataset>
+                        <Header.Subheader>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. Morbi semper sagittis sapien at posuere. Cras at
+                          nisi.
+                        </Header.Subheader>
+                      </Header>
                     </Grid.Row>
-                    <Grid.Row> 
-                      <Label.Group style={{ marginTop: "10px"}}>
-                        <Label content="Safety" style={{ backgroundColor: "#4e2a84", color: "white"}} />
-                        <Label content="CSV" />                       
+                    <Grid.Row>
+                      <Label.Group style={{ marginTop: "10px" }}>
+                        <Label
+                          content="Safety"
+                          style={{ backgroundColor: "#4e2a84", color: "white" }}
+                        />
+                        <Label content="CSV" />
                       </Label.Group>
                     </Grid.Row>
                   </Grid.Column>
@@ -104,7 +126,7 @@ const Datasets = () => {
             ))}
           </Menu>
         </Grid.Column>
-        </Grid.Row>
+      </Grid.Row>
     </Grid>
   );
 };
@@ -127,7 +149,7 @@ const DatasetsPage = () => {
       </div>
       <Datasets />
     </React.Fragment>
-  )
+  );
 };
 
 export default DatasetsPage;
