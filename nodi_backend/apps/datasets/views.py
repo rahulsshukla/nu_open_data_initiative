@@ -85,9 +85,29 @@ class DataSetViewSet(viewsets.ModelViewSet):
         """
         +GET+
         Searches for a list of datasets
-        @AlexLee Here you go
+        - titles must have query as a substring
+        - datatypes must be exact match
+        - categories must include at least one from request
+        request example: GET https://nodi-backend.herokuapp.com/api/datasets/search?query=blahblahblah&categories=[blah1,blah2]&datatypes=blah3
         """
-        return HttpResponseNotFound("Not Implemented Yet")
+        fSet = DataSet.objects.all()
+        sSet = DataSet.objects.none()
+        name = request.query_params.get('name',None)
+        datatypes = request.query_params.get('datatypes', None)
+        categories = request.query_params.get('categories', [])
+        if name:
+            fSet = fSet.objects.filter(name__unaccent__icontains = name)
+        if datatypes is not None:
+            fSet = fSet.objects.filter(datatypes = datatypes)
+
+        if categories is not None:
+            categories = eval(categories)
+            for cat in categories:
+                sSet = sSet | fSet.objects.filter(categories__name__in=[cat])
+            fSet = sSet.distinct()
+        
+        serializer = DataSetSerializer(fSet, many=True)
+        return JsonResponse(serializer.data, safe=False)
     
     def validate_params(self, body, params):
         """
