@@ -23,8 +23,7 @@ h3 {
 }
 #image {
   width: 100% !important;
-  object-fit: fill !important;
-  min-width: 100vh;
+  background-size: cover !important;
 }
 
 h2 {
