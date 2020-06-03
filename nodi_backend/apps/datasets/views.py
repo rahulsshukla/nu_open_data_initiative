@@ -102,7 +102,8 @@ class DataSetViewSet(viewsets.ModelViewSet):
         if invalid:
             return invalid
         return JsonResponse(generate_presigned_post(body['fileType'], body['fileName']))
-  @csrf_exempt
+
+    @csrf_exempt
     @action(detail=False, methods=['get'])
     def search(self, request):
         """
@@ -115,24 +116,23 @@ class DataSetViewSet(viewsets.ModelViewSet):
         """
         fSet = DataSet.objects.all()
         sSet = DataSet.objects.none()
-        name = request.query_params.get('query',None)
+        name = request.query_params.get('query', None)
         datatypes = request.query_params.get('datatypes', None)
         categories = request.query_params.get('categories', [])
         if name:
-            fSet = fSet.filter(name__icontains = name)
+            fSet = fSet.filter(name__icontains=name)
         if datatypes:
-            fSet = fSet.filter(datatypes__name__exact = datatypes)
+            fSet = fSet.filter(datatypes__name__exact=datatypes)
 
         if categories:
             categories = eval(categories)
             for cat in categories:
                 sSet = sSet.union(fSet.filter(categories__name__in=[cat]))
             fSet = sSet
-        
+
         serializer = DataSetSerializer(fSet, many=True)
         return JsonResponse(serializer.data, safe=False)
 
-    
     def validate_params(self, body, params):
         """
         Validates params in the body
@@ -144,7 +144,8 @@ class DataSetViewSet(viewsets.ModelViewSet):
         if len(missing_params) != 0:
             return HttpResponseBadRequest("Missing params in body: " + ", ".join(missing_params))
         return False
-    
+
+
 class CategoryViewSet(viewsets.ModelViewSet):
     """
     A viewset for viewing and editing DataSet instances.
@@ -161,7 +162,8 @@ class CategoryViewSet(viewsets.ModelViewSet):
         queryset = Category.objects.all()
         serializer = CategorySerializer(queryset, many=True)
         return JsonResponse(serializer.data, safe=False)
-    
+
+
 class DataTypeViewSet(viewsets.ModelViewSet):
     """
     A viewset for viewing and editing DataSet instances.
