@@ -5,28 +5,28 @@ class CategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Category
-        fields = ('name', 'popular', 'icon_name')
+        fields = ('id', 'name', 'popular', 'icon_name')
 
 class DataTypeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = DataType
-        fields = ('name',)
+        fields = ('id', 'name')
 
 class MetaDataSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = MetaData
-        fields = ('department_ownership', 'raw_source_link', 'publish_date', 'description')
+        fields = ('id', 'department_ownership', 'raw_source_link', 'publish_date', 'description')
 
 class DataSetSerializer(serializers.ModelSerializer):
     s3_url = serializers.SerializerMethodField('get_s3_url')
     metadata = MetaDataSerializer()
     datatype = DataTypeSerializer()
-    categories = CategorySerializer()
+    categories = CategorySerializer(many=True)
     class Meta:
         model = DataSet
-        fields = ('name', 'submitted_at', 's3_url', 'metadata', 'datatype', 'categories')
+        fields = ('id', 'name', 'submitted_at', 's3_url', 'metadata', 'datatype', 'categories')
         
     def get_s3_url(self, obj):
         return obj.get_signed_url()

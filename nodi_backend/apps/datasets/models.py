@@ -12,7 +12,7 @@ class DataSet(models.Model):
     approved = models.BooleanField(default=False)
     
     categories = models.ManyToManyField('datasets.Category')
-    datatypes = models.ForeignKey('datasets.DataType', on_delete=models.SET_NULL, null=True)
+    datatype = models.ForeignKey('datasets.DataType', on_delete=models.SET_NULL, null=True)
     
     key = models.CharField(max_length=100, default=None, null=True)
     bucket = models.CharField(max_length=100, default=None, null=True)
