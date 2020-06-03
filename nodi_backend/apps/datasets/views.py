@@ -85,29 +85,30 @@ class DataSetViewSet(viewsets.ModelViewSet):
         """
         +GET+
         Searches for a list of datasets
-        - titles must have query as a substring
-        - datatypes must be exact match
+        - titles must have query (in request) as a substring
+        - datatypes must be exact match with request
         - categories must include at least one from request
-        request example: GET https://nodi-backend.herokuapp.com/api/datasets/search?query=blahblahblah&categories=[blah1,blah2]&datatypes=blah3
+        request example: GET https://nodi-backend.herokuapp.com/api/datasets/search?query=Blahblah&categories=["Finance","Student%20Life"]&datatypes=CSV
         """
         fSet = DataSet.objects.all()
         sSet = DataSet.objects.none()
-        name = request.query_params.get('name',None)
+        name = request.query_params.get('query',None)
         datatypes = request.query_params.get('datatypes', None)
         categories = request.query_params.get('categories', [])
         if name:
-            fSet = fSet.objects.filter(name__unaccent__icontains = name)
-        if datatypes is not None:
-            fSet = fSet.objects.filter(datatypes = datatypes)
+            fSet = fSet.filter(name__icontains = name)
+        if datatypes:
+            fSet = fSet.filter(datatypes__name__exact = datatypes)
 
-        if categories is not None:
+        if categories:
             categories = eval(categories)
             for cat in categories:
-                sSet = sSet | fSet.objects.filter(categories__name__in=[cat])
-            fSet = sSet.distinct()
+                sSet = sSet.union(fSet.filter(categories__name__in=[cat]))
+            fSet = sSet
         
         serializer = DataSetSerializer(fSet, many=True)
         return JsonResponse(serializer.data, safe=False)
+
     
     def validate_params(self, body, params):
         """
