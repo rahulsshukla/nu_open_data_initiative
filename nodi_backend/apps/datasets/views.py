@@ -41,20 +41,19 @@ class DataSetViewSet(viewsets.ModelViewSet):
         serializer = DataSetSerializer(dataset)
         return JsonResponse(serializer.data)
 
-    @action(detail=False, methods=['post'])
     def create(self, request):
         """
         +POST+
         Creates a dataset
         """
         body = json.loads(request.body)
-        d = DataSet(name=body.name, email=body.email,
-                    submitted_at=body.submitted_at, approved=False, bucket='nodi-unapproved-datasets', key=body.key, approved_at=None)
+        d = DataSet(name=body['name'], email=body['email'],
+                    submitted_at=body['submitted_at'], approved=False, bucket='nodi-unapproved-datasets', key=body.key, approved_at=None)
         d.save()
-        m = MetaData(publish_date=body.metadata.publish_date, department_ownership=body.metadata.department_ownership,
-                     raw_source_link=body.metadata.raw_source_link, description=body.metadata.description)
+        m = MetaData(publish_date=body['metadata']['publish_date'], department_ownership=body['metadata']['department_ownership'],
+                     raw_source_link=body['metadata']['raw_source_link'], description=body['metadata']['description'], dataset=d)
         m.save()
-        return self.s3_upload_url(request)
+        return JsonResponse(d)
 
     def update(self, request, pk=None):
         """
