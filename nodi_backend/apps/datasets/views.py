@@ -48,12 +48,14 @@ class DataSetViewSet(viewsets.ModelViewSet):
         """
         body = json.loads(request.body)
         d = DataSet(name=body['name'], email=body['email'],
-                    submitted_at=body['submitted_at'], approved=False, datatype=body['datatype_id'], categories=body['category_ids'], bucket='nodi-unapproved-datasets', key=body['key'], approved_at=None)
+                    submitted_at=body['submitted_at'], approved=False, bucket='nodi-unapproved-datasets', key=body['key'], approved_at=None)
         d.save()
-        m = MetaData(publish_date=body['metadata']['publish_date'], department_ownership=body['metadata']['department_ownership'],
+        d.add(Category.objects.get(id=body['category_ids'])
+        d.datatype=DataType.objects.get(id=body['datatype_id'])
+        m=MetaData(publish_date=body['metadata']['publish_date'], department_ownership=body['metadata']['department_ownership'],
                      raw_source_link=body['metadata']['raw_source_link'], description=body['metadata']['description'], dataset=d)
         m.save()
-        seralizer = DataSetSerializer(d)
+        seralizer=DataSetSerializer(d)
         return JsonResponse(serializer.data)
 
     def update(self, request, pk=None):
@@ -77,21 +79,21 @@ class DataSetViewSet(viewsets.ModelViewSet):
         """
         return HttpResponseNotFound("Not Implemented Yet")
 
-    @csrf_exempt
-    @action(detail=False, methods=['post'])
+    @ csrf_exempt
+    @ action(detail=False, methods=['post'])
     def s3_upload_url(self, request):
         """
         +POST+
         Retrieves an s3 upload url
         """
-        body = json.loads(request.body)
-        invalid = self.validate_params(body, {"fileType", "fileName"})
+        body=json.loads(request.body)
+        invalid=self.validate_params(body, {"fileType", "fileName"})
         if invalid:
             return invalid
         return JsonResponse(generate_presigned_post(body['fileType'], body['fileName']))
 
-    @csrf_exempt
-    @action(detail=False, methods=['get'])
+    @ csrf_exempt
+    @ action(detail=False, methods=['get'])
     def search(self, request):
         """
         +GET+
@@ -106,7 +108,7 @@ class DataSetViewSet(viewsets.ModelViewSet):
         - titles must have query ( in request) as a substring
         - datatypes must be exact match with request
         - categories must include at least one from request
-        request example: GET https: // nodi-backend.herokuapp.com/api/datasets/search?query = Blahblah & categories = ["Finance", "Student%20Life"] & datatypes = CSV
+        request example: GET https: // nodi-backend.herokuapp.com/api/datasets/search?query=Blahblah & categories=["Finance", "Student%20Life"] & datatypes=CSV
         """
         fSet = DataSet.objects.all()
         sSet = DataSet.objects.none()
@@ -152,7 +154,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
     @csrf_exempt
     def list(self, request):
         """
-        +GET+
+        + GET +
         Gets all datasets
         """
         queryset = Category.objects.all()
@@ -170,7 +172,7 @@ class DataTypeViewSet(viewsets.ModelViewSet):
     @csrf_exempt
     def list(self, request):
         """
-        +GET+
+        + GET +
         Gets all datasets
         """
         queryset = DataType.objects.all()
