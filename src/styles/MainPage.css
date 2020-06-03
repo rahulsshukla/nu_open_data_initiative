@@ -18,15 +18,40 @@
 
 
 #search-bar1 {
-  position: relative;
-  bottom: 180px !important;
-  width: 50% !important;
+  bottom: 150px !important;
+  width: 70% !important;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 18px;
-  margin-left: 27% !important;
   display: grid;
-  grid-template-columns: 90% 10%;
-  display: grid;
+
+}
+#top {
+  bottom: 55% !important;
+}
+#bottom {
+  bottom: 48% !important;
+  width: 100%;
+
+  font-size: 24pt;
+}
+.search-bar2 {
+  position: absolute !important;
+  font-weight: bolder !important;
+  color: white !important;
+  width: 100% !important;
+  height: 50px !important;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 100px;
+  border-radius: 0px !important;
+  text-align: center;
+}
+.FullsearchMain {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 #search-box {
   background-color: purple;
@@ -66,49 +91,43 @@
   padding-bottom: 0px !important;
   margin: 0px !important;
 }
-#top {
-  bottom: 63% !important;
-}
-#bottom {
-  bottom: 56% !important;
-  font-size: 24pt;
-}
-.search-bar2 {
-  position: absolute !important;
-  font-weight: bolder !important;
-  color: white !important;
-  width: 50% !important;
-  height: 50px !important;
-  font-family: Arial, Helvetica, sans-serif;
-  margin-top: 100px;
-  border-radius: 0px !important;
-  margin-left: 25% !important;
-  text-align: center;
-}
 
 #grid-container {
-  display: grid;
-  grid-template-columns: 50% 50% 50%;
+  display: flex;
   align-items: center;
-  grid-row-gap: 1ch;
 }
 .small-grid {
-  display: grid;
-  grid-gap: 10px;
-  width: 250px;
-  height: 150px;
-  border: 3px #4e2a84 solid !important;
-  background-color: rgb(238, 237, 237) !important;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  margin-top: 10%;
+  justify-content: space-evenly;
+  width: 100%;
+}
+.pop-cat {
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+  align-items: center;
+  text-align: center;
+}
+.pop-title {
+  margin-top: 20px;
 }
 
 .cat-but {
-  color: black !important;
-  font-family: Helvetica, sans-serif !important;
-  font-size: 26px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #4e2a8f !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-weight: bold;
+  font-size: 20px;
+  border-style: none;
+  background-color: transparent;
 }
-.Fullsearch {
-  position: relative;
-}
+
 #data {
   text-align: center;
   text-decoration: bold;
@@ -120,9 +139,15 @@ h3 {
 
 #image {
   width: 100% !important;
-  object-fit: fill !important;
-  min-width: 100vh;
+  background-size: cover !important;
+  background-position: center center;
+  background-attachment: fixed;
   filter: brightness(80%) !important;
+}
+@media only screen and (max-width: 767px) {
+  #image {
+    background-image: url(../nu_small.jpg);
+  }
 }
 
 #dataset {
@@ -136,8 +161,11 @@ h3 {
 }
 
 .featured-datasets {
-  margin-top: 25px;
-  width: 100px;
+  display: flex;
+  justify-content: center;
+  height: 250px;
+  padding: 10% 0 10% !important;
+  width: 100%;
 }
 .d_container {
   align-content: center !important;
@@ -153,6 +181,6 @@ h3 {
 
 .featured{
   height: 250px;
-  padding: 100px 0 0 !important;
+  padding: 10% 0 0 !important;
   width: 100%;
 }

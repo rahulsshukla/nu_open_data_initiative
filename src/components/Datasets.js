@@ -17,9 +17,7 @@ import nu from "../nu.jpg";
 import "../styles/MainPage.css";
 import Dataset from "./Dataset";
 
-import { AppState } from "../data/context"
-
-
+import { AppState } from "../data/context";
 
 /*
 const categories = [
@@ -41,8 +39,6 @@ const dataTypes = [
 ];
 */
 
-
-
 const filterPanel = (filter) => (
   <Form>
     <Form.Group grouped>
@@ -53,26 +49,33 @@ const filterPanel = (filter) => (
   </Form>
 );
 
-
 const Datasets = () => {
   const state = useContext(AppState);
-  const { categories, dataTypes } = state;
-  
+  const { categories, dataTypes, query, setQuery, setSearch } = state;
 
   const filters = [
-    { title: "File Types", content: { content: filterPanel(dataTypes) }, key: 0 },
+    {
+      title: "File Types",
+      content: { content: filterPanel(dataTypes) },
+      key: 0,
+    },
     {
       title: "Categories",
       content: { content: filterPanel(categories) },
       key: 1,
     },
   ];
+  /* finding search from prev page*/
+
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  setSearch(urlParams.get("search"));
 
   return (
     <Grid stackable divided>
       <Grid.Row>
         <Grid.Column>
-          <Input fluid icon="search" />
+          <Input value={query} fluid icon="search" />
         </Grid.Column>
       </Grid.Row>
       <Grid.Row>
