@@ -24,7 +24,7 @@ class DataSetViewSet(viewsets.ModelViewSet):
         Gets all datasets
         """
         """
-        #TODO: add pagination
+        # TODO: add pagination
         """
         queryset = DataSet.objects.all()
         serializer = DataSetSerializer(queryset, many=True)
@@ -48,12 +48,13 @@ class DataSetViewSet(viewsets.ModelViewSet):
         """
         body = json.loads(request.body)
         d = DataSet(name=body['name'], email=body['email'],
-                    submitted_at=body['submitted_at'], approved=False, bucket='nodi-unapproved-datasets', key=body.key, approved_at=None)
+                    submitted_at=body['submitted_at'], approved=False, datatype=body['datatype_id'], categories=body['category_ids'], bucket='nodi-unapproved-datasets', key=body['key'], approved_at=None)
         d.save()
         m = MetaData(publish_date=body['metadata']['publish_date'], department_ownership=body['metadata']['department_ownership'],
                      raw_source_link=body['metadata']['raw_source_link'], description=body['metadata']['description'], dataset=d)
         m.save()
-        return JsonResponse(d)
+        seralizer = DataSetSerializer(d)
+        return JsonResponse(serializer.data)
 
     def update(self, request, pk=None):
         """
@@ -100,11 +101,12 @@ class DataSetViewSet(viewsets.ModelViewSet):
         """
         return HttpResponseNotFound("Not Implemented Yet")
 
-=======
-        - titles must have query (in request) as a substring
+
+== == == =
+        - titles must have query ( in request) as a substring
         - datatypes must be exact match with request
         - categories must include at least one from request
-        request example: GET https://nodi-backend.herokuapp.com/api/datasets/search?query=Blahblah&categories=["Finance","Student%20Life"]&datatypes=CSV
+        request example: GET https: // nodi-backend.herokuapp.com/api/datasets/search?query = Blahblah & categories = ["Finance", "Student%20Life"] & datatypes = CSV
         """
         fSet = DataSet.objects.all()
         sSet = DataSet.objects.none()
@@ -121,11 +123,11 @@ class DataSetViewSet(viewsets.ModelViewSet):
             for cat in categories:
                 sSet = sSet.union(fSet.filter(categories__name__in=[cat]))
             fSet = sSet
-        
+
         serializer = DataSetSerializer(fSet, many=True)
         return JsonResponse(serializer.data, safe=False)
 
-    
+
 >>>>>>> master
     def validate_params(self, body, params):
         """
