@@ -83,7 +83,7 @@ class DataSetViewSet(viewsets.ModelViewSet):
         - titles must have query (in request) as a substring
         - datatypes must be exact match with request
         - categories must include at least one from request
-        request example: GET https://nodi-backend.herokuapp.com/api/datasets/search?query=blahblahblah&categories=[blah1,blah2]&datatypes=blah3
+        request example: GET https://nodi-backend.herokuapp.com/api/datasets/search?query=Blahblah&categories=["Finance","Student%20Life"]&datatypes=CSV
         """
         fSet = DataSet.objects.all()
         sSet = DataSet.objects.none()
