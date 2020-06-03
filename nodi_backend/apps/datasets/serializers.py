@@ -22,9 +22,11 @@ class MetaDataSerializer(serializers.ModelSerializer):
 class DataSetSerializer(serializers.ModelSerializer):
     s3_url = serializers.SerializerMethodField('get_s3_url')
     metadata = MetaDataSerializer()
+    datatype = DataTypeSerializer()
+    categories = CategorySerializer()
     class Meta:
         model = DataSet
-        fields = ('name', 'submitted_at', 's3_url', 'metadata')
+        fields = ('name', 'submitted_at', 's3_url', 'metadata', 'datatype', 'categories')
         
     def get_s3_url(self, obj):
         return obj.get_signed_url()
