@@ -50,23 +50,23 @@ class DataSetViewSet(viewsets.ModelViewSet):
         d = DataSet(name=body['name'], email=body['email'],
                     submitted_at=body['submitted_at'], approved=False, bucket='nodi-unapproved-datasets', key=body['key'], approved_at=None)
         d.save()
-        
+
         if 'category_ids' in body and Category.objects.filter(id=body['category_ids']):
             # also consider catching errors when splitting doesn't work
             # * is needed to "splat" and expand queryset into tuples
             d.add(*Category.objects.filter(id=body['category_ids']))
-        
+
         if 'datatype_id' in body and DataType.objects.filter(id=body['datatype_id']):
             d.datatype = DataType.objects.get(id=body['datatype_id'])
             d.save()
-        m=MetaData(
+        m = MetaData(
             publish_date=body['metadata']['publish_date'],
             department_ownership=body['metadata']['department_ownership'],
             raw_source_link=body['metadata']['raw_source_link'],
             description=body['metadata']['description'],
             dataset=d)
         m.save()
-        seralizer=DataSetSerializer(d)
+        seralizer = DataSetSerializer(d)
         return JsonResponse(serializer.data)
 
     def update(self, request, pk=None):
@@ -97,29 +97,21 @@ class DataSetViewSet(viewsets.ModelViewSet):
         +POST+
         Retrieves an s3 upload url
         """
-        body=json.loads(request.body)
-        invalid=self.validate_params(body, {"fileType", "fileName"})
+        body = json.loads(request.body)
+        invalid = self.validate_params(body, {"fileType", "fileName"})
         if invalid:
             return invalid
         return JsonResponse(generate_presigned_post(body['fileType'], body['fileName']))
-
-    @ csrf_exempt
-    @ action(detail=False, methods=['get'])
+  @csrf_exempt
+    @action(detail=False, methods=['get'])
     def search(self, request):
         """
         +GET+
         Searches for a list of datasets
-<<<<<<< HEAD
-        @AlexLee Here you go
-        """
-        return HttpResponseNotFound("Not Implemented Yet")
-
-
-== == == =
-        - titles must have query ( in request) as a substring
+        - titles must have query (in request) as a substring
         - datatypes must be exact match with request
         - categories must include at least one from request
-        request example: GET https: // nodi-backend.herokuapp.com/api/datasets/search?query=Blahblah & categories=["Finance", "Student%20Life"] & datatypes=CSV
+        request example: GET https://nodi-backend.herokuapp.com/api/datasets/search?query=Blahblah&categories=["Finance","Student%20Life"]&datatypes=CSV
         """
         fSet = DataSet.objects.all()
         sSet = DataSet.objects.none()
@@ -136,12 +128,11 @@ class DataSetViewSet(viewsets.ModelViewSet):
             for cat in categories:
                 sSet = sSet.union(fSet.filter(categories__name__in=[cat]))
             fSet = sSet
-
+        
         serializer = DataSetSerializer(fSet, many=True)
         return JsonResponse(serializer.data, safe=False)
 
-
->>>>>>> master
+    
     def validate_params(self, body, params):
         """
         Validates params in the body
@@ -153,8 +144,7 @@ class DataSetViewSet(viewsets.ModelViewSet):
         if len(missing_params) != 0:
             return HttpResponseBadRequest("Missing params in body: " + ", ".join(missing_params))
         return False
-
-
+    
 class CategoryViewSet(viewsets.ModelViewSet):
     """
     A viewset for viewing and editing DataSet instances.
@@ -165,14 +155,13 @@ class CategoryViewSet(viewsets.ModelViewSet):
     @csrf_exempt
     def list(self, request):
         """
-        + GET +
+        +GET+
         Gets all datasets
         """
         queryset = Category.objects.all()
         serializer = CategorySerializer(queryset, many=True)
         return JsonResponse(serializer.data, safe=False)
-
-
+    
 class DataTypeViewSet(viewsets.ModelViewSet):
     """
     A viewset for viewing and editing DataSet instances.
@@ -183,7 +172,7 @@ class DataTypeViewSet(viewsets.ModelViewSet):
     @csrf_exempt
     def list(self, request):
         """
-        + GET +
+        +GET+
         Gets all datasets
         """
         queryset = DataType.objects.all()
