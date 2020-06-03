@@ -50,10 +50,21 @@ class DataSetViewSet(viewsets.ModelViewSet):
         d = DataSet(name=body['name'], email=body['email'],
                     submitted_at=body['submitted_at'], approved=False, bucket='nodi-unapproved-datasets', key=body['key'], approved_at=None)
         d.save()
-        d.add(Category.objects.get(id=body['category_ids'])
-        d.datatype=DataType.objects.get(id=body['datatype_id'])
-        m=MetaData(publish_date=body['metadata']['publish_date'], department_ownership=body['metadata']['department_ownership'],
-                     raw_source_link=body['metadata']['raw_source_link'], description=body['metadata']['description'], dataset=d)
+        
+        if 'category_ids' in body and Category.objects.filter(id=body['category_ids']):
+            # also consider catching errors when splitting doesn't work
+            # * is needed to "splat" and expand queryset into tuples
+            d.add(*Category.objects.filter(id=body['category_ids']))
+        
+        if 'datatype_id' in body and DataType.objects.filter(id=body['datatype_id']):
+            d.datatype = DataType.objects.get(id=body['datatype_id'])
+            d.save()
+        m=MetaData(
+            publish_date=body['metadata']['publish_date'],
+            department_ownership=body['metadata']['department_ownership'],
+            raw_source_link=body['metadata']['raw_source_link'],
+            description=body['metadata']['description'],
+            dataset=d)
         m.save()
         seralizer=DataSetSerializer(d)
         return JsonResponse(serializer.data)
