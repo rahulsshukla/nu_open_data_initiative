@@ -54,11 +54,11 @@ class DataSetViewSet(viewsets.ModelViewSet):
         if 'category_ids' in body and Category.objects.filter(id=body['category_ids']):
             # also consider catching errors when splitting doesn't work
             # * is needed to "splat" and expand queryset into tuples
-            d.add(*Category.objects.filter(id=body['category_ids']))
+            d.categories.add(*Category.objects.filter(id=body['category_ids']))
 
         if 'datatype_id' in body and DataType.objects.filter(id=body['datatype_id']):
             d.datatype = DataType.objects.get(id=body['datatype_id'])
-            d.save()
+        d.save()
         m = MetaData(
             publish_date=body['metadata']['publish_date'],
             department_ownership=body['metadata']['department_ownership'],
@@ -66,7 +66,7 @@ class DataSetViewSet(viewsets.ModelViewSet):
             description=body['metadata']['description'],
             dataset=d)
         m.save()
-        seralizer = DataSetSerializer(d)
+        serializer = DataSetSerializer(d)
         return JsonResponse(serializer.data)
 
     def update(self, request, pk=None):
