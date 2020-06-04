@@ -17,6 +17,7 @@ import {
 import "../styles/Dataset.css";
 import { Link } from "react-router-dom";
 import logo from "../NODI.png";
+// import ds from "../resume.pdf";
 
 const cat_tag = [
   { key: "s", text: "Safety", value: "Sa" },
@@ -38,13 +39,16 @@ const data_type = [
 
 const handleDownload = () => {
   window.open(
-    "https://www.adminplan.northwestern.edu/ir/data-book/v51/1.02-grad-program-rankings.pdf",
+    "https://www.adminplan.northwestern.edu/ir/data-book/v51/10.02-nu-library-volumes.pdf",
     "_blank"
   );
 };
 
 const handleSource = () => {
-  window.open("https://www.adminplan.northwestern.edu/ir/data-book/", "_blank");
+  window.open(
+    "https://www.adminplan.northwestern.edu/ir/data-book/v51/10.02-nu-library-volumes.pdf",
+    "_blank"
+  );
 };
 
 const Download = () => {
@@ -97,26 +101,68 @@ const Dataset = () => {
         <Grid>
           <Grid.Row>
             <Grid.Column width={7}>
-              <Header>Dataset Name </Header>
+              <Header>Total Library Volumes - 1968-69 through 2017-18 </Header>
               <Label.Group style={{ marginTop: "10px" }}>
                 <Label
-                  content="Safety"
+                  content="Campus"
                   style={{ backgroundColor: "#4e2a84", color: "white" }}
                 />
-                <Label content="CSV" />
+                <Label content="PDF" />
               </Label.Group>
             </Grid.Column>
             <Grid.Column id="but-modal" width={9}></Grid.Column>
           </Grid.Row>
-          <Grid.Row>
-            <Grid.Column width={16}>
-              <Header.Subheader>EMILY ENTER HERE PLEASE!!</Header.Subheader>
-            </Grid.Column>
-          </Grid.Row>
+          <div class="information">
+            <div class="row1 two">
+              <p class="bolder">Publish Date: </p>
+              <p class="blank">May 31, 2020</p>
+              <p class="bolder">Owned By: </p>
+              <p class="blank">Northwestern Libraries</p>
+            </div>
+            <div class="row1 two">
+              <p class="bolder">Resident Expert: </p>
+              <p class="blank">a-prachand@northwestern.edu</p>
+              <p class="bolder">Refereneces: </p>
+              <p class="blank">N/A</p>
+            </div>
+            <div class="row1 two">
+              <p class="bolder">Past/Present Uses: </p>
+              <p class="blank">N/A</p>
+              <p class="bolder">Primary Audience: </p>
+              <p class="blank">Library Staff</p>
+            </div>
+            <div class="row1">
+              <p class="bolder">Description:</p>
+            </div>
+            <div class="row1">
+              <p>
+                The dataset refers to the number of library volumes from the
+                1968 school year to the 2017 school years.
+              </p>
+            </div>
+            <div class="row1">
+              <p class="bolder">Purpose:</p>
+            </div>
+            <div class="row1">
+              <p>
+                The dataset seeks to track the number of library volumes across
+                time. It serves as a record keeper for the library staff.
+              </p>
+            </div>
+            <div class="row1">
+              <p class="bolder">Key Terms: </p>
+            </div>
+            <div class="row1">
+              <p>
+                A volume is based on the inventory of the library's collections
+                and includes the law and medical libraries.
+              </p>
+            </div>
+          </div>
         </Grid>
         <Modal.Actions id="jus-right">
           <div id="div-1">
-            <a href="mailto:library@northwestern.edu">
+            <a href="mailto:a-prachand@northwestern.edu">
               <Button
                 size="mini"
                 style={{

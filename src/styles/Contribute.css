@@ -75,4 +75,7 @@
   .inf{
     width: 900px !important;
   }
+  #head{
+    width: 1000px !important;
+  }
 }
