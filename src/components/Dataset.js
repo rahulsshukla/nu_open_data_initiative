@@ -72,13 +72,20 @@ const Download = () => {
       <Modal.Content>
         <Form>
           <Checkbox
+            required
             label="I agree that this dataset will be used following the NODI data
             governance rules"
           />
         </Form>
       </Modal.Content>
       <Modal.Actions>
-        <Button onClick={handleDownload}>Yes, please let me Download</Button>
+        <Link
+          to="/Files/V51_T10.02-nu-library-volumes (1).xlsx"
+          target="_blank"
+          download
+        >
+          <Button>Yes, please let me Download</Button>
+        </Link>
       </Modal.Actions>
     </Modal>
   );
