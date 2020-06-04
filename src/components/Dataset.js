@@ -101,13 +101,13 @@ const Dataset = () => {
         <Grid>
           <Grid.Row>
             <Grid.Column width={7}>
-              <Header>Dataset Name </Header>
+              <Header>Total Library Volumes - 1968-69 through 2017-18 </Header>
               <Label.Group style={{ marginTop: "10px" }}>
                 <Label
-                  content="Safety"
+                  content="Campus"
                   style={{ backgroundColor: "#4e2a84", color: "white" }}
                 />
-                <Label content="CSV" />
+                <Label content="PDF" />
               </Label.Group>
             </Grid.Column>
             <Grid.Column id="but-modal" width={9}></Grid.Column>
@@ -132,22 +132,31 @@ const Dataset = () => {
               <p class="blank">Library Staff</p>
             </div>
             <div class="row1">
-              <p class="bolder">Key Terms: </p>
+              <p class="bolder">Description:</p>
             </div>
             <div class="row1">
-              <p>A volume is based on the inventory of the library's collections and includes the law and medical libraries.</p>
+              <p>
+                The dataset refers to the number of library volumes from the
+                1968 school year to the 2017 school years.
+              </p>
             </div>
             <div class="row1">
               <p class="bolder">Purpose:</p>
             </div>
             <div class="row1">
-              <p>The dataset seeks to track the number of library volumes across time. It serves as a record keeper for the library staff.</p>
+              <p>
+                The dataset seeks to track the number of library volumes across
+                time. It serves as a record keeper for the library staff.
+              </p>
             </div>
             <div class="row1">
-              <p class="bolder">Description:</p>
+              <p class="bolder">Key Terms: </p>
             </div>
             <div class="row1">
-              <p>The dataset refers to the number of library volumes from the 1968 school year to the 2017 school years.</p>
+              <p>
+                A volume is based on the inventory of the library's collections
+                and includes the law and medical libraries.
+              </p>
             </div>
           </div>
         </Grid>

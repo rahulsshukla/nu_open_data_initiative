@@ -89,27 +89,29 @@ const Datasets = () => {
         </Grid.Column>
         <Grid.Column width={12}>
           <Menu vertical text fluid>
-            {[...Array(10)].map((x) => (
+            {[...Array(1)].map((x) => (
               <Menu.Item>
                 <Grid>
-                  <Grid.Column width={13}>
+                  <Grid.Column width={15}>
                     <Grid.Row>
-                      <Header>Dataset Name </Header>
+                      <Header>
+                        Total Library Volumes - 1968-69 through 2017-18{" "}
+                      </Header>
                       <Label.Group id="data-labels">
                         <Label
-                          content="Safety"
+                          content="Campus"
                           style={{
                             backgroundColor: "#4e2a84",
                             color: "white",
                           }}
                         />
-                        <Label content="CSV" />
+                        <Label content="PDF" />
                       </Label.Group>
                     </Grid.Row>
                     <Grid.Row>
                       <Header.Subheader>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Morbi semper sagittis sapien at posuere. Cras at nisi.
+                        The dataset refers to the number of library volumes from
+                        the 1968 school year to the 2017 school years.
                       </Header.Subheader>
                     </Grid.Row>
                   </Grid.Column>
