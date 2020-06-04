@@ -60,22 +60,58 @@ const Dataset = () => {
       size="small"
       dimmer="blurring"
       trigger={
-        <Button className="m_but" class="ui button">
-          <i aria-hidden="true" class="plus icon"></i>
+        <Button className="m-but" size="mini">
+          More Information
         </Button>
       }
       closeIcon
     >
       <Modal.Content>
-        <Header>Dataset Name </Header>
-        <Label.Group style={{ marginTop: "10px" }}>
-          <Label
-            content="Safety"
-            style={{ backgroundColor: "#4e2a84", color: "white" }}
-          />
-          <Label content="CSV" />
-        </Label.Group>
-        More coming here!
+        <Grid>
+          <Grid.Row>
+            <Grid.Column width={7}>
+              <Header>Dataset Name </Header>
+              <Label.Group style={{ marginTop: "10px" }}>
+                <Label
+                  content="Safety"
+                  style={{ backgroundColor: "#4e2a84", color: "white" }}
+                />
+                <Label content="CSV" />
+              </Label.Group>
+            </Grid.Column>
+            <Grid.Column id="but-modal" width={9}></Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column width={16}>
+              <Header.Subheader>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+                semper sagittis sapien at posuere. Cras at nisi.
+              </Header.Subheader>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+        <Modal.Actions id="jus-right">
+          <div id="div-1">
+            <Button
+              size="mini"
+              style={{ backgroundColor: "red", color: "white" }}
+            >
+              Email Owner
+            </Button>
+            <Button
+              style={{ backgroundColor: "blue", color: "white" }}
+              size="mini"
+            >
+              Link to Source
+            </Button>
+            <Button
+              style={{ backgroundColor: "green", color: "white" }}
+              size="mini"
+            >
+              Download
+            </Button>
+          </div>
+        </Modal.Actions>
       </Modal.Content>
     </Modal>
   );

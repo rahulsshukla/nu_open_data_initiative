@@ -1,6 +1,6 @@
-.m_but {
+.m-but {
   background-color: white !important;
-  color: black !important;
+  border: 2px solid purple !important;
 }
 .def {
   background-color: rgb(235, 235, 235);
@@ -11,11 +11,21 @@
   font-weight: bold;
 }
 
-#second {
+#but-modal {
+  padding-right: 0px !important;
+  margin-right: 0px !important;
 }
 
 #first {
   margin-left: 0px;
   font-weight: bold;
   align-items: left;
+}
+#jus-right {
+  margin-left: 346px !important;
+  padding: 0px !important;
+}
+#div-1 {
+  margin-right: 0px !important;
+  padding-right: 0px !important;
 }
