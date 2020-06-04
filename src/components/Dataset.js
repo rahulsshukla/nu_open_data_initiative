@@ -100,7 +100,7 @@ const Dataset = () => {
       <Modal.Content>
         <Grid>
           <Grid.Row>
-            <Grid.Column width={7}>
+            <Grid.Column width={16}>
               <Header>Total Library Volumes - 1968-69 through 2017-18 </Header>
               <Label.Group style={{ marginTop: "10px" }}>
                 <Label
