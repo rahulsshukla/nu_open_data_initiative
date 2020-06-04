@@ -38,13 +38,16 @@ const data_type = [
 ];
 
 const handleDownload = () => {
-  var ask = window.confirm(
-    "Do you agree that this dataset will be used following the NODI data governance rules? "
+  window.open(
+    "https://www.adminplan.northwestern.edu/ir/data-book/v51/1.02-grad-program-rankings.pdf",
+    "_blank"
   );
-  if (ask) {
-    window.open("ds");
-  }
 };
+
+const handleSource = () => {
+  window.open("https://www.adminplan.northwestern.edu/ir/data-book/", "_blank");
+};
+
 const Download = () => {
   return (
     <Modal
@@ -60,18 +63,15 @@ const Download = () => {
       closeIcon
     >
       <Modal.Content>
-        <Checkbox
-          label="I agree that this dataset will be used following the NODI data
+        <Form>
+          <Checkbox
+            label="I agree that this dataset will be used following the NODI data
             governance rules"
-        />
+          />
+        </Form>
       </Modal.Content>
       <Modal.Actions>
-        <a
-          href="https://www.adminplan.northwestern.edu/ir/data-book/v51/1.01-usnews-undergrad-rankings.pdf"
-          download="pick me"
-        >
-          <Button>Yes, please let me Download</Button>
-        </a>
+        <Button onClick={handleDownload}>Yes, please let me Download</Button>
       </Modal.Actions>
     </Modal>
   );
@@ -113,15 +113,19 @@ const Dataset = () => {
         </Grid>
         <Modal.Actions id="jus-right">
           <div id="div-1">
-            <Button
-              size="mini"
-              style={{ backgroundColor: "red", color: "white" }}
-            >
-              Email Owner
-            </Button>
+            <a href="mailto:library@northwestern.edu">
+              <Button
+                size="mini"
+                style={{ backgroundColor: "red", color: "white" }}
+              >
+                Email Owner
+              </Button>
+            </a>
+
             <Button
               style={{ backgroundColor: "blue", color: "white" }}
               size="mini"
+              onClick={handleSource}
             >
               Link to Source
             </Button>
