@@ -1,7 +1,8 @@
 
 #won {
   background-color: #f2f2f2;
-  padding: 60px 10% 0;
+  padding-bottom: 100px;
+  padding-top: 47px;
   font-family: OpenSans;
   color: #6d6f73;
   height: 350px;
@@ -12,6 +13,7 @@
   font-size: 25px;
   color: #4e2a84;
   padding-top: 40px;
+  padding-bottom: 0 !important;
 } 
 
 /* formatting for upload  */
@@ -24,7 +26,7 @@
   margin-bottom: 300px;
   display: flex;
   flex-direction: column;
-  margin-top: 100px;
+  margin-top: 50px;
   /* margin-top: 50px;
   padding: 30px;
   text-align: center;
@@ -56,5 +58,21 @@
   }
   .inf{
     text-align: center !important;
+  }
+}
+
+
+#content{
+ text-align: center;
+ padding-top: 10px;
+} 
+
+#con-hed{
+  text-align: center;
+}
+
+@media screen and (min-width: 1000px) {
+  .inf{
+    width: 900px !important;
   }
 }

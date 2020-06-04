@@ -1,59 +1,99 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
   Button,
-  Header,
-  Icon,
   Modal,
   Form,
-  Select,
-  Input,
   TextArea,
-  Grid,
-  GridRow,
+  Message,
 } from "semantic-ui-react";
 import "../styles/Upload.css";
-import { Link } from "react-router-dom";
 import logo from "../NODI.png";
+import { AppState } from "../data/context";
 
-const cat_tag = [
-  { key: "s", text: "Safety", value: "Sa" },
-  { key: "c", text: "Campus", value: "Ca" },
-  { key: "a", text: "Admission", value: "Ad" },
-  { key: "f", text: "Finances", value: "f" },
-  { key: "g", text: "Academic", value: "Ac" },
-  { key: "l", text: "Student Life", value: "St" },
-];
-
-const data_type = [
-  { text: "CSV", value: "csv" },
-  { text: "Excel", value: "excel" },
-  { text: "Graph", value: "graph" },
-  { text: "PDF", value: "pdf" },
-  { text: "API", value: "aws" },
-  { text: "Database", value: "database" },
-];
-
-const handleSubmit = (Val) => {
-  if (Val) {
-    var ask = window.confirm("Are you sure you want to submit?");
-    if (ask) {
-      window.alert("Dataset Submitted!");
-      window.location.href = "/";
-    }
-  } else {
-    window.alert("Please fill out all necessary information");
-  }
-};
 const handleCancel = () => {
   var ask = window.confirm("Are you sure you want to cancel?");
   if (ask) {
     window.location.href = "/";
   }
 };
+
+const dataset = {
+  name: "",
+  email: "",
+  submitted_at: "",
+  approved: false, 
+  bucket: "nodi-unapproved-datasets",
+  key: "",
+  approved_at: null,
+  category_ids: "",
+  datatype_id: "",
+  metadata: {
+    publish_date: "",
+    department_ownership: "",
+    raw_source_link: "",
+    description: "",
+  }
+};
+
+const formErrors = {
+  name: false, 
+  file: false, 
+  email: false,
+  publishDate: false, 
+  ownership: false, 
+  link: false, 
+  category: false, 
+  dataType: false, 
+  description: false
+};
+
+const handleEmpty = (value) => {
+  if (value) {
+    return false;
+  } else { return true };
+};
+
 const Upload = () => {
-  const [Val, setVal] = useState(false);
+  const state = useContext(AppState);
+  const { categories, dataTypes } = state;
+
+  const [errors, setErrors] = useState(formErrors);
+  const [request, setRequest] = useState(dataset);
+  const [errorMessage, setErrorMessage] = useState(false);
+
+  useEffect(() => {
+    for (var key in errors) {
+      if (errors[key]) {
+        setErrorMessage(true); 
+        return 
+      }
+    };
+    setErrorMessage(false);
+    return
+  });
+
+  const onClose = () => {
+    setRequest(dataset);
+    setErrors(formErrors);
+    setErrorMessage(false)
+  };
+
+  const handleSubmit = () => {
+    setErrors({
+      name: handleEmpty(request.name), 
+      file: handleEmpty(request.key), 
+      email: handleEmpty(request.email),
+      publishDate: handleEmpty(request.metadata.publish_date), 
+      ownership: handleEmpty(request.metadata.department_ownership), 
+      link: handleEmpty(request.metadata.raw_source_link), 
+      category: handleEmpty(request.category_ids), 
+      dataType: handleEmpty(request.datatype_id),
+      description: handleEmpty(request.metadata.description)
+    });
+  };
+
   return (
-    <Modal trigger={<Button className="form-but">Upload</Button>} closeIcon>
+    <Modal trigger={<Button className="form-but">Upload</Button>} closeIcon onClose={onClose}>
       <Modal.Content>
         <h2 id="con-hed" class="ui header">
           <img
@@ -69,192 +109,119 @@ const Upload = () => {
             <div class="sub header">Upload a Northwestern Public Data set</div>
           </div>
         </h2>
-        <Form className="hi" success>
-          <Grid>
-            <Grid.Row>
-              <label for="dname"> DataSet Name</label>
-              <input
-                id="dname"
-                control={Input}
-                required
-                label="Dataset Name"
-                placeholder="Dataset Name"
-              />
-            </Grid.Row>
-            <Grid.Row>
-              <label for="fileSelect"> DataSet</label>
+        <Form className="hi">
+            <Form.Input
+              label="Dataset Name"
+              required
+              error={errors.name}
+              onChange={(e) => setRequest({...request, name: e.target.value })}
+              placeholder="Dataset Name"
+            />
+            <Form.Field required error={errors.file}>
+              <label>Dataset</label>
               <input
                 id="fileSelect"
                 type="file"
+                onChange={() => { setRequest({...request, key: document.getElementById('fileSelect').files.item(0).name})}}
                 accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
               />
-            </Grid.Row>
-            <Grid.Row>
-              <label for="email">Email of uploader</label>
+            </Form.Field>
+            <Form.Input
+              error={errors.email}
+              onChange={(e) => { setRequest({ ...request, email: e.target.value })}}
+              label="Email of uploader"
+              required
+              placeholder="email@email.com"
+            />
+            <Form.Field required error={errors.publishDate}>
+              <label>Publish Date</label>
               <input
-                control={Input}
-                type="email"
-                id="emails"
-                label="Email"
-                required
-                placeholder="email@email.com"
-              ></input>
-            </Grid.Row>
-            <Grid.Row>
-              <label for="pd">Publish Date</label>
-              <input
-                control={Input}
                 type="date"
-                id="pd"
-                label="Dataset Publish Date"
-                required
-                placeholder="XX/XX/XXXX"
-              ></input>
-            </Grid.Row>
-            <Grid.Row>
-              <label for="email2">Department Ownership </label>
-              <input
-                control={Input}
-                id="emails"
-                placeholder="Dept. of X"
-                label="Department Ownership"
-                required
-              ></input>
-            </Grid.Row>
-            <Grid.Row>
-              <label for="link"> Link to raw data source</label>
-              <input
-                control={Input}
-                id="link"
-                name="upload"
-                placeholder="https://"
-                accept="application/pdf"
+                placeholder="mm-dd-yyyy"
+                onChange={(e) => setRequest({...request, metadata: {...request.metadata, publish_date: new Date(e.target.value)}})}
               />
-            </Grid.Row>
-            <Grid.Row>
-              <label for="rel">Category Tag</label>
-              <Form.Field
-                className="help"
-                control={Select}
-                id="rel"
-                options={cat_tag}
-                required
-                placeholder="Category Tag"
-              />
-            </Grid.Row>
-            <Grid.Row>
-              <label for="rel2">Data Type Tag</label>
-              <Form.Field
-                className="help"
-                control={Select}
-                id="rel2"
-                options={data_type}
-                required
-                placeholder="Data Type Tag"
-              />
-            </Grid.Row>
-            <Grid.Row>
-              <label for="cont">Dataset Description</label>
-              <input
-                control={TextArea}
-                type="text"
-                id="cont"
-                className="textarea"
-                placeholder="Provide a 1-2 sentence high-level description of the dataset"
-                required
-              ></input>
-            </Grid.Row>
-            <Grid.Row>
-              {" "}
-              <label for="keyt">Define any key terms in this dataset:</label>
-              <input
-                control={TextArea}
-                type="text"
-                id="keyt"
-                className="textarea"
-                rows="2"
-                required
-              ></input>
-            </Grid.Row>
-            <Grid.Row>
-              {" "}
-              <label for="a">Who is the primary audience?</label>
-              <input
-                control={TextArea}
-                type="text"
-                id="a"
-                className="textarea"
-                rows="2"
-                required
-              ></input>
-            </Grid.Row>
-            <Grid.Row>
-              {" "}
-              <label for="p">
-                What is the purpose of this dataset and why does it exist?{" "}
-              </label>
-              <input
-                control={TextArea}
-                type="text"
-                id="p"
-                className="textarea"
-                rows="2"
-                required
-              ></input>
-            </Grid.Row>
-            <Grid.Row>
-              {" "}
-              <label for="d">
-                What kind of decisions are being made with the dataset
-                (currently and in the future)?
-              </label>
-              <input
-                control={TextArea}
-                type="text"
-                id="d"
-                className="textarea"
-                rows="2"
-              ></input>
-            </Grid.Row>
-            <Grid.Row>
-              {" "}
-              <label for="e">Who is the resident expert?</label>
-              <input
-                control={TextArea}
-                type="text"
-                id="e"
-                className="textarea"
-                rows="2"
-              ></input>
-            </Grid.Row>
-            <Grid.Row>
-              {" "}
-              <label for="m">
-                Where does this dataset show up (i.e. in major reports)?
-              </label>
-              <input
-                control={TextArea}
-                type="text"
-                id="m"
-                className="textarea"
-                rows="2"
-              ></input>
-            </Grid.Row>
-
-            <Grid.Row>
-              <Form.Field
-                id="form-button-control-public"
-                control={Button}
-                content="Submit"
-                on
-              />
-            </Grid.Row>
-          </Grid>
+            </Form.Field>
+            <Form.Input
+              error={errors.ownership}
+              required
+              placeholder="Dept. of X"
+              label="Department Ownership"
+              required
+              onChange={(e) => setRequest({...request, metadata: {...request.metadata, department_ownership: e.target.value}})}
+            />
+            <Form.Input
+              error={errors.link}
+              required
+              label="Link to raw data source"
+              placeholder="https://"
+              accept="application/pdf"
+              onChange={(e) => setRequest({...request, metadata: {...request.metadata, raw_source_link: e.target.value}})}
+            />
+            <Form.Select
+              label="Category"
+              options={categories.map(c => { return { key: c.id, value: c.id, text: c.name }})}
+              required
+              error={errors.category}
+              onChange={(e, {value}) => setRequest({...request, category_ids: [value]})}
+              placeholder="Category"
+            />
+            <Form.Select
+              label="Data Type"
+              options={dataTypes.map(d => { return { key: d.id, value: d.id, text: d.name }})}
+              required
+              error={errors.dataType}
+              onChange={(e, {value}) => setRequest({...request, datatype_id: value})}
+              placeholder="Data Type"
+            />
+            <Form.Input
+              label="Dataset Description"
+              control={TextArea}
+              type="text"
+              placeholder="Provide a 1-2 sentence high-level description of the dataset"
+              required
+              onChange={(e) => setRequest({...request, metadata: {...request.metadata, description: e.target.value}})}
+              error={errors.description}
+            />
+            <Form.Field
+              label="Define any key terms in this dataset:"
+              control={TextArea}
+              //required
+            />
+            <Form.Field
+              label="Who is the primary audience? "
+              control={TextArea}
+              //required
+            />
+            <Form.Field
+              label="What is the purpose of this dataset and why does it exist?"
+              control={TextArea}
+              //required
+            />
+            <Form.Field
+              label="What kind of decisions are being made with the dataset (currently and in the future)?"
+              control={TextArea}
+              //required
+            />
+            <Form.Input
+              label="Who is the resident expert?"
+            />
+            <Form.Field
+              label="Where does this dataset show up (i.e. in major reports)?"
+              control={TextArea}
+              //required
+            />
         </Form>
+        <Message negative hidden={!errorMessage}>
+          <Message.Header content="Error in processing dataset form." />
+          Please fill in the required fields. 
+        </Message>
       </Modal.Content>
       <Modal.Actions>
+        <Button onClick={() => { handleSubmit()}}>
+          Submit
+        </Button>
         <Button color="red" onClick={handleCancel}>
-          Close
+          Cancel
         </Button>
       </Modal.Actions>
     </Modal>

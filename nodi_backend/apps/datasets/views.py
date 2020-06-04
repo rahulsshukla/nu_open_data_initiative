@@ -5,9 +5,10 @@ from rest_framework.decorators import action
 from django.http import JsonResponse, HttpResponseNotFound, HttpResponseBadRequest
 from django.views.decorators.csrf import csrf_exempt
 
-from .models import DataSet, Category, DataType
+from .models import DataSet, Category, DataType, MetaData
 from .serializers import DataSetSerializer, CategorySerializer, DataTypeSerializer
 from .utils.s3 import generate_presigned_post
+
 
 class DataSetViewSet(viewsets.ModelViewSet):
     """
@@ -22,7 +23,9 @@ class DataSetViewSet(viewsets.ModelViewSet):
         +GET+
         Gets all datasets
         """
-        #TODO: add pagination
+        """
+        # TODO: add pagination
+        """
         queryset = DataSet.objects.all()
         serializer = DataSetSerializer(queryset, many=True)
         return JsonResponse(serializer.data, safe=False)
@@ -37,13 +40,34 @@ class DataSetViewSet(viewsets.ModelViewSet):
         dataset = get_object_or_404(queryset, pk=pk)
         serializer = DataSetSerializer(dataset)
         return JsonResponse(serializer.data)
-    
+
     def create(self, request):
         """
         +POST+
         Creates a dataset
         """
-        return HttpResponseNotFound("Not Implemented Yet")
+        body = json.loads(request.body)
+        d = DataSet(name=body['name'], email=body['email'],
+                    submitted_at=body['submitted_at'], approved=False, bucket='nodi-unapproved-datasets', key=body['key'], approved_at=None)
+        d.save()
+
+        if 'category_ids' in body and Category.objects.filter(id=body['category_ids']):
+            # also consider catching errors when splitting doesn't work
+            # * is needed to "splat" and expand queryset into tuples
+            d.categories.add(*Category.objects.filter(id=body['category_ids']))
+
+        if 'datatype_id' in body and DataType.objects.filter(id=body['datatype_id']):
+            d.datatype = DataType.objects.get(id=body['datatype_id'])
+        d.save()
+        m = MetaData(
+            publish_date=body['metadata']['publish_date'],
+            department_ownership=body['metadata']['department_ownership'],
+            raw_source_link=body['metadata']['raw_source_link'],
+            description=body['metadata']['description'],
+            dataset=d)
+        m.save()
+        serializer = DataSetSerializer(d)
+        return JsonResponse(serializer.data)
 
     def update(self, request, pk=None):
         """
@@ -66,8 +90,8 @@ class DataSetViewSet(viewsets.ModelViewSet):
         """
         return HttpResponseNotFound("Not Implemented Yet")
 
-    @csrf_exempt
-    @action(detail=False, methods=['post'])
+    @ csrf_exempt
+    @ action(detail=False, methods=['post'])
     def s3_upload_url(self, request):
         """
         +POST+
@@ -85,10 +109,30 @@ class DataSetViewSet(viewsets.ModelViewSet):
         """
         +GET+
         Searches for a list of datasets
-        @AlexLee Here you go
+        - titles must have query (in request) as a substring
+        - datatypes must be exact match with request
+        - categories must include at least one from request
+        request example: GET https://nodi-backend.herokuapp.com/api/datasets/search?query=Blahblah&categories=["Finance","Student%20Life"]&datatypes=CSV
         """
-        return HttpResponseNotFound("Not Implemented Yet")
-    
+        fSet = DataSet.objects.all()
+        sSet = DataSet.objects.none()
+        name = request.query_params.get('query', None)
+        datatypes = request.query_params.get('datatypes', None)
+        categories = request.query_params.get('categories', [])
+        if name:
+            fSet = fSet.filter(name__icontains=name)
+        if datatypes:
+            fSet = fSet.filter(datatypes__name__exact=datatypes)
+
+        if categories:
+            categories = eval(categories)
+            for cat in categories:
+                sSet = sSet.union(fSet.filter(categories__name__in=[cat]))
+            fSet = sSet
+
+        serializer = DataSetSerializer(fSet, many=True)
+        return JsonResponse(serializer.data, safe=False)
+
     def validate_params(self, body, params):
         """
         Validates params in the body
@@ -100,7 +144,8 @@ class DataSetViewSet(viewsets.ModelViewSet):
         if len(missing_params) != 0:
             return HttpResponseBadRequest("Missing params in body: " + ", ".join(missing_params))
         return False
-    
+
+
 class CategoryViewSet(viewsets.ModelViewSet):
     """
     A viewset for viewing and editing DataSet instances.
@@ -117,7 +162,8 @@ class CategoryViewSet(viewsets.ModelViewSet):
         queryset = Category.objects.all()
         serializer = CategorySerializer(queryset, many=True)
         return JsonResponse(serializer.data, safe=False)
-    
+
+
 class DataTypeViewSet(viewsets.ModelViewSet):
     """
     A viewset for viewing and editing DataSet instances.
