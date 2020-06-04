@@ -46,7 +46,7 @@ const MainPage = () => {
     <div>
       <div className="FullsearchMain">
         <img
-          id="image"
+          id="imageMain"
           height="350px"
           width="100%"
           src={nu}
@@ -82,8 +82,8 @@ const MainPage = () => {
             <Featured></Featured>
           </div>
         </div>
-        <div class="ui four column grid" id="one">
-          <div class="row next" id="header">
+        <div class="ui four column grid" id="oneMain">
+          <div class="row next" id="pop-header">
             Popular Categories
           </div>
           <div className="small-grid">
