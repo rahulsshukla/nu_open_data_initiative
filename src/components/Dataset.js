@@ -60,8 +60,8 @@ const Dataset = () => {
       size="small"
       dimmer="blurring"
       trigger={
-        <Button className="m-but" size="mini">
-          More Information
+        <Button className="m-but" class="ui button">
+          <i aria-hidden="true" class="plus icon"></i>
         </Button>
       }
       closeIcon
@@ -83,10 +83,7 @@ const Dataset = () => {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column width={16}>
-              <Header.Subheader>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-                semper sagittis sapien at posuere. Cras at nisi.
-              </Header.Subheader>
+              <Header.Subheader>EMILY ENTER HERE PLEASE!!</Header.Subheader>
             </Grid.Column>
           </Grid.Row>
         </Grid>
