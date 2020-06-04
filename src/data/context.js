@@ -1,5 +1,5 @@
 import React, { useEffect, createContext, useState } from "react";
-import { getCategories, getDataTypes } from "./client";
+import { getCategories, getDataTypes, getDatasets } from "./client";
 
 const AppState = createContext(null);
 const { Provider } = AppState;
@@ -16,7 +16,7 @@ const StateProvider = ({ children }) => {
     getDataTypes(setDataTypes);
 
     // once a GET for datasets exists:
-    //getDatasets(query);
+    getDatasets();
   }, []);
 
   const api = { categories, dataTypes, setSearch, query };
