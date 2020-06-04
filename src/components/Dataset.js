@@ -38,13 +38,16 @@ const data_type = [
 
 const handleDownload = () => {
   window.open(
-    "https://www.adminplan.northwestern.edu/ir/data-book/v51/1.02-grad-program-rankings.pdf",
+    "https://www.adminplan.northwestern.edu/ir/data-book/v51/10.02-nu-library-volumes.pdf",
     "_blank"
   );
 };
 
 const handleSource = () => {
-  window.open("https://www.adminplan.northwestern.edu/ir/data-book/", "_blank");
+  window.open(
+    "https://www.adminplan.northwestern.edu/ir/data-book/v51/10.02-nu-library-volumes.pdf",
+    "_blank"
+  );
 };
 
 const Download = () => {
@@ -116,7 +119,7 @@ const Dataset = () => {
         </Grid>
         <Modal.Actions id="jus-right">
           <div id="div-1">
-            <a href="mailto:library@northwestern.edu">
+            <a href="mailto:a-prachand@northwestern.edu">
               <Button
                 size="mini"
                 style={{
