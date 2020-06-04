@@ -54,7 +54,11 @@ const Download = () => {
       size="mini"
       trigger={
         <Button
-          style={{ backgroundColor: "green", color: "white" }}
+          style={{
+            fontSize: "10.5pt",
+            backgroundColor: "green",
+            color: "white",
+          }}
           size="mini"
         >
           Download
@@ -149,14 +153,22 @@ const Dataset = () => {
             <a href="mailto:library@northwestern.edu">
               <Button
                 size="mini"
-                style={{ backgroundColor: "red", color: "white" }}
+                style={{
+                  fontSize: "10.5pt",
+                  backgroundColor: "red",
+                  color: "white",
+                }}
               >
                 Email Owner
               </Button>
             </a>
 
             <Button
-              style={{ backgroundColor: "blue", color: "white" }}
+              style={{
+                fontSize: "10.5pt",
+                backgroundColor: "blue",
+                color: "white",
+              }}
               size="mini"
               onClick={handleSource}
             >

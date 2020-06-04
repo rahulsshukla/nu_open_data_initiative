@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import ItemsCarousel from 'react-items-carousel';
+import React, { useState } from "react";
+import ItemsCarousel from "react-items-carousel";
 import {
   Grid,
   Header,
@@ -12,68 +12,65 @@ import {
   Label,
 } from "semantic-ui-react";
 import "../styles/Featured.css";
- 
+
 export default () => {
   const [activeItemIndex, setActiveItemIndex] = useState(0);
   const chevronWidth = 100;
   return (
     <div className="feat-container">
       <div className="card">
-          <Grid.Column width={13}>
-            <Grid.Row>
-            <Header size="small">
-              This is is a Dataset
-              <Header.Subheader>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Morbi semper sagittis sapien at posuere. Cras at nisi.
-              </Header.Subheader>
-            </Header>
-            </Grid.Row>
-            <Grid.Row> 
-              <Label.Group style={{ marginTop: "10px"}}>
-                <Label content="Safety" style={{ backgroundColor: "#4e2a84", color: "white"}} />
-                <Label content="CSV" />                       
-              </Label.Group>
-            </Grid.Row>
-          </Grid.Column>
+        <Grid.Column width={13}>
+          <Grid.Row>
+            <Header>Dataset Name </Header>
+            <Label.Group style={{ marginTop: "10px" }}>
+              <Label
+                content="Safety"
+                style={{ backgroundColor: "#4e2a84", color: "white" }}
+              />
+              <Label content="CSV" />
+            </Label.Group>
+            <Header.Subheader>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+              semper sagittis sapien at posuere. Cras at nisi.
+            </Header.Subheader>
+          </Grid.Row>
+        </Grid.Column>
       </div>
       <div className="card">
         <Grid.Column width={13}>
-            <Grid.Row>
-            <Header size="small">
-              This is is a Dataset
-              <Header.Subheader>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Morbi semper sagittis sapien at posuere. Cras at nisi.
-              </Header.Subheader>
-            </Header>
-            </Grid.Row>
-            <Grid.Row> 
-              <Label.Group style={{ marginTop: "10px"}}>
-                <Label content="Safety" style={{ backgroundColor: "#4e2a84", color: "white"}} />
-                <Label content="CSV" />                       
-              </Label.Group>
-            </Grid.Row>
-          </Grid.Column>
+          <Grid.Row>
+            <Header>Dataset Name </Header>
+            <Label.Group style={{ marginTop: "10px" }}>
+              <Label
+                content="Safety"
+                style={{ backgroundColor: "#4e2a84", color: "white" }}
+              />
+              <Label content="CSV" />
+            </Label.Group>
+            <Header.Subheader>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+              semper sagittis sapien at posuere. Cras at nisi.
+            </Header.Subheader>
+          </Grid.Row>
+        </Grid.Column>
       </div>
       <div className="card">
-      <Grid.Column width={13}>
-            <Grid.Row>
-            <Header size="small">
-              This is is a Dataset
-              <Header.Subheader>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Morbi semper sagittis sapien at posuere. Cras at nisi.
-              </Header.Subheader>
-            </Header>
-            </Grid.Row>
-            <Grid.Row> 
-              <Label.Group style={{ marginTop: "10px"}}>
-                <Label content="Safety" style={{ backgroundColor: "#4e2a84", color: "white"}} />
-                <Label content="CSV" />                       
-              </Label.Group>
-            </Grid.Row>
-          </Grid.Column>
+        <Grid.Column width={13}>
+          <Grid.Row>
+            <Header>Dataset Name </Header>
+            <Label.Group style={{ marginTop: "10px" }}>
+              <Label
+                content="Safety"
+                style={{ backgroundColor: "#4e2a84", color: "white" }}
+              />
+              <Label content="CSV" />
+            </Label.Group>
+            <Header.Subheader>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+              semper sagittis sapien at posuere. Cras at nisi.
+            </Header.Subheader>
+          </Grid.Row>
+        </Grid.Column>
       </div>
       {/* <div style={{ padding: `0 ${chevronWidth}px` }}>
         <ItemsCarousel id="carousel"
