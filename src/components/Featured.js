@@ -19,55 +19,65 @@ export default () => {
   return (
     <div className="feat-container">
       <div className="card">
-        <Grid.Column width={13}>
+        <Grid.Column width={15}>
           <Grid.Row>
-            <Header>Dataset Name </Header>
+            <Header size="small">
+              Total Research and Development Expenditures - 2007 through 2017{" "}
+            </Header>
             <Label.Group style={{ marginTop: "10px" }}>
               <Label
-                content="Safety"
+                content="Campus"
                 style={{ backgroundColor: "#4e2a84", color: "white" }}
               />
-              <Label content="CSV" />
+              <Label
+                content="PDF"
+                style={{ backgroundColor: "green", color: "white" }}
+              />
             </Label.Group>
             <Header.Subheader>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-              semper sagittis sapien at posuere. Cras at nisi.
+              The dataset charts research and development expenditures (in
+              millions) over time from 2007 to 2017.
             </Header.Subheader>
           </Grid.Row>
         </Grid.Column>
       </div>
       <div className="card">
-        <Grid.Column width={13}>
+        <Grid.Column width={15}>
           <Grid.Row>
-            <Header>Dataset Name </Header>
+            <Header size="small">COVID-19 Cases in Illinois by ZIP Code</Header>
+
             <Label.Group style={{ marginTop: "10px" }}>
               <Label
-                content="Safety"
+                content="Campus"
                 style={{ backgroundColor: "#4e2a84", color: "white" }}
               />
-              <Label content="CSV" />
+              <Label
+                content="Html"
+                style={{ backgroundColor: "blue", color: "white" }}
+              />
             </Label.Group>
             <Header.Subheader>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-              semper sagittis sapien at posuere. Cras at nisi.
+              The dataset tracks COVID-19 cases by ZIP code.
             </Header.Subheader>
           </Grid.Row>
         </Grid.Column>
       </div>
       <div className="card">
-        <Grid.Column width={13}>
+        <Grid.Column width={15}>
           <Grid.Row>
-            <Header>Dataset Name </Header>
+            <Header size="small">
+              Total Library Volumes - 1968-69 through 2017-18
+            </Header>
             <Label.Group style={{ marginTop: "10px" }}>
               <Label
-                content="Safety"
+                content="Campus"
                 style={{ backgroundColor: "#4e2a84", color: "white" }}
               />
               <Label content="CSV" />
             </Label.Group>
             <Header.Subheader>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-              semper sagittis sapien at posuere. Cras at nisi.
+              The dataset refers to the number of library volumes from the 1968
+              school year to the 2017 school years.
             </Header.Subheader>
           </Grid.Row>
         </Grid.Column>

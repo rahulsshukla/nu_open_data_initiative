@@ -114,7 +114,7 @@ const Dataset = () => {
                   content="Campus"
                   style={{ backgroundColor: "#4e2a84", color: "white" }}
                 />
-                <Label content="PDF" />
+                <Label content="CSV" />
               </Label.Group>
             </Grid.Column>
             <Grid.Column id="but-modal" width={9}></Grid.Column>
@@ -128,7 +128,7 @@ const Dataset = () => {
             </div>
             <div class="row1 two">
               <p class="bolder">Resident Expert: </p>
-              <p class="blank">a-prachand@northwestern.edu</p>
+              <p class="blank"> Amit Prachand</p>
               <p class="bolder">Refereneces: </p>
               <p class="blank">N/A</p>
             </div>

@@ -105,7 +105,7 @@ const Datasets = () => {
                             color: "white",
                           }}
                         />
-                        <Label content="PDF" />
+                        <Label content="CSV" />
                       </Label.Group>
                     </Grid.Row>
                     <Grid.Row>
