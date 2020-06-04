@@ -12,10 +12,12 @@ import {
   GridRow,
   Container,
   Label,
+  Checkbox,
 } from "semantic-ui-react";
 import "../styles/Dataset.css";
 import { Link } from "react-router-dom";
 import logo from "../NODI.png";
+import ds from "../resume.pdf";
 
 const cat_tag = [
   { key: "s", text: "Safety", value: "Sa" },
@@ -35,24 +37,46 @@ const data_type = [
   { text: "Database", value: "database" },
 ];
 
-const handleSubmit = (Val) => {
-  if (Val) {
-    var ask = window.confirm("Are you sure you want to submit?");
-    if (ask) {
-      window.alert("Dataset Submitted!");
-      window.location.href = "/";
-    }
-  } else {
-    window.alert("Please fill out all necessary information");
+const handleDownload = () => {
+  var ask = window.confirm(
+    "Do you agree that this dataset will be used following the NODI data governance rules? "
+  );
+  if (ask) {
+    window.open("ds");
   }
+};
+const Download = () => {
+  return (
+    <Modal
+      size="mini"
+      trigger={
+        <Button
+          style={{ backgroundColor: "green", color: "white" }}
+          size="mini"
+        >
+          Download
+        </Button>
+      }
+      closeIcon
+    >
+      <Modal.Content>
+        <Checkbox
+          label="I agree that this dataset will be used following the NODI data
+            governance rules"
+        />
+      </Modal.Content>
+      <Modal.Actions>
+        <a
+          href="https://www.adminplan.northwestern.edu/ir/data-book/v51/1.01-usnews-undergrad-rankings.pdf"
+          download="pick me"
+        >
+          <Button>Yes, please let me Download</Button>
+        </a>
+      </Modal.Actions>
+    </Modal>
+  );
 };
 
-const handleCancel = () => {
-  var ask = window.confirm("Are you sure you want to cancel?");
-  if (ask) {
-    window.location.href = "/";
-  }
-};
 const Dataset = () => {
   const [Val, setVal] = useState(false);
   return (
@@ -101,12 +125,7 @@ const Dataset = () => {
             >
               Link to Source
             </Button>
-            <Button
-              style={{ backgroundColor: "green", color: "white" }}
-              size="mini"
-            >
-              Download
-            </Button>
+            <Download></Download>
           </div>
         </Modal.Actions>
       </Modal.Content>
