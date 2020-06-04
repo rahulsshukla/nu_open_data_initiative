@@ -29,3 +29,29 @@
   margin-right: 0px !important;
   padding-right: 0px !important;
 }
+
+.row1{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.information{
+  margin-bottom: 40px;
+}
+
+.row1 > p {
+  font-size: 12px !important;
+}
+
+.bolder{
+  font-weight: 700;
+  padding-top: 14px !important;
+}
+
+.blank{
+  margin: 0 15px 0 5px;
+}
+
+.row1.two > p{
+  padding-top: 14px;
+}
