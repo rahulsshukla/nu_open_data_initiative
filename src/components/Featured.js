@@ -34,10 +34,6 @@ export default () => {
                 style={{ backgroundColor: "green", color: "white" }}
               />
             </Label.Group>
-            <Header.Subheader>
-              The dataset charts research and development expenditures (in
-              millions) over time from 2007 to 2017.
-            </Header.Subheader>
           </Grid.Row>
         </Grid.Column>
       </div>
@@ -56,9 +52,6 @@ export default () => {
                 style={{ backgroundColor: "blue", color: "white" }}
               />
             </Label.Group>
-            <Header.Subheader>
-              The dataset tracks COVID-19 cases by ZIP code.
-            </Header.Subheader>
           </Grid.Row>
         </Grid.Column>
       </div>
@@ -75,10 +68,6 @@ export default () => {
               />
               <Label content="CSV" />
             </Label.Group>
-            <Header.Subheader>
-              The dataset refers to the number of library volumes from the 1968
-              school year to the 2017 school years.
-            </Header.Subheader>
           </Grid.Row>
         </Grid.Column>
       </div>
