@@ -69,7 +69,6 @@ const Upload = () => {
       }
     };
     setErrorMessage(false);
-    return
   });
 
   const onClose = () => {
@@ -78,7 +77,7 @@ const Upload = () => {
     setErrorMessage(false)
   };
 
-  const handleSubmit = () => {
+  const checkErrors = () => {
     setErrors({
       name: handleEmpty(request.name), 
       file: handleEmpty(request.key), 
@@ -217,7 +216,7 @@ const Upload = () => {
         </Message>
       </Modal.Content>
       <Modal.Actions>
-        <Button onClick={() => { handleSubmit()}}>
+        <Button onClick={() => { checkErrors() }}>
           Submit
         </Button>
         <Button color="red" onClick={handleCancel}>
