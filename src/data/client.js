@@ -16,6 +16,7 @@ export const getDatasets = async (callback) => {
   const response = await fetch('https://nodi-backend.herokuapp.com/api/datasets')
   const data = await response.json();
   console.log(data);
+  return callback(data);
 };
 
 export const uploadDataset = async (s3Params, file, request, confirmUpload) => {

@@ -34,11 +34,9 @@ const Banner = () => {
       </Link>
       <a href="javascript:void(0);" class="ico" onClick={sayHello}>&#9776;</a>
       <div className="topnav" id="myTopnav"> 
-        <Link to={{ pathname: `/datasets` }}>
-          <button id="button" className="ui button">
-            Datasets{" "}
-          </button>
-        </Link>
+        <button id="button" onClick={() => window.location.href = "/datasets"} className="ui button">
+          Datasets
+        </button>
         <Link to={{ pathname: `/contribute` }}>
           <button id="button" className="ui button">
             Contribute a Dataset

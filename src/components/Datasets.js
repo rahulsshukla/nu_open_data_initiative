@@ -19,26 +19,6 @@ import Dataset from "./Dataset";
 
 import { AppState } from "../data/context";
 
-/*
-const categories = [
-  { name: "Safety", icon: "heartbeat" },
-  { name: "Campus", icon: "sun" },
-  { name: "Admission", icon: "graduation" },
-  { name: "Finances", icon: "dollar sign" },
-  { name: "Academic", icon: "dna" },
-  { name: "Student Life", icon: "futbol" },
-];
-
-const dataTypes = [
-  { name: "CSV", icon: "file outline" },
-  { name: "Excel", icon: "file excel outline" },
-  { name: "Graph", icon: "line graph" },
-  { name: "PDF", icon: "file pdf outline" },
-  { name: "API", icon: "aws" },
-  { name: "Database", icon: "database" },
-];
-*/
-
 const filterPanel = (filter) => (
   <Form>
     <Form.Group grouped>
@@ -51,7 +31,7 @@ const filterPanel = (filter) => (
 
 const Datasets = () => {
   const state = useContext(AppState);
-  const { categories, dataTypes, query, setQuery, setSearch } = state;
+  const { categories, dataTypes, query, setSearch, datasets } = state;
 
   const filters = [
     {
@@ -89,34 +69,33 @@ const Datasets = () => {
         </Grid.Column>
         <Grid.Column width={12}>
           <Menu vertical text fluid>
-            {[...Array(1)].map((x) => (
+            {datasets.map((x) => (
               <Menu.Item>
                 <Grid>
                   <Grid.Column width={15}>
                     <Grid.Row>
                       <Header>
-                        Total Library Volumes - 1968-69 through 2017-18{" "}
+                        {x.name}
                       </Header>
                       <Label.Group id="data-labels">
                         <Label
-                          content="Campus"
+                          content={x.categories[0].name}
                           style={{
                             backgroundColor: "#4e2a84",
                             color: "white",
                           }}
                         />
-                        <Label content="CSV" />
+                        <Label content={x.datatype.name} />
                       </Label.Group>
                     </Grid.Row>
                     <Grid.Row>
                       <Header.Subheader>
-                        The dataset refers to the number of library volumes from
-                        the 1968 school year to the 2017 school years.
+                        {x.metadata.description}
                       </Header.Subheader>
                     </Grid.Row>
                   </Grid.Column>
                   <Grid.Column width={1}>
-                    <Dataset></Dataset>
+                    <Dataset dataset={x}></Dataset>
                   </Grid.Column>
                 </Grid>
                 <Divider />

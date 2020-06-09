@@ -18,14 +18,12 @@ import {
 import "../styles/MainPage.css";
 import { AppState } from "../data/context";
 import nu from "../nu.jpg";
-import db from "../database.png";
-import { Link } from "react-router-dom";
 
 import Featured from "./Featured";
 
 const MainPage = () => {
   const state = useContext(AppState);
-  const { query, setQuery, setSearch } = state;
+  const { query, setSearch } = state;
   console.log(query);
 
   const categories = [

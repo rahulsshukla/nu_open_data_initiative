@@ -16,35 +16,11 @@ import {
 } from "semantic-ui-react";
 import "../styles/Dataset.css";
 import { Link } from "react-router-dom";
-import logo from "../NODI.png";
-// import ds from "../resume.pdf";
+import moment from "moment";
 
-const cat_tag = [
-  { key: "s", text: "Safety", value: "Sa" },
-  { key: "c", text: "Campus", value: "Ca" },
-  { key: "a", text: "Admission", value: "Ad" },
-  { key: "f", text: "Finances", value: "f" },
-  { key: "g", text: "Academic", value: "Ac" },
-  { key: "l", text: "Student Life", value: "St" },
-];
-
-const data_type = [
-  { text: "CSV", value: "csv" },
-  { text: "Excel", value: "excel" },
-  { text: "Graph", value: "graph" },
-  { text: "PDF", value: "pdf" },
-  { text: "API", value: "aws" },
-  { text: "Database", value: "database" },
-];
+console.log("MOMENT", moment("2020-05-31T23:06:39.727809Z").format("MM-DD-YYYY"))
 
 const handleDownload = () => {
-  window.open(
-    "https://www.adminplan.northwestern.edu/ir/data-book/v51/10.02-nu-library-volumes.pdf",
-    "_blank"
-  );
-};
-
-const handleSource = () => {
   window.open(
     "https://www.adminplan.northwestern.edu/ir/data-book/v51/10.02-nu-library-volumes.pdf",
     "_blank"
@@ -91,8 +67,8 @@ const Download = () => {
   );
 };
 
-const Dataset = () => {
-  const [Val, setVal] = useState(false);
+const Dataset = ({ dataset }) => {
+
   return (
     <Modal
       size="small"
@@ -108,13 +84,13 @@ const Dataset = () => {
         <Grid>
           <Grid.Row>
             <Grid.Column width={16}>
-              <Header>Total Library Volumes - 1968-69 through 2017-18 </Header>
+              <Header>{dataset.name}</Header>
               <Label.Group style={{ marginTop: "10px" }}>
                 <Label
-                  content="Campus"
+                  content={dataset.categories[0].name}
                   style={{ backgroundColor: "#4e2a84", color: "white" }}
                 />
-                <Label content="CSV" />
+                <Label content={dataset.datatype.name} />
               </Label.Group>
             </Grid.Column>
             <Grid.Column id="but-modal" width={9}></Grid.Column>
@@ -122,13 +98,13 @@ const Dataset = () => {
           <div class="information">
             <div class="row1 two">
               <p class="bolder">Publish Date: </p>
-              <p class="blank">May 31, 2020</p>
+              <p class="blank">{moment(dataset.metadata.publish_date).format("MM-DD-YYYY")}</p>
               <p class="bolder">Owned By: </p>
-              <p class="blank">Northwestern Libraries</p>
+              <p class="blank">{dataset.metadata.department_ownership}</p>
             </div>
             <div class="row1 two">
               <p class="bolder">Resident Expert: </p>
-              <p class="blank"> Amit Prachand</p>
+              <p class="blank">N/A</p>
               <p class="bolder">Refereneces: </p>
               <p class="blank">N/A</p>
             </div>
@@ -136,15 +112,14 @@ const Dataset = () => {
               <p class="bolder">Past/Present Uses: </p>
               <p class="blank">N/A</p>
               <p class="bolder">Primary Audience: </p>
-              <p class="blank">Library Staff</p>
+              <p class="blank">N/A</p>
             </div>
             <div class="row1">
               <p class="bolder">Description:</p>
             </div>
             <div class="row1">
               <p>
-                The dataset refers to the number of library volumes from the
-                1968 school year to the 2017 school years.
+                {dataset.metadata.description}
               </p>
             </div>
             <div class="row1">
@@ -152,8 +127,7 @@ const Dataset = () => {
             </div>
             <div class="row1">
               <p>
-                The dataset seeks to track the number of library volumes across
-                time. It serves as a record keeper for the library staff.
+                N/A
               </p>
             </div>
             <div class="row1">
@@ -161,15 +135,14 @@ const Dataset = () => {
             </div>
             <div class="row1">
               <p>
-                A volume is based on the inventory of the library's collections
-                and includes the law and medical libraries.
+                N/A
               </p>
             </div>
           </div>
         </Grid>
         <Modal.Actions id="jus-right">
           <div id="div-1">
-            <a href="mailto:a-prachand@northwestern.edu">
+            <a href={"mailto:a-prachand@northwestern.edu"}>
               <Button
                 size="mini"
                 style={{
@@ -189,7 +162,7 @@ const Dataset = () => {
                 color: "white",
               }}
               size="mini"
-              onClick={handleSource}
+              onClick={() => window.open(dataset.metadata.raw_source_link)}
             >
               Link to Source
             </Button>

@@ -8,18 +8,19 @@ const StateProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [dataTypes, setDataTypes] = useState([]);
   const [query, setQuery] = useState("");
+  const [datasets, setDatasets] = useState([]);
+
   const setSearch = (value) => {
     setQuery(value);
   };
+
   useEffect(() => {
     getCategories(setCategories);
     getDataTypes(setDataTypes);
-
-    // once a GET for datasets exists:
-    getDatasets();
+    getDatasets(setDatasets);
   }, []);
 
-  const api = { categories, dataTypes, setSearch, query };
+  const api = { categories, dataTypes, setSearch, query, datasets };
   return <Provider value={api}>{children}</Provider>;
 };
 

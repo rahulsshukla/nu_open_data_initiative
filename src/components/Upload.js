@@ -81,7 +81,7 @@ const SubmitMessage = ({ errorMessage }) => {
 
 const Upload = ({ modalOpen, setModalOpen, setUploadConfirmed }) => {
   const state = useContext(AppState);
-  const { categories, dataTypes } = state;
+  const { categories, dataTypes, setRefresh, refresh } = state;
 
   const [errors, setErrors] = useState(formErrors);
   const [request, setRequest] = useState(dataset);
