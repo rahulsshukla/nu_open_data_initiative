@@ -9,6 +9,7 @@ import {
 import "../styles/Upload.css";
 import logo from "../NODI.png";
 import { AppState } from "../data/context";
+import { uploadDataset } from "../data/client";
 
 const handleCancel = () => {
   var ask = window.confirm("Are you sure you want to cancel?");
@@ -47,10 +48,50 @@ const formErrors = {
   description: false
 };
 
+const s3Upload_data = {
+  fileName: "",
+  fileType: ""
+}
+
+const parseFileType = (string) => {
+  switch(string) {
+    case "text/csv":
+      return "csv";
+    case "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
+      return "xlsx";
+    case "image/png":
+      return "png";
+    case "image/jpeg":
+      return "jpeg"
+    case "application/pdf":
+      return "pdf"
+    case "text/html":
+      return "html"
+  }
+};
+
 const handleEmpty = (value) => {
   if (value) {
     return false;
   } else { return true };
+};
+
+const SubmitMessage = ({ errorMessage }) => {
+  if (errorMessage === true) {
+    return (
+      <Message negative>
+        <Message.Header content="Error in processing dataset form." />
+        Please fill in the required fields. 
+      </Message>
+    );
+  } else if (errorMessage === false) {
+    return (
+      <Message positive>
+        <Message.Header content="Looks all good!" />
+        Proceed to submit.
+      </Message>
+    );
+  } else return null;
 };
 
 const Upload = () => {
@@ -59,28 +100,31 @@ const Upload = () => {
 
   const [errors, setErrors] = useState(formErrors);
   const [request, setRequest] = useState(dataset);
-  const [errorMessage, setErrorMessage] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("none");
+  const [s3Params, setS3Params] = useState(s3Upload_data);
+  const [file, setFile] = useState();
 
-  useEffect(() => {
-    for (var key in errors) {
-      if (errors[key]) {
-        setErrorMessage(true); 
-        return 
-      }
-    };
-    setErrorMessage(false);
-  });
-
+  console.log(JSON.stringify(request))
+  const getFile = () => {
+    var f = document.getElementById('fileSelect').files.item(0)
+    setS3Params({
+      fileName: f.name.substring(0, f.name.lastIndexOf('.')),
+      fileType: parseFileType(f.type)
+    });
+    setFile(f);
+  };
+  console.log(s3Params)
   const onClose = () => {
     setRequest(dataset);
     setErrors(formErrors);
-    setErrorMessage(false)
+    setErrorMessage("none");
+    setS3Params(s3Upload_data);
   };
 
   const checkErrors = () => {
-    setErrors({
+    const e = {
       name: handleEmpty(request.name), 
-      file: handleEmpty(request.key), 
+      file: handleEmpty(s3Params.fileName), 
       email: handleEmpty(request.email),
       publishDate: handleEmpty(request.metadata.publish_date), 
       ownership: handleEmpty(request.metadata.department_ownership), 
@@ -88,7 +132,19 @@ const Upload = () => {
       category: handleEmpty(request.category_ids), 
       dataType: handleEmpty(request.datatype_id),
       description: handleEmpty(request.metadata.description)
-    });
+    };
+    
+    const check = () => {
+      for (var key in e) {
+        if (e[key]) {
+          setErrorMessage(true); 
+          return 
+        }
+      };
+      setErrorMessage(false);
+    };
+    check();
+    setErrors(e);
   };
 
   return (
@@ -121,8 +177,7 @@ const Upload = () => {
               <input
                 id="fileSelect"
                 type="file"
-                onChange={() => { setRequest({...request, key: document.getElementById('fileSelect').files.item(0).name})}}
-                accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                onChange={getFile}
               />
             </Form.Field>
             <Form.Input
@@ -210,14 +265,11 @@ const Upload = () => {
               //required
             />
         </Form>
-        <Message negative hidden={!errorMessage}>
-          <Message.Header content="Error in processing dataset form." />
-          Please fill in the required fields. 
-        </Message>
+        <SubmitMessage errorMessage={errorMessage} />
       </Modal.Content>
       <Modal.Actions>
-        <Button onClick={() => { checkErrors() }}>
-          Submit
+        <Button onClick={errorMessage === "none" || errorMessage === true ? checkErrors : () => uploadDataset(s3Params, file, request)}>
+          {errorMessage === "none" ? "Check Form" : (errorMessage === true ? "Check Again" : "Submit Form" )}
         </Button>
         <Button color="red" onClick={handleCancel}>
           Cancel
