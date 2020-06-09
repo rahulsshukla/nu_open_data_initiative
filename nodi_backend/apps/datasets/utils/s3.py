@@ -9,9 +9,15 @@ def generate_presigned_post(file_type, file_name):
     """
     Generates a presigned post request to upload a dataset
     """
+    if file_type in {'PDF', 'pdf'}:
+        content_type = 'application/pdf'
+    elif file_type in {'JSON', 'json'}:
+        content_type = 'application/json'
+    else:
+        content_type = file_type
     s3 = boto3.client('s3', config=Config(signature_version='s3v4'), region_name='us-east-2')
 
-    presigned_post = s3.generate_presigned_post(Bucket = UNAPPROVED_S3_BUCKET, Key = '%s.%s' % (file_name, file_type), Fields = {"Content-Type": file_type}, Conditions = [{"Content-Type": file_type}], ExpiresIn = 3600) # 1 hour
+    presigned_post = s3.generate_presigned_post(Bucket = UNAPPROVED_S3_BUCKET, Key = '%s.%s' % (file_name, file_type), Fields = {"Content-Type": content_type}, Conditions = [{"Content-Type": content_type}], ExpiresIn = 3600) # 1 hour
     return {
         'data': presigned_post,
         'url': 'https://%s.s3.amazonaws.com/%s' % (UNAPPROVED_S3_BUCKET, '%s.%s' % (file_name, file_type)),
