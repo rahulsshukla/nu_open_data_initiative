@@ -11,11 +11,11 @@ def generate_presigned_post(file_type, file_name):
     """
     s3 = boto3.client('s3', config=Config(signature_version='s3v4'), region_name='us-east-2')
 
-    presigned_post = s3.generate_presigned_post(Bucket = UNAPPROVED_S3_BUCKET, Key = file_name, Fields = {"Content-Type": file_type}, Conditions = [{"Content-Type": file_type}], ExpiresIn = 3600) # 1 hour
+    presigned_post = s3.generate_presigned_post(Bucket = UNAPPROVED_S3_BUCKET, Key = '%s.%s' % (file_name, file_type), Fields = {"Content-Type": file_type}, Conditions = [{"Content-Type": file_type}], ExpiresIn = 3600) # 1 hour
     return {
         'data': presigned_post,
         'url': 'https://%s.s3.amazonaws.com/%s' % (UNAPPROVED_S3_BUCKET, file_name),
-        'key': file_name
+        'key': '%s.%s' % (file_name, file_type)
     }
 
 def generate_presigned_get(bucket, key, expiration=3600):
