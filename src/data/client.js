@@ -13,7 +13,70 @@ export const getDataTypes = async (callback) => {
 }
 
 export const getDatasets = async (callback) => {
-  const response = await fetch('https://nodi-backend.herokuapp.com/api/datatypes')
+  const response = await fetch('https://nodi-backend.herokuapp.com/api/datasets')
   const data = await response.json();
   console.log(data);
+};
+
+export const uploadDataset = async (s3Params, file, request, confirmUpload) => {
+  let response = { s3Data: false };
+
+  if(s3Params) {
+    try {
+      var s3Data = await fetch('https://nodi-backend.herokuapp.com/api/datasets/s3_upload_url',
+        {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(s3Params)
+        }
+      );
+
+      s3Data = await s3Data.json();
+      response.s3Data = s3Data
+    } catch(error) {
+      response.failedOnStep = "get S3 URL";
+      response.error = error;
+      console.log(response);
+    };
+
+    try {
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", s3Data.data.url);
+
+      var postData = new FormData();
+      for(var key in s3Data.data.fields) {
+        postData.append(key, s3Data.data.fields[key]);
+      }
+      postData.append('file', file);
+      xhr.send(postData);
+    } catch(error) {
+      response.failedOnStep = "s3 Upload";
+      response.error = error;
+      console.log(response);
+    };
+  };
+
+  try {
+    const dataset = request;
+    dataset.key = response.s3Data.key;
+    dataset.submitted_at = new Date();
+    console.log(JSON.stringify(dataset))
+    var Data = await fetch('https://nodi-backend.herokuapp.com/api/datasets', 
+      {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dataset)
+      }
+    );
+    Data = await Data.json()
+    confirmUpload(true);
+  } catch(error) {
+    response.failedOnStep = "/datasets Upload";
+    response.error = error;
+    console.log(response);
+  }
 };
