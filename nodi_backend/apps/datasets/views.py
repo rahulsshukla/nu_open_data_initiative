@@ -118,18 +118,26 @@ class DataSetViewSet(viewsets.ModelViewSet):
         fSet = DataSet.objects.all()
         sSet = DataSet.objects.none()
         name = request.query_params.get('query', None)
-        datatypes = request.query_params.get('datatypes', None)
+        datatypes = request.query_params.get('datatypes', [])
         categories = request.query_params.get('categories', [])
-        if name:
-            fSet = fSet.filter(name__icontains=name)
+
         if datatypes:
-            fSet = fSet.filter(datatypes__name__exact=datatypes)
+            datatypes = eval(datatypes)
+            for dat in datatypes:
+                sSet = sSet.union(fSet.filter(datatype__name__exact=dat))
+            fSet = sSet
+            sSet = DataSet.objects.none()
 
         if categories:
             categories = eval(categories)
             for cat in categories:
                 sSet = sSet.union(fSet.filter(categories__name__in=[cat]))
             fSet = sSet
+        
+        if name:
+            wordsinname = name.split(" ")
+            for word in wordsinname:
+                fSet = fSet.filter(name__icontains=word)
 
         serializer = DataSetSerializer(fSet, many=True)
         return JsonResponse(serializer.data, safe=False)
