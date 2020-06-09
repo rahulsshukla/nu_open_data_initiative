@@ -14,7 +14,7 @@ import {
   Card,
 } from "semantic-ui-react";
 import nu from "../nu.jpg";
-import "../styles/MainPage.css";
+import "../styles/Datasets.css";
 import Dataset from "./Dataset";
 
 import { AppState } from "../data/context";
@@ -89,36 +89,34 @@ const Datasets = () => {
         </Grid.Column>
         <Grid.Column width={12}>
           <Menu vertical text fluid>
-            {[...Array(10)].map((x) => (
+            {[...Array(1)].map((x) => (
               <Menu.Item>
                 <Grid>
-                  <Grid.Column width={13}>
+                  <Grid.Column width={15}>
                     <Grid.Row>
-                      <Header size="small">
-                        This is is a Dataset
-                        <Dataset></Dataset>
-                        <Header.Subheader>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Morbi semper sagittis sapien at posuere. Cras at
-                          nisi.
-                        </Header.Subheader>
+                      <Header>
+                        Total Library Volumes - 1968-69 through 2017-18{" "}
                       </Header>
-                    </Grid.Row>
-                    <Grid.Row>
-                      <Label.Group style={{ marginTop: "10px" }}>
+                      <Label.Group id="data-labels">
                         <Label
-                          content="Safety"
-                          style={{ backgroundColor: "#4e2a84", color: "white" }}
+                          content="Campus"
+                          style={{
+                            backgroundColor: "#4e2a84",
+                            color: "white",
+                          }}
                         />
                         <Label content="CSV" />
                       </Label.Group>
                     </Grid.Row>
+                    <Grid.Row>
+                      <Header.Subheader>
+                        The dataset refers to the number of library volumes from
+                        the 1968 school year to the 2017 school years.
+                      </Header.Subheader>
+                    </Grid.Row>
                   </Grid.Column>
                   <Grid.Column width={1}>
-                    <Icon name="file excel" />
-                  </Grid.Column>
-                  <Grid.Column width={1}>
-                    <Icon name="download" />
+                    <Dataset></Dataset>
                   </Grid.Column>
                 </Grid>
                 <Divider />
@@ -134,7 +132,7 @@ const Datasets = () => {
 const DatasetsPage = () => {
   return (
     <React.Fragment>
-      <div className="Fullsearch">
+      <div className="FullsearchMain">
         <img
           id="image"
           height="350px"

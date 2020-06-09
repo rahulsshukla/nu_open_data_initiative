@@ -1,4 +1,4 @@
-.m_but {
+.m-but {
   background-color: white !important;
   color: black !important;
 }
@@ -11,11 +11,47 @@
   font-weight: bold;
 }
 
-#second {
+#but-modal {
+  padding-right: 0px !important;
+  margin-right: 0px !important;
 }
 
 #first {
   margin-left: 0px;
   font-weight: bold;
   align-items: left;
+}
+#jus-right {
+  margin-left: 300px !important;
+  padding: 0px !important;
+}
+#div-1 {
+  margin-right: 0px !important;
+  padding-right: 0px !important;
+}
+
+.row1 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.information {
+  margin-bottom: 40px;
+}
+
+.row1 > p {
+  font-size: 13.5px !important;
+}
+
+.bolder {
+  font-weight: 700;
+  padding-top: 14px !important;
+}
+
+.blank {
+  margin: 0 15px 0 5px;
+}
+
+.row1.two > p {
+  padding-top: 14px;
 }

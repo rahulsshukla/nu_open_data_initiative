@@ -3,14 +3,14 @@
   height: 100px !important;
 } */
 
-.card{
+.card {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: space-around;
-  height: 150px; 
-  width: 150px;
-} 
+  height: 150px;
+  width: 190px;
+}
 
 .feat-container {
   display: flex;

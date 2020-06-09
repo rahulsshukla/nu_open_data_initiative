@@ -41,6 +41,7 @@ class DataSetViewSet(viewsets.ModelViewSet):
         serializer = DataSetSerializer(dataset)
         return JsonResponse(serializer.data)
 
+    @csrf_exempt
     def create(self, request):
         """
         +POST+

@@ -90,6 +90,9 @@
   #header{
     width: 1000px !important;
   }
+  #pop-header{
+    width: 1000px !important;
+  }
 }
 
 @media screen and (max-width: 965px) {
