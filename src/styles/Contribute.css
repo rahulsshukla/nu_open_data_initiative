@@ -48,6 +48,13 @@
   color: black !important;
 }
 
+.form-but {
+  margin: 10px !important;
+  background-color: white !important;
+  box-shadow: 1px 1px 1px 1px #4e2a84 !important;
+  color: black !important;
+}
+
 #inf{
   text-align: center;
 }

@@ -22,10 +22,7 @@ const dataset = {
   name: "",
   email: "",
   submitted_at: "",
-  approved: false, 
-  bucket: "nodi-unapproved-datasets",
   key: "",
-  approved_at: null,
   category_ids: "",
   datatype_id: "",
   metadata: {
@@ -47,11 +44,6 @@ const formErrors = {
   dataType: false, 
   description: false
 };
-
-const s3Upload_data = {
-  fileName: "",
-  fileType: ""
-}
 
 const parseFileType = (string) => {
   switch(string) {
@@ -94,17 +86,16 @@ const SubmitMessage = ({ errorMessage }) => {
   } else return null;
 };
 
-const Upload = () => {
+const Upload = ({ modalOpen, setModalOpen, setUploadConfirmed }) => {
   const state = useContext(AppState);
   const { categories, dataTypes } = state;
 
   const [errors, setErrors] = useState(formErrors);
   const [request, setRequest] = useState(dataset);
   const [errorMessage, setErrorMessage] = useState("none");
-  const [s3Params, setS3Params] = useState(s3Upload_data);
+  const [s3Params, setS3Params] = useState(false);
   const [file, setFile] = useState();
 
-  console.log(JSON.stringify(request))
   const getFile = () => {
     var f = document.getElementById('fileSelect').files.item(0)
     setS3Params({
@@ -113,12 +104,25 @@ const Upload = () => {
     });
     setFile(f);
   };
-  console.log(s3Params)
+
   const onClose = () => {
     setRequest(dataset);
     setErrors(formErrors);
     setErrorMessage("none");
-    setS3Params(s3Upload_data);
+    setS3Params(false);
+    setModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    var ask = window.confirm("Are you sure you want to cancel?");
+    if (ask) {
+      onClose();
+    }
+  };
+
+  const handleSubmit = () => {
+    uploadDataset(s3Params, file, request, setUploadConfirmed);
+    onClose();
   };
 
   const checkErrors = () => {
@@ -148,7 +152,7 @@ const Upload = () => {
   };
 
   return (
-    <Modal trigger={<Button className="form-but">Upload</Button>} closeIcon onClose={onClose}>
+    <Modal size="small" open={modalOpen}>
       <Modal.Content>
         <h2 id="con-hed" class="ui header">
           <img
@@ -164,7 +168,7 @@ const Upload = () => {
             <div class="sub header">Upload a Northwestern Public Data set</div>
           </div>
         </h2>
-        <Form className="hi">
+        <Form size="small" className="hi">
             <Form.Input
               label="Dataset Name"
               required
@@ -172,7 +176,10 @@ const Upload = () => {
               onChange={(e) => setRequest({...request, name: e.target.value })}
               placeholder="Dataset Name"
             />
-            <Form.Field required error={errors.file}>
+            <Form.Field 
+              required 
+              error={errors.file}
+            >
               <label>Dataset</label>
               <input
                 id="fileSelect"
@@ -216,7 +223,7 @@ const Upload = () => {
               options={categories.map(c => { return { key: c.id, value: c.id, text: c.name }})}
               required
               error={errors.category}
-              onChange={(e, {value}) => setRequest({...request, category_ids: [value]})}
+              onChange={(e, {value}) => setRequest({...request, category_ids: value})}
               placeholder="Category"
             />
             <Form.Select
@@ -268,7 +275,10 @@ const Upload = () => {
         <SubmitMessage errorMessage={errorMessage} />
       </Modal.Content>
       <Modal.Actions>
-        <Button onClick={errorMessage === "none" || errorMessage === true ? checkErrors : () => uploadDataset(s3Params, file, request)}>
+        <Button 
+          color={errorMessage === false ? "green" : "grey"}
+          onClick={errorMessage === "none" || errorMessage === true ? checkErrors : handleSubmit}
+        >
           {errorMessage === "none" ? "Check Form" : (errorMessage === true ? "Check Again" : "Submit Form" )}
         </Button>
         <Button color="red" onClick={handleCancel}>
