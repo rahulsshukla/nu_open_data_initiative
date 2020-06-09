@@ -8,7 +8,6 @@ const StateProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [dataTypes, setDataTypes] = useState([]);
   const [query, setQuery] = useState("");
-  const [datasets, setDatasets] = useState([]);
 
   const setSearch = (value) => {
     setQuery(value);
@@ -17,10 +16,9 @@ const StateProvider = ({ children }) => {
   useEffect(() => {
     getCategories(setCategories);
     getDataTypes(setDataTypes);
-    getDatasets(setDatasets);
   }, []);
 
-  const api = { categories, dataTypes, setSearch, query, datasets };
+  const api = { categories, dataTypes, setSearch, query };
   return <Provider value={api}>{children}</Provider>;
 };
 

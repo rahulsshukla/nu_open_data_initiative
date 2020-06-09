@@ -23,19 +23,10 @@ import Featured from "./Featured";
 
 const MainPage = () => {
   const state = useContext(AppState);
-  const { query, setSearch } = state;
-  console.log(query);
+  const { categories, query, setSearch } = state;
 
-  const categories = [
-    { name: "Safety", icon: "heartbeat icon" },
-    { name: "Campus", icon: "sun" },
-    { name: "Admissions", icon: "graduation cap icon" },
-    { name: "Finances", icon: "dollar sign icon" },
-    { name: "Academics", icon: "dna" },
-    { name: "Student Life", icon: "futbol" },
-  ];
 
-  const Search = (input) => {
+  const Search = () => {
     var h = query;
     window.location.href = "/datasets?search=" + h;
   };
@@ -89,7 +80,7 @@ const MainPage = () => {
                 <Grid.Column width={3} textAlign="center">
                    <div className="pop-cat">
                     <button className="cat-but">
-                      <Icon name={c.icon} size="huge" style={{ color: "#4e2a8f"}}/>
+                      <Icon name={c.icon_name} size="huge" style={{ color: "#4e2a8f"}}/>
                       <div className="pop-title">{c.name}</div>
                     </button>
                   </div>

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import {
   Grid,
   Header,
@@ -16,14 +16,17 @@ import {
 import nu from "../nu.jpg";
 import "../styles/Datasets.css";
 import Dataset from "./Dataset";
-
+import { getDatasets } from "../data/client";
 import { AppState } from "../data/context";
 
-const filterPanel = (filter) => (
+const filterPanel = (filter, toggle) => (
   <Form>
     <Form.Group grouped>
       {filter.map((value) => (
-        <Form.Checkbox label={value.name} />
+        <Form.Checkbox 
+          onChange={() => toggle(value)}
+          label={value.name} 
+        />
       ))}
     </Form.Group>
   </Form>
@@ -31,43 +34,79 @@ const filterPanel = (filter) => (
 
 const Datasets = () => {
   const state = useContext(AppState);
-  const { categories, dataTypes, query, setSearch, datasets } = state;
+  const { categories, dataTypes, query, setSearch } = state;
+  const [datasets, setDatasets] = useState([]);
+  const [selectedCats, setSelectedCats] = useState("");
+  const [selectedTypes, setSelectedTypes] = useState("");
+
+  const [openTypePanel, setOpenTypePanel] = useState(false);
+
+  const toggleCategories = value => {
+    const cats = selectedCats.includes(value.name) ? selectedCats.filter(x => x !== value.name) : [...selectedCats, value.name];
+    const catQuery = cats.length === 0 ? "" : JSON.stringify(cats);
+    setSelectedCats(cats);
+    getDatasets(setDatasets, query, catQuery);
+  };
+
+  const toggleDataTypes = value => {
+    const types = selectedTypes.includes(value.name) ? selectedTypes.filter(x => x !== value.name) : [...selectedTypes, value.name];
+    const typeQuery = types.length === 0 ? "" : JSON.stringify(types);
+    setSelectedTypes(types);
+  };
+
+  //console.log(selectedCats)
+
+  useEffect(() => {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    var string = urlParams.get("search");
+    string = string === null ? "" : string;
+    setSearch(string);
+    getDatasets(setDatasets, string, "");
+  }, []);
 
   const filters = [
     {
-      title: "File Types",
-      content: { content: filterPanel(dataTypes) },
+      title: "Categories",
+      content: { content: filterPanel(categories, toggleCategories) },
       key: 0,
     },
     {
-      title: "Categories",
-      content: { content: filterPanel(categories) },
+      title: "File Types",
+      content: { content: filterPanel(dataTypes, toggleDataTypes) },
       key: 1,
-    },
+      active: openTypePanel,
+      onTitleClick: (e, data) => setOpenTypePanel(!data.active)
+    }
   ];
   /* finding search from prev page*/
 
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-  setSearch(urlParams.get("search"));
-
   return (
-    <Grid stackable divided>
+    <Grid stackable style={{ marginBottom: "50px"}}>
       <Grid.Row>
         <Grid.Column>
-          <Input value={query} fluid icon="search" />
+          <Form onSubmit={() => { 
+              const val = selectedCats.length === 0 ? "" : JSON.stringify(selectedCats); 
+              getDatasets(setDatasets, query, val);
+            }}
+          >
+            <Input value={query} onChange={e => setSearch(e.target.value)} fluid icon="search" />
+          </Form>
         </Grid.Column>
       </Grid.Row>
       <Grid.Row>
         <Grid.Column width={3}>
-          <Accordion
-            styled
-            panels={filters}
-            defaultActiveIndex={[0, 1]}
-            exclusive={false}
-          />
+          <Grid.Row>
+            <Accordion
+              styled
+              panels={filters}
+              defaultActiveIndex={[0, 1]}
+              exclusive={false}
+            />
+          </Grid.Row>
         </Grid.Column>
         <Grid.Column width={12}>
+        {datasets.length === 0 ? <Header textAlign="center" content="No datasets matched your search criteria." /> :
           <Menu vertical text fluid>
             {datasets.map((x) => (
               <Menu.Item>
@@ -102,6 +141,7 @@ const Datasets = () => {
               </Menu.Item>
             ))}
           </Menu>
+        }
         </Grid.Column>
       </Grid.Row>
     </Grid>

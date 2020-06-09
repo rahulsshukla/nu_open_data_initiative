@@ -12,8 +12,8 @@ export const getDataTypes = async (callback) => {
   return callback(data);
 }
 
-export const getDatasets = async (callback) => {
-  const response = await fetch('https://nodi-backend.herokuapp.com/api/datasets')
+export const getDatasets = async (callback, query, categories) => {
+  const response = await fetch(`https://nodi-backend.herokuapp.com/api/datasets/search?query=${query}&categories=${categories}`)
   const data = await response.json();
   console.log(data);
   return callback(data);
