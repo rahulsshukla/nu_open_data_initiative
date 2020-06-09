@@ -120,8 +120,7 @@ class DataSetViewSet(viewsets.ModelViewSet):
         name = request.query_params.get('query', None)
         datatypes = request.query_params.get('datatypes', [])
         categories = request.query_params.get('categories', [])
-        if name:
-            fSet = fSet.filter(name__icontains=name)
+
         if datatypes:
             datatypes = eval(datatypes)
             for dat in datatypes:
@@ -134,6 +133,11 @@ class DataSetViewSet(viewsets.ModelViewSet):
             for cat in categories:
                 sSet = sSet.union(fSet.filter(categories__name__in=[cat]))
             fSet = sSet
+        
+        if name:
+            wordsinname = name.split(" ")
+            for word in wordsinname:
+                fSet = fSet.filter(name__icontains=word)
 
         serializer = DataSetSerializer(fSet, many=True)
         return JsonResponse(serializer.data, safe=False)
