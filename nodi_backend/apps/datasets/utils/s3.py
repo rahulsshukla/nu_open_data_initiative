@@ -14,7 +14,7 @@ def generate_presigned_post(file_type, file_name):
     presigned_post = s3.generate_presigned_post(Bucket = UNAPPROVED_S3_BUCKET, Key = '%s.%s' % (file_name, file_type), Fields = {"Content-Type": file_type}, Conditions = [{"Content-Type": file_type}], ExpiresIn = 3600) # 1 hour
     return {
         'data': presigned_post,
-        'url': 'https://%s.s3.amazonaws.com/%s' % (UNAPPROVED_S3_BUCKET, file_name),
+        'url': 'https://%s.s3.amazonaws.com/%s' % (UNAPPROVED_S3_BUCKET, '%s.%s' % (file_name, file_type)),
         'key': '%s.%s' % (file_name, file_type)
     }
 
