@@ -32,7 +32,7 @@ class DataSetSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = DataSet
-        fields = ('id', 'name', 'submitted_at', 's3_url',
+        fields = ('id', 'name', 'email', 'submitted_at', 's3_url',
                   'metadata', 'datatype', 'categories')
 
     def get_s3_url(self, obj):
