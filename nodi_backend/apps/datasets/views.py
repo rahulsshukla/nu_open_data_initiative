@@ -116,28 +116,30 @@ class DataSetViewSet(viewsets.ModelViewSet):
         request example: GET https://nodi-backend.herokuapp.com/api/datasets/search?query=Blahblah&categories=["Finance","Student%20Life"]&datatypes=CSV
         """
         fSet = DataSet.objects.all()
-        sSet = DataSet.objects.none()
         name = request.query_params.get('query', None)
         datatypes = request.query_params.get('datatypes', [])
         categories = request.query_params.get('categories', [])
 
+        if name:
+            wordsinname = name.split(" ")
+            for word in wordsinname:
+                fSet = fSet.filter(name__icontains=word)
+
         if datatypes:
+            sSet = DataSet.objects.none()
             datatypes = eval(datatypes)
             for dat in datatypes:
-                sSet = sSet.union(fSet.filter(datatype__name__exact=dat))
+                sSet = sSet | fSet.filter(datatype__name__exact=dat)
             fSet = sSet
-            sSet = DataSet.objects.none()
 
         if categories:
+            sSet = DataSet.objects.none()
             categories = eval(categories)
             for cat in categories:
                 sSet = sSet.union(fSet.filter(categories__name__in=[cat]))
             fSet = sSet
         
-        if name:
-            wordsinname = name.split(" ")
-            for word in wordsinname:
-                fSet = fSet.filter(name__icontains=word)
+        
 
         serializer = DataSetSerializer(fSet, many=True)
         return JsonResponse(serializer.data, safe=False)
