@@ -18,16 +18,21 @@ import "../styles/Dataset.css";
 import { Link } from "react-router-dom";
 import moment from "moment";
 
-console.log("MOMENT", moment("2020-05-31T23:06:39.727809Z").format("MM-DD-YYYY"))
+console.log(
+  "MOMENT",
+  moment("2020-05-31T23:06:39.727809Z").format("MM-DD-YYYY")
+);
 
-const handleDownload = () => {
-  window.open(
-    "https://www.adminplan.northwestern.edu/ir/data-book/v51/10.02-nu-library-volumes.pdf",
-    "_blank"
-  );
-};
+const Download = ({ ds }) => {
+  document.getElementById("click").onclick = function () {
+    Open(ds.s3_url);
+  };
 
-const Download = () => {
+  const Open = (url) => {
+    console.log("i ran");
+    var win = window.open(url, "_blank");
+    win.focus();
+  };
   return (
     <Modal
       size="mini"
@@ -55,20 +60,13 @@ const Download = () => {
         </Form>
       </Modal.Content>
       <Modal.Actions>
-        <Link
-          to="/Files/V51_T10.02-nu-library-volumes (1).xlsx"
-          target="_blank"
-          download
-        >
-          <Button>Yes, please let me Download</Button>
-        </Link>
+        <Button id="click">Yes, please let me Download</Button>
       </Modal.Actions>
     </Modal>
   );
 };
 
 const Dataset = ({ dataset }) => {
-
   return (
     <Modal
       size="small"
@@ -98,7 +96,9 @@ const Dataset = ({ dataset }) => {
           <div class="information">
             <div class="row1 two">
               <p class="bolder">Publish Date: </p>
-              <p class="blank">{moment(dataset.metadata.publish_date).format("MM-DD-YYYY")}</p>
+              <p class="blank">
+                {moment(dataset.metadata.publish_date).format("MM-DD-YYYY")}
+              </p>
               <p class="bolder">Owned By: </p>
               <p class="blank">{dataset.metadata.department_ownership}</p>
             </div>
@@ -118,25 +118,19 @@ const Dataset = ({ dataset }) => {
               <p class="bolder">Description:</p>
             </div>
             <div class="row1">
-              <p>
-                {dataset.metadata.description}
-              </p>
+              <p>{dataset.metadata.description}</p>
             </div>
             <div class="row1">
               <p class="bolder">Purpose:</p>
             </div>
             <div class="row1">
-              <p>
-                N/A
-              </p>
+              <p>N/A</p>
             </div>
             <div class="row1">
               <p class="bolder">Key Terms: </p>
             </div>
             <div class="row1">
-              <p>
-                N/A
-              </p>
+              <p>N/A</p>
             </div>
           </div>
         </Grid>
@@ -166,7 +160,7 @@ const Dataset = ({ dataset }) => {
             >
               Link to Source
             </Button>
-            <Download></Download>
+            <Download ds={dataset}></Download>
           </div>
         </Modal.Actions>
       </Modal.Content>
