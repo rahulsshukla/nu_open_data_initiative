@@ -24,15 +24,11 @@ console.log(
 );
 
 const Download = ({ ds }) => {
-  document.getElementById("click").onclick = function () {
-    Open(ds.s3_url);
-  };
-
-  const Open = (url) => {
-    console.log("i ran");
-    var win = window.open(url, "_blank");
+  function Open() {
+    console.log("yes i am opening", ds);
+    var win = window.open(ds.s3_url, "_blank");
     win.focus();
-  };
+  }
   return (
     <Modal
       size="mini"
@@ -60,13 +56,15 @@ const Download = ({ ds }) => {
         </Form>
       </Modal.Content>
       <Modal.Actions>
-        <Button id="click">Yes, please let me Download</Button>
+        <Button onClick={Open}>Yes, please let me Download</Button>
       </Modal.Actions>
     </Modal>
   );
 };
 
 const Dataset = ({ dataset }) => {
+  var email = "mailto:" + dataset.email;
+  console.log(email);
   return (
     <Modal
       size="small"
@@ -136,7 +134,7 @@ const Dataset = ({ dataset }) => {
         </Grid>
         <Modal.Actions id="jus-right">
           <div id="div-1">
-            <a href={"mailto:a-prachand@northwestern.edu"}>
+            <a href={email}>
               <Button
                 size="mini"
                 style={{
