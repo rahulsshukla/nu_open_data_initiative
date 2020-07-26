@@ -1,19 +1,19 @@
 export const getCategories = async (callback) => {
-  const response = await fetch('https://nodi-backend.herokuapp.com/api/categories')
+  const response = await fetch('api/categories')
   const data = await response.json();
   console.log(data)
   return callback(data);
 }
 
 export const getDataTypes = async (callback) => {
-  const response = await fetch('https://nodi-backend.herokuapp.com/api/datatypes')
+  const response = await fetch('api/datatypes')
   const data = await response.json();
   console.log(data)
   return callback(data);
 }
 
 export const getDatasets = async (callback, query, categories) => {
-  const response = await fetch(`https://nodi-backend.herokuapp.com/api/datasets/search?query=${query}&categories=${categories}`)
+  const response = await fetch(`api/datasets/search?query=${query}&categories=${categories}`)
   const data = await response.json();
   console.log(data);
   return callback(data);
@@ -24,7 +24,7 @@ export const uploadDataset = async (s3Params, file, request, confirmUpload) => {
 
   if(s3Params) {
     try {
-      var s3Data = await fetch('https://nodi-backend.herokuapp.com/api/datasets/s3_upload_url',
+      var s3Data = await fetch('api/datasets/s3_upload_url',
         {
           method: "POST",
           headers: {
@@ -64,7 +64,7 @@ export const uploadDataset = async (s3Params, file, request, confirmUpload) => {
     dataset.key = response.s3Data.key;
     dataset.submitted_at = new Date();
     console.log(JSON.stringify(dataset))
-    var Data = await fetch('https://nodi-backend.herokuapp.com/api/datasets', 
+    var Data = await fetch('api/datasets', 
       {
         method: "POST",
         headers: {
