@@ -1,5 +1,4 @@
-
-#won {
+#container {
   background-color: #f2f2f2;
   padding-bottom: 100px;
   padding-top: 47px;
@@ -8,16 +7,16 @@
   height: 350px;
 }
 
-#head{
+#header1 {
   font-family: OpenSans;
   font-size: 25px;
   color: #4e2a84;
   padding-top: 40px;
   padding-bottom: 0 !important;
-} 
+}
 
 /* formatting for upload  */
-#purple {
+#form-container {
   /* width: 30%;
   align-content: center; */
   border: 3px #4e2a84 solid;
@@ -35,54 +34,52 @@
   padding: 80px 0;
 }
 
-
-#button-group.ui.buttons{
+#button-group.ui.buttons {
   width: 60%;
   margin: 0 20%;
 }
 
-.formbut {
+.request-button {
   margin: 10px !important;
   background-color: white !important;
   box-shadow: 1px 1px 1px 1px #4e2a84 !important;
   color: black !important;
 }
 
-.form-but {
+.upload-button {
   margin: 10px !important;
   background-color: white !important;
   box-shadow: 1px 1px 1px 1px #4e2a84 !important;
   color: black !important;
 }
 
-#inf{
+#inf {
   text-align: center;
 }
 
 @media screen and (min-width: 1550px) {
-  #head{
+  #header1 {
     padding-top: 50px;
   }
-  .inf{
+  .inf {
     text-align: center !important;
   }
 }
 
+#content {
+  text-align: center;
+  padding-top: 10px;
+}
 
-#content{
- text-align: center;
- padding-top: 10px;
-} 
-
-#con-hed{
+#con-hed {
   text-align: center;
 }
 
 @media screen and (min-width: 1000px) {
-  .inf{
+  .inf {
     width: 900px !important;
   }
-  #head{
+  #head {
     width: 1000px !important;
   }
 }

@@ -15,17 +15,16 @@ import "../styles/Contribute.css";
 import Upload from "./Upload";
 
 const Contribute = () => {
-
   const [modalOpen, setModalOpen] = useState(false);
   const [uploadConfirmed, setUploadConfirmed] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setUploadConfirmed(false), 5000)
+    setTimeout(() => setUploadConfirmed(false), 5000);
   });
 
   const UploadConfirmedMessage = () => {
     return (
-      <Message  hidden={!uploadConfirmed}>
+      <Message hidden={!uploadConfirmed}>
         <Message.Header content="Upload Successful!" />
         <Message.Content>
           Your dataset will be added to the dataset upon review from our team.
@@ -36,8 +35,8 @@ const Contribute = () => {
 
   return (
     <div>
-      <div class="ui four column grid" id="won">
-        <div class="row start" id="head">
+      <div class="ui four column grid" id="container">
+        <div class="row start" id="header1">
           Contribute a dataset!
         </div>
         <div class="middle aligned row first">
@@ -49,17 +48,23 @@ const Contribute = () => {
         </div>
       </div>
       <div>
-      <UploadConfirmedMessage />
+        <UploadConfirmedMessage />
       </div>
-      <Container id="purple">
+      <Container id="form-container">
         <h3 id="start">Upload or Request a Northwestern Dataset</h3>
         <ButtonGroup id="button-group">
-          <Button id="request" className="formbut" href = "https://forms.gle/XCFkSw6KMTxfzeZRA">
+          <Button
+            id="request"
+            className="request-button"
+            href="https://forms.gle/XCFkSw6KMTxfzeZRA"
+          >
             Request
           </Button>
-          <Button className="form-but" onClick={() => setModalOpen(true)}>Upload</Button>
-          <Upload 
-            modalOpen={modalOpen} 
+          <Button className="upload-button" onClick={() => setModalOpen(true)}>
+            Upload
+          </Button>
+          <Upload
+            modalOpen={modalOpen}
             setModalOpen={setModalOpen}
             setUploadConfirmed={setUploadConfirmed}
           />
