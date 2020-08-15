@@ -25,7 +25,6 @@ console.log(
 
 const Download = ({ ds }) => {
   function Open() {
-    console.log("yes i am opening", ds);
     var win = window.open(ds.s3_url, "_blank");
     win.focus();
   }
