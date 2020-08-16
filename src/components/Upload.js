@@ -46,7 +46,7 @@ const formErrors = {
   primaryAudience: false,
   purpose: false,
   decisions: false,
-  residentExpert: falses
+  residentExpert: false
 };
 
 const parseFileType = (string) => {
