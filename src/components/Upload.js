@@ -23,6 +23,12 @@ const dataset = {
     department_ownership: "",
     raw_source_link: "",
     description: "",
+    key_terms: "",
+    primary_audience: "",
+    purpose: "",
+    decisions: "",
+    resident_expert: "",
+    appearances: ""
   }
 };
 
@@ -35,7 +41,12 @@ const formErrors = {
   link: false, 
   category: false, 
   dataType: false, 
-  description: false
+  description: false,
+  keyTerms: false,
+  primaryAudience: false,
+  purpose: false,
+  decisions: false,
+  residentExpert: falses
 };
 
 const parseFileType = (string) => {
@@ -128,7 +139,12 @@ const Upload = ({ modalOpen, setModalOpen, setUploadConfirmed }) => {
       link: handleEmpty(request.metadata.raw_source_link), 
       category: handleEmpty(request.category_ids), 
       dataType: handleEmpty(request.datatype_id),
-      description: handleEmpty(request.metadata.description)
+      description: handleEmpty(request.metadata.description),
+      keyTerms: handleEmpty(request.metadata.key_terms),
+      primaryAudience: handleEmpty(request.metadata.primary_audience),
+      purpose: handleEmpty(request.metadata.purpose),
+      decisions: handleEmpty(request.metadata.decisions),
+      residentExpert: handleEmpty(request.metadata.resident_expert)
     };
     
     const check = () => {
@@ -239,30 +255,42 @@ const Upload = ({ modalOpen, setModalOpen, setUploadConfirmed }) => {
             <Form.Field
               label="Define any key terms in this dataset:"
               control={TextArea}
-              //required
+              required
+              onChange={(e) => setRequest({...request, metadata: {...request.metadata, key_terms: e.target.value}})}
+              error={errors.keyTerms}
             />
             <Form.Field
               label="Who is the primary audience? "
               control={TextArea}
-              //required
+              required
+              onChange={(e) => setRequest({...request, metadata: {...request.metadata, primary_audience: e.target.value}})}
+              error={errors.primaryAudience}
             />
             <Form.Field
               label="What is the purpose of this dataset and why does it exist?"
               control={TextArea}
-              //required
+              required
+              onChange={(e) => setRequest({...request, metadata: {...request.metadata, purpose: e.target.value}})}
+              error={errors.purpose}
             />
             <Form.Field
               label="What kind of decisions are being made with the dataset (currently and in the future)?"
               control={TextArea}
-              //required
+              required
+              onChange={(e) => setRequest({...request, metadata: {...request.metadata, decisions: e.target.value}})}
+              error={errors.decisions}
             />
             <Form.Input
-              label="Who is the resident expert?"
+              label="Who can provide context around the dataset and answer questions about it?"
+              required
+              onChange={(e) => setRequest({...request, metadata: {...request.metadata, resident_expert: e.target.value}})}
+              error={errors.residentExpert}
             />
             <Form.Field
               label="Where does this dataset show up (i.e. in major reports)?"
               control={TextArea}
               //required
+              onChange={(e) => setRequest({...request, metadata: {...request.metadata, appearances: e.target.value}})}
             />
         </Form>
         <SubmitMessage errorMessage={errorMessage} />
