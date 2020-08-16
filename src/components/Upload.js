@@ -46,7 +46,7 @@ const formErrors = {
   primaryAudience: false,
   purpose: false,
   decisions: false,
-  residentExpert: false,
+  residentExpert: falses
 };
 
 const parseFileType = (string) => {
@@ -144,7 +144,7 @@ const Upload = ({ modalOpen, setModalOpen, setUploadConfirmed }) => {
       primaryAudience: handleEmpty(request.metadata.primary_audience),
       purpose: handleEmpty(request.metadata.purpose),
       decisions: handleEmpty(request.metadata.decisions),
-      residentExpert: handleEmpty(request.metadata.resident_expert),
+      residentExpert: handleEmpty(request.metadata.resident_expert)
     };
     
     const check = () => {
