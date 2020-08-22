@@ -9,7 +9,7 @@ class DataSet(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     submitted_at = models.DateTimeField(auto_now_add=True)
-    approved_at = models.DateTimeField(auto_now_add=False)
+    approved_at = models.DateTimeField(auto_now_add=False, null=True)
     approved = models.BooleanField(default=False)
 
     categories = models.ManyToManyField('datasets.Category')
@@ -62,6 +62,13 @@ class MetaData(models.Model):
     description = models.CharField(max_length=1000)
     dataset = models.OneToOneField(
         'datasets.DataSet', on_delete=models.CASCADE, related_name='metadata', null=True, default=None)
+    
+    key_terms = models.CharField(max_length=1000, default="")
+    primary_audience = models.CharField(max_length=1000, default="")
+    purpose = models.CharField(max_length=1000, default="")
+    decisions = models.CharField(max_length=1000, default="")
+    resident_expert = models.CharField(max_length=100, default="")
+    appearances = models.CharField(max_length=1000, null=True, default=None)
 
     def __str__(self):
         return self.dataset.name + " (Metadata)"

@@ -1,4 +1,5 @@
 import json
+import os
 from django.shortcuts import render, get_object_or_404
 from rest_framework import generics, viewsets
 from rest_framework.decorators import action
@@ -49,7 +50,7 @@ class DataSetViewSet(viewsets.ModelViewSet):
         """
         body = json.loads(request.body)
         d = DataSet(name=body['name'], email=body['email'],
-                    submitted_at=body['submitted_at'], approved=False, bucket='nodi-unapproved-datasets', key=body['key'], approved_at=None)
+                    submitted_at=body['submitted_at'], approved=False, bucket=os.environ['DATASETS_BUCKET'], key=body['key'], approved_at=None)
         d.save()
 
         if 'category_ids' in body and Category.objects.filter(id=body['category_ids']):
@@ -65,7 +66,13 @@ class DataSetViewSet(viewsets.ModelViewSet):
             department_ownership=body['metadata']['department_ownership'],
             raw_source_link=body['metadata']['raw_source_link'],
             description=body['metadata']['description'],
-            dataset=d)
+            dataset=d,
+            key_terms=body['metadata']['key_terms'],
+            primary_audience=body['metadata']['primary_audience'],
+            purpose=body['metadata']['purpose'],
+            decisions=body['metadata']['decisions'],
+            resident_expert=body['metadata']['resident_expert'],
+            appearances=body['metadata']['appearances'])
         m.save()
         serializer = DataSetSerializer(d)
         return JsonResponse(serializer.data)
