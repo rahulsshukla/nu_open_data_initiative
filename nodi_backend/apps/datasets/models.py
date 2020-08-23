@@ -1,3 +1,4 @@
+import datetime
 from django.db import models
 from .utils.s3 import generate_presigned_get
 
@@ -10,7 +11,7 @@ class DataSet(models.Model):
     email = models.EmailField()
     submitted_at = models.DateTimeField(auto_now_add=True)
     approved_at = models.DateTimeField(auto_now_add=False, null=True)
-    approved = models.BooleanField(default=False)
+    approved = models.BooleanField(default=False, help_text="Approval is done through the main admin panel by selecting datasets.")
 
     categories = models.ManyToManyField('datasets.Category')
     datatype = models.ForeignKey(
@@ -28,6 +29,19 @@ class DataSet(models.Model):
 
     def __str__(self):
         return self.name
+    
+    # Approves the dataset.
+    def approve(self):
+        if not self.approved:
+            self.approved = True
+            self.approved_at = datetime.datetime.now()
+            self.save()
+        
+    # Removes dataset approval.
+    def unapprove(self):
+        self.approved = False
+        self.approved_at = None
+        self.save()
 
     class Meta:
         verbose_name = "Dataset"
