@@ -1,3 +1,4 @@
+import datetime
 from django.db import models
 from .utils.s3 import generate_presigned_get
 
@@ -9,8 +10,8 @@ class DataSet(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     submitted_at = models.DateTimeField(auto_now_add=True)
-    approved_at = models.DateTimeField(auto_now_add=False)
-    approved = models.BooleanField(default=False)
+    approved_at = models.DateTimeField(auto_now_add=False, null=True)
+    approved = models.BooleanField(default=False, help_text="Approval is done through the main admin panel by selecting datasets.")
 
     categories = models.ManyToManyField('datasets.Category')
     datatype = models.ForeignKey(
@@ -28,6 +29,19 @@ class DataSet(models.Model):
 
     def __str__(self):
         return self.name
+    
+    # Approves the dataset.
+    def approve(self):
+        if not self.approved:
+            self.approved = True
+            self.approved_at = datetime.datetime.now()
+            self.save()
+        
+    # Removes dataset approval.
+    def unapprove(self):
+        self.approved = False
+        self.approved_at = None
+        self.save()
 
     class Meta:
         verbose_name = "Dataset"
@@ -62,6 +76,13 @@ class MetaData(models.Model):
     description = models.CharField(max_length=1000)
     dataset = models.OneToOneField(
         'datasets.DataSet', on_delete=models.CASCADE, related_name='metadata', null=True, default=None)
+    
+    key_terms = models.CharField(max_length=1000, default="")
+    primary_audience = models.CharField(max_length=1000, default="")
+    purpose = models.CharField(max_length=1000, default="")
+    decisions = models.CharField(max_length=1000, default="")
+    resident_expert = models.CharField(max_length=100, default="")
+    appearances = models.CharField(max_length=1000, null=True, default=None)
 
     def __str__(self):
         return self.dataset.name + " (Metadata)"
