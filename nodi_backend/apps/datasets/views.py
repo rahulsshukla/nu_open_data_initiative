@@ -16,7 +16,7 @@ class DataSetViewSet(viewsets.ModelViewSet):
     A viewset for viewing and editing DataSet instances.
     """
     serializer_class = DataSetSerializer
-    queryset = DataSet.objects.all()
+    queryset = DataSet.objects.filter(approved=True)
 
     @csrf_exempt
     def list(self, request):
@@ -27,7 +27,7 @@ class DataSetViewSet(viewsets.ModelViewSet):
         """
         # TODO: add pagination
         """
-        queryset = DataSet.objects.all()
+        queryset = DataSet.objects.filter(approved=True)
         serializer = DataSetSerializer(queryset, many=True)
         return JsonResponse(serializer.data, safe=False)
 
@@ -37,7 +37,7 @@ class DataSetViewSet(viewsets.ModelViewSet):
         +GET+
         Gets a single dataset
         """
-        queryset = DataSet.objects.all()
+        queryset = DataSet.objects.filter(approved=True)
         dataset = get_object_or_404(queryset, pk=pk)
         serializer = DataSetSerializer(dataset)
         return JsonResponse(serializer.data)
@@ -122,7 +122,7 @@ class DataSetViewSet(viewsets.ModelViewSet):
         - categories must include at least one from request
         request example: GET https://nodi-backend.herokuapp.com/api/datasets/search?query=Blahblah&categories=["Finance","Student%20Life"]&datatypes=CSV
         """
-        fSet = DataSet.objects.all()
+        fSet = DataSet.objects.filter(approved=True)
         name = request.query_params.get('query', None)
         datatypes = request.query_params.get('datatypes', [])
         categories = request.query_params.get('categories', [])
