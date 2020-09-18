@@ -101,15 +101,9 @@ const Dataset = ({ dataset }) => {
             </div>
             <div class="row1 two">
               <p class="bolder">Resident Expert: </p>
-              <p class="blank">N/A</p>
-              <p class="bolder">Refereneces: </p>
-              <p class="blank">N/A</p>
-            </div>
-            <div class="row1 two">
-              <p class="bolder">Past/Present Uses: </p>
-              <p class="blank">N/A</p>
+              <p class="blank">{dataset.metadata.resident_expert}</p>
               <p class="bolder">Primary Audience: </p>
-              <p class="blank">N/A</p>
+              <p class="blank">{dataset.metadata.primary_audience}</p>
             </div>
             <div class="row1">
               <p class="bolder">Description:</p>
@@ -121,13 +115,13 @@ const Dataset = ({ dataset }) => {
               <p class="bolder">Purpose:</p>
             </div>
             <div class="row1">
-              <p>N/A</p>
+              <p>{dataset.metadata.purpose}</p>
             </div>
             <div class="row1">
               <p class="bolder">Key Terms: </p>
             </div>
             <div class="row1">
-              <p>N/A</p>
+              <p>{dataset.metadata.key_terms}</p>
             </div>
           </div>
         </Grid>
