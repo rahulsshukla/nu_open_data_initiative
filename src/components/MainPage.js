@@ -62,14 +62,6 @@ const MainPage = () => {
         </div>
       </div>
       <div>
-        <div class="ui four column grid">
-          <div class="row next" id="header">
-            Featured Datasets
-          </div>
-          <div class="featured-datasets">
-            <Featured></Featured>
-          </div>
-        </div>
         <div class="ui four column grid" id="oneMain">
           <div class="row next" id="pop-header">
             Popular Categories
