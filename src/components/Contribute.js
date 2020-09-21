@@ -41,9 +41,8 @@ const Contribute = () => {
         </div>
         <div class="middle aligned row first">
           <div class="inf">
-            The Northwestern Open Data Portal filters through all Datasets added
-            through the NODI webpage. If any questions or concerns arise, please
-            contact nodi@u.northwestern.edu
+            Submit datasets that you have or request datasets that you may need. Before publishing any dataset, our team has an robust verification process to ensure sensitive information is not being revealed.
+            If any questions or concerns arise, please contact nuopendata@gmail.com
           </div>
         </div>
       </div>
