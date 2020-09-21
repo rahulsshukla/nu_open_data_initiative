@@ -41,7 +41,7 @@ const Contribute = () => {
         </div>
         <div class="middle aligned row first">
           <div class="inf">
-            Submit datasets that you have or request datasets that you may need. Before publishing any dataset, our team has an robust verification process to ensure sensitive information is not being revealed.
+            Submit datasets that you have or request datasets that you may need. Before publishing any dataset, our team has a robust verification process to minimize the chance that sensitive information is revealed.
             If any questions or concerns arise, please contact nuopendata@gmail.com
           </div>
         </div>
