@@ -56,6 +56,7 @@ const Contribute = () => {
             id="request"
             className="request-button"
             href="https://forms.gle/XCFkSw6KMTxfzeZRA"
+            target="_blank"
           >
             Request
           </Button>
