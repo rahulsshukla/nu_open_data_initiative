@@ -52,6 +52,7 @@ const MainPage = () => {
         <div id="search-bar1" class="ui icon input">
           <Form onSubmit={Search}>
             <Input
+              placeholder="Search here or check out the Datasets page if you want to explore..."
               fluid
               icon="search"
               onChange={(e) => {
