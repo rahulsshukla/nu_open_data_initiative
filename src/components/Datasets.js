@@ -45,13 +45,16 @@ const Datasets = () => {
     const cats = selectedCats.includes(value.name) ? selectedCats.filter(x => x !== value.name) : [...selectedCats, value.name];
     const catQuery = cats.length === 0 ? "" : JSON.stringify(cats);
     setSelectedCats(cats);
-    getDatasets(setDatasets, query, catQuery);
+    getDatasets(setDatasets, query, catQuery, JSON.stringify(selectedTypes));
   };
 
   const toggleDataTypes = value => {
     const types = selectedTypes.includes(value.name) ? selectedTypes.filter(x => x !== value.name) : [...selectedTypes, value.name];
     const typeQuery = types.length === 0 ? "" : JSON.stringify(types);
     setSelectedTypes(types);
+    console.log(selectedCats);
+    console.log(selectedTypes);
+    getDatasets(setDatasets, query, JSON.stringify(selectedCats), typeQuery);
   };
 
   //console.log(selectedCats)
