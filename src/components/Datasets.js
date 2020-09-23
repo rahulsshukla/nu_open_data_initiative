@@ -52,8 +52,6 @@ const Datasets = () => {
     const types = selectedTypes.includes(value.name) ? selectedTypes.filter(x => x !== value.name) : [...selectedTypes, value.name];
     const typeQuery = types.length === 0 ? "" : JSON.stringify(types);
     setSelectedTypes(types);
-    console.log(selectedCats);
-    console.log(selectedTypes);
     getDatasets(setDatasets, query, JSON.stringify(selectedCats), typeQuery);
   };
 
