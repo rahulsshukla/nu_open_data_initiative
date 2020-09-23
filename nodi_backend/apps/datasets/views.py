@@ -132,14 +132,14 @@ class DataSetViewSet(viewsets.ModelViewSet):
             for word in wordsinname:
                 fSet = fSet.filter(name__icontains=word)
 
-        if datatypes and (datatypes != []):
+        if datatypes:
             sSet = DataSet.objects.none()
             datatypes = eval(datatypes)
             for dat in datatypes:
                 sSet = sSet | fSet.filter(datatype__name__exact=dat)
             fSet = sSet
 
-        if categories and (categories != "[]"):
+        if categories:
             sSet = DataSet.objects.none()
             categories = eval(categories)
             for cat in categories:
