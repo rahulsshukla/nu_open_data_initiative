@@ -44,15 +44,17 @@ const Datasets = () => {
   const toggleCategories = value => {
     const cats = selectedCats.includes(value.name) ? selectedCats.filter(x => x !== value.name) : [...selectedCats, value.name];
     const catQuery = cats.length === 0 ? "" : JSON.stringify(cats);
+    const typeQuery = selectedTypes.length === 0 ? "" : JSON.stringify(selectedTypes);
     setSelectedCats(cats);
-    getDatasets(setDatasets, query, catQuery, JSON.stringify(selectedTypes));
+    getDatasets(setDatasets, query, catQuery, typeQuery);
   };
 
   const toggleDataTypes = value => {
     const types = selectedTypes.includes(value.name) ? selectedTypes.filter(x => x !== value.name) : [...selectedTypes, value.name];
     const typeQuery = types.length === 0 ? "" : JSON.stringify(types);
+    const catQuery = selectedCats.length === 0 ? "" : JSON.stringify(selectedCats);
     setSelectedTypes(types);
-    getDatasets(setDatasets, query, JSON.stringify(selectedCats), typeQuery);
+    getDatasets(setDatasets, query, catQuery, typeQuery);
   };
 
   //console.log(selectedCats)
@@ -63,7 +65,7 @@ const Datasets = () => {
     var string = urlParams.get("search");
     string = string === null ? "" : string;
     setSearch(string);
-    getDatasets(setDatasets, string, "");
+    getDatasets(setDatasets, string, "", "");
   }, []);
 
   const filters = [
@@ -87,8 +89,9 @@ const Datasets = () => {
       <Grid.Row>
         <Grid.Column>
           <Form onSubmit={() => { 
-              const val = selectedCats.length === 0 ? "" : JSON.stringify(selectedCats); 
-              getDatasets(setDatasets, query, val);
+              const cat = selectedCats.length === 0 ? "" : JSON.stringify(selectedCats); 
+              const dat = selectedTypes.length === 0 ? "" : JSON.stringify(selectedTypes); 
+              getDatasets(setDatasets, query, cat, dat);
             }}
           >
             <Input value={query} onChange={e => setSearch(e.target.value)} fluid icon="search" />
