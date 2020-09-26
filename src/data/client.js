@@ -12,8 +12,8 @@ export const getDataTypes = async (callback) => {
   return callback(data);
 }
 
-export const getDatasets = async (callback, query, categories) => {
-  const response = await fetch(`api/datasets/search?query=${query}&categories=${categories}`)
+export const getDatasets = async (callback, query, categories, dataTypes) => {
+  const response = await fetch(`api/datasets/search?query=${query}&categories=${categories}&datatypes=${dataTypes}`)
   const data = await response.json();
   console.log(data);
   return callback(data);
