@@ -19,6 +19,9 @@ class DataSet(models.Model):
 
     key = models.CharField(max_length=100, default=None, null=True)
     bucket = models.CharField(max_length=100, default=None, null=True)
+    
+    # number of total downloads
+    downloads = models.PositiveIntegerField(default=0, null=False)
 
     def get_signed_url(self):
         return generate_presigned_get(self.bucket, self.key)
