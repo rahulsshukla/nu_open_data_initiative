@@ -1,5 +1,5 @@
 import React from "react";
-
+import ReactGA from "react-ga";
 //component imports
 import MainPage from "../src/components/MainPage";
 import Banner from "../src/components/Banner";
@@ -16,6 +16,7 @@ import Footer from "../src/components/Footer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App = () => {
+  initializeReactGA();
   return (
     <Router>
       <Banner></Banner>
@@ -29,5 +30,10 @@ const App = () => {
     </Router>
   );
 };
+
+function initializeReactGA() {
+  ReactGA.initialize("UA-179153158-1");
+  ReactGA.pageview("/homepage");
+}
 
 export default App;
