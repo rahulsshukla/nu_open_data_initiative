@@ -29,7 +29,7 @@ class DataSetViewSet(viewsets.ModelViewSet):
         """
         # TODO: add pagination
         """
-        queryset = DataSet.objects.filter(approved=True)
+        queryset = DataSet.objects.filter(approved=True).order_by('-popularity')
         serializer = DataSetSerializer(queryset, many=True)
         return JsonResponse(serializer.data, safe=False)
 
@@ -149,8 +149,8 @@ class DataSetViewSet(viewsets.ModelViewSet):
             fSet = sSet
         
         
-
-        serializer = DataSetSerializer(fSet, many=True)
+        queryset = fSet.order_by('-popularity')
+        serializer = DataSetSerializer(queryset, many=True)
         return JsonResponse(serializer.data, safe=False)
     
     @action(detail=True, methods=['get'])
