@@ -1,25 +1,29 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, {
+  // useState,
+  // useEffect,
+  useContext
+} from "react";
 import "semantic-ui-css/semantic.min.css";
 import {
-  Container,
-  Search,
+  // Container,
+  // Search,
   Grid,
-  Header,
-  Segment,
+  // Header,
+  // Segment,
   Icon,
-  Divider,
-  Accordion,
-  List,
+  // Divider,
+  // Accordion,
+  // List,
   Form,
   Input,
-  Menu,
-  Button,
+  // Menu,
+  // Button,
 } from "semantic-ui-react";
 import "../styles/MainPage.css";
 import { AppState } from "../data/context";
 import nu from "../nu.jpg";
 
-import Featured from "./Featured";
+// import Featured from "./Featured";
 
 const MainPage = () => {
   const state = useContext(AppState);
@@ -35,10 +39,9 @@ const MainPage = () => {
       <div className="FullsearchMain">
         <img
           id="imageMain"
-          height="350px"
-          width="100%"
+          height="400px"
           src={nu}
-          alt="Northwestern Image"
+          alt="Northwestern"
           className="logo"
         />
         <h3 id="top" className="search-bar2">
@@ -49,7 +52,7 @@ const MainPage = () => {
           {" "}
           The Northwestern Open Data Portal
         </h1>
-        <div id="search-bar1" class="ui icon input">
+        <div id="search-bar1" className="ui icon input">
           <Form onSubmit={Search}>
             <Input
               placeholder="Search here or check out the Datasets page if you want to explore..."
@@ -63,13 +66,13 @@ const MainPage = () => {
         </div>
       </div>
       <div>
-        <div class="ui four column grid" id="oneMain">
-          <div class="row next" id="pop-header">
+        <div className="ui four column grid" id="oneMain">
+          <div className="row next" id="pop-header">
             Popular Categories
           </div>
           <div className="small-grid">
             {categories.slice(0, 6).map((c) => (
-              <Grid.Column width={3} textAlign="center">
+              <Grid.Column width={3} textAlign="center" key={c.name}>
                 <div className="pop-cat">
                   <button className="cat-but">
                     <Icon

@@ -3,8 +3,10 @@ import os
 from django.shortcuts import render, get_object_or_404
 from rest_framework import generics, viewsets
 from rest_framework.decorators import action
-from django.http import JsonResponse, HttpResponseNotFound, HttpResponseBadRequest
+from django.http import JsonResponse, HttpResponseNotFound, HttpResponseBadRequest, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
+
+from django.db.models import F
 
 from .models import DataSet, Category, DataType, MetaData
 from .serializers import DataSetSerializer, CategorySerializer, DataTypeSerializer
@@ -27,7 +29,7 @@ class DataSetViewSet(viewsets.ModelViewSet):
         """
         # TODO: add pagination
         """
-        queryset = DataSet.objects.filter(approved=True)
+        queryset = DataSet.objects.filter(approved=True).order_by('-popularity')
         serializer = DataSetSerializer(queryset, many=True)
         return JsonResponse(serializer.data, safe=False)
 
@@ -98,8 +100,8 @@ class DataSetViewSet(viewsets.ModelViewSet):
         """
         return HttpResponseNotFound("Not Implemented Yet")
 
-    @ csrf_exempt
-    @ action(detail=False, methods=['post'])
+    @csrf_exempt
+    @action(detail=False, methods=['post'])
     def s3_upload_url(self, request):
         """
         +POST+
@@ -147,9 +149,25 @@ class DataSetViewSet(viewsets.ModelViewSet):
             fSet = sSet
         
         
-
-        serializer = DataSetSerializer(fSet, many=True)
+        queryset = fSet.order_by('-popularity')
+        serializer = DataSetSerializer(queryset, many=True)
         return JsonResponse(serializer.data, safe=False)
+    
+    @action(detail=True, methods=['get'])
+    def link(self, request, pk=None):
+        """
+        Gets the link for a dataset.
+        Can be a redirect or an actual link.
+        """
+        queryset = DataSet.objects.filter(approved=True)
+        dataset = get_object_or_404(queryset, pk=pk)
+        dataset.popularity = F('popularity') + 1
+        dataset.save()
+        
+        if dataset.datatype.name == "Dashboard":
+            return HttpResponseRedirect(dataset.metadata.raw_source_link)
+        else:
+            return HttpResponseRedirect(dataset.get_signed_url())
 
     def validate_params(self, body, params):
         """

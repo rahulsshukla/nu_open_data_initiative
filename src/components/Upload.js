@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import {
   Button,
   Modal,
@@ -63,6 +63,8 @@ const parseFileType = (string) => {
       return "pdf"
     case "text/html":
       return "html"
+    default:
+      return "unkown"
   }
 };
 
@@ -92,7 +94,7 @@ const SubmitMessage = ({ errorMessage }) => {
 
 const Upload = ({ modalOpen, setModalOpen, setUploadConfirmed }) => {
   const state = useContext(AppState);
-  const { categories, dataTypes, setRefresh, refresh } = state;
+  const { categories, dataTypes } = state;
 
   const [errors, setErrors] = useState(formErrors);
   const [request, setRequest] = useState(dataset);
@@ -216,7 +218,6 @@ const Upload = ({ modalOpen, setModalOpen, setUploadConfirmed }) => {
               required
               placeholder="Dept. of X"
               label="Department Ownership"
-              required
               onChange={(e) => setRequest({...request, metadata: {...request.metadata, department_ownership: e.target.value}})}
             />
             <Form.Input

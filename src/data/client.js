@@ -1,21 +1,21 @@
 export const getCategories = async (callback) => {
   const response = await fetch('api/categories')
   const data = await response.json();
-  console.log(data)
+  // console.log(data)
   return callback(data);
 }
 
 export const getDataTypes = async (callback) => {
   const response = await fetch('api/datatypes')
   const data = await response.json();
-  console.log(data)
+  // console.log(data)
   return callback(data);
 }
 
 export const getDatasets = async (callback, query, categories, dataTypes) => {
   const response = await fetch(`api/datasets/search?query=${query}&categories=${categories}&datatypes=${dataTypes}`)
   const data = await response.json();
-  console.log(data);
+  // console.log(data);
   return callback(data);
 };
 
@@ -63,17 +63,7 @@ export const uploadDataset = async (s3Params, file, request, confirmUpload) => {
     const dataset = request;
     dataset.key = response.s3Data.key;
     dataset.submitted_at = new Date();
-    console.log(JSON.stringify(dataset))
-    var Data = await fetch('api/datasets', 
-      {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(dataset)
-      }
-    );
-    Data = await Data.json()
+    // console.log(JSON.stringify(dataset))
     confirmUpload(true);
   } catch(error) {
     response.failedOnStep = "/datasets Upload";

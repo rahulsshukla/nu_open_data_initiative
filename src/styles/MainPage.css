@@ -8,14 +8,6 @@
   font-size: 24pt;
 }
 
-.FullsearchMain {
-  position: relative;
-  width: 100%;
-  height: 350px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 #icon {
   width: 5% !important;
   height: 5% !important;
@@ -75,11 +67,9 @@ h3 {
 }
 
 #imageMain {
-  width: 100% !important;
   background-size: cover !important;
   background-position: center center;
   background-attachment: fixed;
-  max-width: 1400px;
   filter: brightness(80%) !important;
 }
 

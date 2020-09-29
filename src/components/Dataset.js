@@ -1,31 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Button,
   Header,
-  Icon,
+  // Icon,
   Modal,
   Form,
-  Select,
-  Input,
-  TextArea,
+  // Select,
+  // Input,
+  // TextArea,
   Grid,
-  GridRow,
-  Container,
+  // GridRow,
+  // Container,
   Label,
   Checkbox,
 } from "semantic-ui-react";
 import "../styles/Dataset.css";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import moment from "moment";
-
-console.log(
-  "MOMENT",
-  moment("2020-05-31T23:06:39.727809Z").format("MM-DD-YYYY")
-);
 
 const Download = ({ ds }) => {
   function Open() {
-    var win = window.open(ds.s3_url, "_blank");
+    var win = window.open(`api/datasets/${ds.id}/link`, "_blank");
     win.focus();
   }
   return (
