@@ -1,16 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "semantic-ui-css/semantic.min.css";
 import "../styles/Banner.css";
 import logo from "../NODI.png";
-import {
-  Container,
-  Search,
-  Grid,
-  Header,
-  Segment,
-  Row,
-  Button,
-} from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 
@@ -28,11 +19,11 @@ const Banner = () => {
     }
   }
   return (
-   <div class="banner">
+   <div className="banner">
       <Link to={{ pathname: `/` }}>
         <img src={logo} alt="Northwestern Open Data Portal" width="180px" className="logonav"/>
       </Link>
-      <a href="javascript:void(0);" class="ico" onClick={sayHello}>&#9776;</a>
+      <a href="javascript:void(0);" className="ico" onClick={sayHello}>&#9776;</a>
       <div className="topnav" id="myTopnav"> 
         <button id="button" onClick={() => window.location.href = "/datasets"} className="ui button">
           Datasets
@@ -43,7 +34,7 @@ const Banner = () => {
           </button>
         </Link>
         <Link to={{ pathname: `/aboutus` }}>
-          <button id="button" class="ui button">
+          <button id="button" className="ui button">
             About Us
           </button>
         </Link>

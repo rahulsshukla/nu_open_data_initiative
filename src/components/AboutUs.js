@@ -1,14 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "semantic-ui-css/semantic.min.css";
-import {
-  Container,
-  Search,
-  Grid,
-  Header,
-  Segment,
-  Row,
-  Button
-} from "semantic-ui-react";
 import "../styles/AboutUs.css";
 import bradley from "../bradley.png";
 import rahul from "../rahul.png";
@@ -43,27 +34,27 @@ const AboutUs = () => {
         </div>
         <div class="centered row" id="fixed1">
           <div class="four wide column side">
-            <img src={bradley} id="person"/>
+            <img src={bradley} id="person" alt="Student"/>
             <p class="name">Bradley Ramos</p>
-            <img src={rahul} id="person"/>
+            <img src={rahul} id="person" alt="Student"/>
             <p class="name">Rahul Shukla</p>
           </div>
           <div class="four wide column">
-            <img src={emily} id="person"/>   
+            <img src={emily} id="person" alt="Student"/>   
             <p class="name">Emily Weintraub</p>         
-            <img src={jenna} id="person"/> 
+            <img src={jenna} id="person" alt="Student"/> 
             <p class="name">Jenna Jubeir</p>
           </div>
           <div class="four wide column">
-            <img src={rishi} id="person"/>     
+            <img src={rishi} id="person" alt="Student"/>     
             <p class="name">Rishi Gudivaka</p>     
-            <img src={alex} id="person"/> 
+            <img src={alex} id="person" alt="Student"/> 
             <p class="name">Alex Lee</p>
           </div>
           <div class="four wide column side">
-            <img src={demitra} id="person"/>   
+            <img src={demitra} id="person" alt="Student"/>   
             <p class="name">Demitra Del Fiacco</p>         
-            <img src={alexr} id="person"/>
+            <img src={alexr} id="person" alt="Student"/>
             <p class="name">Alex Rhee</p>
           </div>
         </div>
@@ -74,11 +65,11 @@ const AboutUs = () => {
         </div>
         <div class="row" id="fixed2">
           <div class="three wide column side">
-            <img src={hammond} id="faculty"/>
+            <img src={hammond} id="faculty" alt="Faculty"/>
             <p class="name">Kristian Hammond</p>
           </div>
           <div class="three wide column">
-            <img src={amit} id="faculty"/> 
+            <img src={amit} id="faculty" alt="Faculty"/> 
             <p class="name">Amit Prachand</p>           
           </div>
           <div class="ten wide column">

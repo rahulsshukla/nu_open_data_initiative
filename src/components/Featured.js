@@ -3,19 +3,19 @@ import ItemsCarousel from "react-items-carousel";
 import {
   Grid,
   Header,
-  Icon,
-  Divider,
-  Accordion,
-  Form,
-  Input,
-  Menu,
+  // Icon,
+  // Divider,
+  // Accordion,
+  // Form,
+  // Input,
+  // Menu,
   Label,
 } from "semantic-ui-react";
 import "../styles/Featured.css";
 
 export default () => {
-  const [activeItemIndex, setActiveItemIndex] = useState(0);
-  const chevronWidth = 100;
+  // const [activeItemIndex, setActiveItemIndex] = useState(0);
+  // const chevronWidth = 100;
   return (
     <div className="feat-container">
       <div className="card">

@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import "semantic-ui-css/semantic.min.css";
 import {
   Container,
-  Search,
-  Grid,
-  Header,
-  Segment,
-  Row,
+  // Search,
+  // Grid,
+  // Header,
+  // Segment,
+  // Row,
   Message,
   Button,
   ButtonGroup,

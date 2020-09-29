@@ -2,16 +2,16 @@ import React, { useContext, useState, useEffect } from "react";
 import {
   Grid,
   Header,
-  Icon,
+  // Icon,
   Divider,
   Accordion,
   Form,
   Input,
   Menu,
   Label,
-  Button,
-  Container,
-  Card,
+  // Button,
+  // Container,
+  // Card,
 } from "semantic-ui-react";
 import nu from "../nu.jpg";
 import "../styles/Datasets.css";
@@ -66,7 +66,7 @@ const Datasets = () => {
     string = string === null ? "" : string;
     setSearch(string);
     getDatasets(setDatasets, string, "", "");
-  }, []);
+  }, [setSearch]);
 
   const filters = [
     {
@@ -157,10 +157,10 @@ const DatasetsPage = () => {
     <React.Fragment>
       <div className="FullsearchMain">
         <img
-          id="image"
-          height="350px"
+          id="imageMain"
+          height="400px"
           src={nu}
-          alt="Northwestern Image"
+          alt="Northwestern"
           className="logo"
         />
         <h1 id="bottom" className="search-bar2">

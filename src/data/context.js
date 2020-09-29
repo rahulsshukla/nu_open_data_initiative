@@ -1,5 +1,9 @@
 import React, { useEffect, createContext, useState } from "react";
-import { getCategories, getDataTypes, getDatasets } from "./client";
+import {
+  getCategories,
+  getDataTypes,
+  // getDatasets
+} from "./client";
 
 const AppState = createContext(null);
 const { Provider } = AppState;
