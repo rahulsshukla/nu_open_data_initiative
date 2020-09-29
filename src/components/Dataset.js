@@ -20,7 +20,7 @@ import moment from "moment";
 
 const Download = ({ ds }) => {
   function Open() {
-    var win = window.open(ds.s3_url, "_blank");
+    var win = window.open(`api/datasets/${ds.id}/link`, "_blank");
     win.focus();
   }
   return (
