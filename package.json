@@ -18,10 +18,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && npm run build:favicon",
+    "build": "react-scripts build && npm run build:favicon && npm run build:manifest && npm run build:robots",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build:favicon": "cp build/favicon.png build/static/favicon.png"
+    "build:favicon": "cp build/favicon.png build/static/favicon.png",
+    "build:manifest": "cp build/manifest.json build/static/manifest.json",
+    "build:robots": "cp build/robots.txt build/static/robots.txt"
   },
   "eslintConfig": {
     "extends": "react-app"
