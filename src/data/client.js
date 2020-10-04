@@ -64,7 +64,24 @@ export const uploadDataset = async (s3Params, file, request, confirmUpload) => {
     dataset.key = response.s3Data.key;
     dataset.submitted_at = new Date();
     // console.log(JSON.stringify(dataset))
-    confirmUpload(true);
+    const uploadResponse = await fetch('api/datasets', 
+      {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dataset)
+      }
+    );
+    
+    if (uploadResponse.ok)
+    {
+      confirmUpload(true);
+    }
+    else
+    {
+      confirmUpload(false);
+    }
   } catch(error) {
     response.failedOnStep = "/datasets Upload";
     response.error = error;
