@@ -21,7 +21,7 @@ const AboutUs = () => {
           </div>
           <div class="middle aligned row first">
             <div class="info">
-            The Northwestern Open Data Initiative (nodi) is a student group committed to the idea of <a href="https://theodi.org/article/what-is-open-data-and-why-should-we-care/">open data</a>. Open data is data that is avaialble to everyone. At Northwestern, this could mean datasets about student demographics, tuition, NUPD statistics, and more. Our mission is to give our community access to this type of data. Since January 2020, we have been working with Professor Kristian Hammond and the Institutional Research Office at Northerstern to create an open data portal to host all Northwestern-related data.            
+            The Northwestern Open Data Initiative (NODI) is a student group committed to the idea of <a href="https://theodi.org/article/what-is-open-data-and-why-should-we-care/">open data</a>. Open data is data that is available to everyone. At Northwestern, this could mean datasets about student demographics, tuition, NUPD statistics, and more. Our mission is to give our community access to this type of data. Since January 2020, we have been working with Professor Kristian Hammond and the Institutional Research Office at Northwerstern to create an open data portal to host all Northwestern-related data.            
             </div>
           </div>
       </div>

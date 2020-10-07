@@ -58,7 +58,7 @@ const Download = ({ ds }) => {
 
 const Dataset = ({ dataset }) => {
   var email = "mailto:" + dataset.email;
-  console.log(email);
+  // console.log(email);
   return (
     <Modal
       size="small"

@@ -66,7 +66,8 @@ const Datasets = () => {
     string = string === null ? "" : string;
     setSearch(string);
     getDatasets(setDatasets, string, "", "");
-  }, []);
+  }, []); // @Meech please fix this error:
+  // "Line 69:6:  React Hook useEffect has a missing dependency: 'setSearch'. Either include it or remove the dependency array  react-hooks/exhaustive-deps"
 
   const filters = [
     {
