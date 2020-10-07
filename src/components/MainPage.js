@@ -22,6 +22,7 @@ import {
 import "../styles/MainPage.css";
 import { AppState } from "../data/context";
 import nu from "../nu.jpg";
+import { Link } from "react-router-dom";
 
 // import Featured from "./Featured";
 
@@ -76,6 +77,8 @@ const MainPage = () => {
                 <div className="pop-cat">
                   <button className="cat-but">
                     <Icon
+                      as={Link}
+                      to="/datasets"
                       name={c.icon_name}
                       size="huge"
                       style={{ color: "#4e2a8f" }}

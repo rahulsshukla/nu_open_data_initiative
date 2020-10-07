@@ -66,7 +66,7 @@ const Datasets = () => {
     string = string === null ? "" : string;
     setSearch(string);
     getDatasets(setDatasets, string, "", "");
-  }, [setSearch]);
+  }, []);
 
   const filters = [
     {
