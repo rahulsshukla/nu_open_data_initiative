@@ -77,8 +77,6 @@ const MainPage = () => {
                 <div className="pop-cat">
                   <button className="cat-but">
                     <Icon
-                      as={Link}
-                      to="/datasets"
                       name={c.icon_name}
                       size="huge"
                       style={{ color: "#4e2a8f" }}
