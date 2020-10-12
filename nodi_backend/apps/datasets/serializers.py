@@ -21,7 +21,7 @@ class MetaDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = MetaData
         fields = ('id', 'department_ownership', 'raw_source_link',
-                  'publish_date', 'description')
+                  'publish_date', 'description', 'key_terms', 'primary_audience', 'purpose', 'decisions', 'resident_expert', 'appearances')
 
 
 class DataSetSerializer(serializers.ModelSerializer):
