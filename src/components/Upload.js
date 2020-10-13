@@ -214,13 +214,6 @@ const Upload = ({ modalOpen, setModalOpen, setUploadConfirmed }) => {
               />
             </Form.Field>
             <Form.Input
-              error={errors.ownership}
-              required
-              placeholder="Dept. of X"
-              label="Department Ownership"
-              onChange={(e) => setRequest({...request, metadata: {...request.metadata, department_ownership: e.target.value}})}
-            />
-            <Form.Input
               error={errors.link}
               required
               label="Link to raw data source"
@@ -229,7 +222,7 @@ const Upload = ({ modalOpen, setModalOpen, setUploadConfirmed }) => {
               onChange={(e) => setRequest({...request, metadata: {...request.metadata, raw_source_link: e.target.value}})}
             />
             <Form.Select
-              label="Category"
+              label="Category Tag"
               options={categories.map(c => { return { key: c.id, value: c.id, text: c.name }})}
               required
               error={errors.category}
@@ -237,7 +230,7 @@ const Upload = ({ modalOpen, setModalOpen, setUploadConfirmed }) => {
               placeholder="Category"
             />
             <Form.Select
-              label="Data Type"
+              label="Data Type Tag"
               options={dataTypes.map(d => { return { key: d.id, value: d.id, text: d.name }})}
               required
               error={errors.dataType}
@@ -245,7 +238,7 @@ const Upload = ({ modalOpen, setModalOpen, setUploadConfirmed }) => {
               placeholder="Data Type"
             />
             <Form.Input
-              label="Dataset Description"
+              label="1-2 Sentence Description"
               control={TextArea}
               type="text"
               placeholder="Provide a 1-2 sentence high-level description of the dataset"
@@ -254,41 +247,48 @@ const Upload = ({ modalOpen, setModalOpen, setUploadConfirmed }) => {
               error={errors.description}
             />
             <Form.Field
-              label="Define any key terms in this dataset:"
+              label="Define any key terms"
               control={TextArea}
               required
               onChange={(e) => setRequest({...request, metadata: {...request.metadata, key_terms: e.target.value}})}
               error={errors.keyTerms}
             />
             <Form.Field
-              label="Who is the primary audience? "
+              label="Primary Audience"
               control={TextArea}
               required
               onChange={(e) => setRequest({...request, metadata: {...request.metadata, primary_audience: e.target.value}})}
               error={errors.primaryAudience}
             />
             <Form.Field
-              label="What is the purpose of this dataset and why does it exist?"
+              label="Purpose of this dataset and why does this exist"
               control={TextArea}
               required
               onChange={(e) => setRequest({...request, metadata: {...request.metadata, purpose: e.target.value}})}
               error={errors.purpose}
             />
+            <Form.Input
+              error={errors.ownership}
+              required
+              placeholder="Dept. of X"
+              label="Who does this data belong to, have they given permission to share?"
+              onChange={(e) => setRequest({...request, metadata: {...request.metadata, department_ownership: e.target.value}})}
+            />
             <Form.Field
-              label="What kind of decisions are being made with the dataset (currently and in the future)?"
+              label="What kind of decisions (current + future) are being made with the dataset?"
               control={TextArea}
               required
               onChange={(e) => setRequest({...request, metadata: {...request.metadata, decisions: e.target.value}})}
               error={errors.decisions}
             />
             <Form.Input
-              label="Who can provide context around the dataset and answer questions about it?"
+              label="Who can provide context around the dataset and answer questions about how it was collected, steps taken to process it, and how to interpret variables?"
               required
               onChange={(e) => setRequest({...request, metadata: {...request.metadata, resident_expert: e.target.value}})}
               error={errors.residentExpert}
             />
             <Form.Field
-              label="Where does this dataset show up (i.e. in major reports)?"
+              label="Where has this dataset been used before?"
               control={TextArea}
               //required
               onChange={(e) => setRequest({...request, metadata: {...request.metadata, appearances: e.target.value}})}
