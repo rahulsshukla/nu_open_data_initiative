@@ -137,7 +137,7 @@ class DataSetViewSet(viewsets.ModelViewSet):
         #-unions the two filtered sets
         if name:
             sSet = DataSet.objects.none()
-            cats = ["Finances", "Safety", "Student Life", "Admissions", "Academic", "Campus"]
+            cats = [str(cat) for cat in Category.objects.all()]
             catsInName = filter(lambda cat: cat.lower() in name.lower(), cats)
             for cat in catsInName:
                 sSet = sSet | fSet.filter(categories__name__in=[cat])
