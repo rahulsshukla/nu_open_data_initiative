@@ -36,8 +36,8 @@ const MainPage = () => {
       <div className="FullsearchMain">
         <img
           id="imageMain"
-          height="400px"
           src={nu}
+          height="400px"
           alt="Northwestern"
           className="logo"
         />

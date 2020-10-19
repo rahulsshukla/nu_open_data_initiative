@@ -75,7 +75,7 @@ const Datasets = () => {
   ];
 
   return (
-    <Grid stackable style={{ marginBottom: "50px"}}>
+    <React.Fragment>
       <Grid.Row>
         <Grid.Column>
           <Form onSubmit={() => { 
@@ -85,7 +85,13 @@ const Datasets = () => {
               setTimer(true);
             }}
           >
-            <Input value={query} onChange={e => setQuery(e.target.value)} fluid icon="search" />
+            <Input 
+              value={query} 
+              onChange={e => setQuery(e.target.value)} 
+              fluid 
+              icon="search" 
+              placeholder="Search by dataset name or category..."
+            />
           </Form>
         </Grid.Column>
       </Grid.Row>
@@ -139,17 +145,17 @@ const Datasets = () => {
         }
         </Grid.Column>
       </Grid.Row>
-    </Grid>
+      </React.Fragment>
   );
 };
 
 const DatasetsPage = () => {
   return (
-    <React.Fragment>
-      <div>
+    <Grid stackable style={{ marginBottom: "50px"}}>
+      <div className="FullsearchMain">
         <img
-          id="imageMain"
           height="400px"
+          id="imageDatasets"
           src={nu}
           alt="Northwestern"
           className="logo"
@@ -159,7 +165,7 @@ const DatasetsPage = () => {
         </h1>
       </div>
       <Datasets />
-    </React.Fragment>
+    </Grid>
   );
 };
 
