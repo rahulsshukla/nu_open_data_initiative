@@ -146,7 +146,7 @@ const Datasets = () => {
 const DatasetsPage = () => {
   return (
     <React.Fragment>
-      <div className="FullsearchMain">
+      <div>
         <img
           id="imageMain"
           height="400px"

@@ -33,7 +33,7 @@ const MainPage = () => {
 
   return (
     <div>
-      <div className="FullsearchMain">
+      <div>
         <img
           id="imageMain"
           height="400px"
@@ -42,11 +42,9 @@ const MainPage = () => {
           className="logo"
         />
         <h3 id="top" className="search-bar2">
-          {" "}
-          Welcome to{" "}
+          Welcome to
         </h3>
         <h1 id="bottom" className="search-bar2">
-          {" "}
           The Northwestern Open Data Portal
         </h1>
         <div id="search-bar1" className="ui icon input">
