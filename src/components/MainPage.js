@@ -1,39 +1,34 @@
 import React, {
-  // useState,
-  // useEffect,
   useContext
 } from "react";
 import "semantic-ui-css/semantic.min.css";
 import {
-  // Container,
-  // Search,
   Grid,
-  // Header,
-  // Segment,
   Icon,
-  // Divider,
-  // Accordion,
-  // List,
   Form,
   Input,
-  // Menu,
-  // Button,
 } from "semantic-ui-react";
 import "../styles/MainPage.css";
 import { AppState } from "../data/context";
 import nu from "../nu.jpg";
-import { Link } from "react-router-dom";
-
-// import Featured from "./Featured";
+import { useHistory } from "react-router-dom";
 
 const MainPage = () => {
   const state = useContext(AppState);
-  const { categories, query, setSearch } = state;
+  const { categories, query, setQuery, populateDatasets, toggleCategories } = state;
+  const history = useHistory();
 
   const Search = () => {
-    var h = query;
-    window.location.href = "/datasets?search=" + h;
+    if (query) {
+      history.push("datasets");
+      populateDatasets(query, [], []);
+    }
   };
+
+  const selectCategory = (category) => {
+    history.push("datasets");
+    toggleCategories(category);
+  }
 
   return (
     <div>
@@ -60,7 +55,7 @@ const MainPage = () => {
               fluid
               icon="search"
               onChange={(e) => {
-                setSearch(e.target.value);
+                setQuery(e.target.value);
               }}
             />
           </Form>
@@ -69,13 +64,13 @@ const MainPage = () => {
       <div>
         <div className="ui four column grid" id="oneMain">
           <div className="row next" id="pop-header">
-            Popular Categories
+            Dataset Categories
           </div>
           <div className="small-grid">
             {categories.slice(0, 6).map((c) => (
               <Grid.Column width={3} textAlign="center" key={c.name}>
                 <div className="pop-cat">
-                  <button className="cat-but">
+                  <button onClick={() => selectCategory(c)} className="cat-but">
                     <Icon
                       name={c.icon_name}
                       size="huge"

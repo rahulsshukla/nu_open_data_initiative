@@ -1,73 +1,62 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import {
   Grid,
   Header,
-  // Icon,
   Divider,
   Accordion,
   Form,
   Input,
   Menu,
   Label,
-  // Button,
-  // Container,
-  // Card,
+  Loader
 } from "semantic-ui-react";
 import nu from "../nu.jpg";
 import "../styles/Datasets.css";
 import Dataset from "./Dataset";
-import { getDatasets } from "../data/client";
 import { AppState } from "../data/context";
-
-const filterPanel = (filter, toggle) => (
-  <Form>
-    <Form.Group grouped>
-      {filter.map((value) => (
-        <Form.Checkbox 
-          onChange={() => toggle(value)}
-          label={value.name} 
-        />
-      ))}
-    </Form.Group>
-  </Form>
-);
 
 const Datasets = () => {
   const state = useContext(AppState);
-  const { categories, dataTypes, query, setSearch } = state;
-  const [datasets, setDatasets] = useState([]);
-  const [selectedCats, setSelectedCats] = useState("");
-  const [selectedTypes, setSelectedTypes] = useState("");
-
+  const { 
+    categories, 
+    dataTypes, 
+    query, 
+    setQuery, 
+    datasets, 
+    populateDatasets, 
+    selectedCats, 
+    selectedTypes, 
+    toggleCategories, 
+    toggleDataTypes 
+  } = state;
   const [openTypePanel, setOpenTypePanel] = useState(false);
+  const [loaderTimer, setTimer] = useState(true);
 
-  const toggleCategories = value => {
-    const cats = selectedCats.includes(value.name) ? selectedCats.filter(x => x !== value.name) : [...selectedCats, value.name];
-    const catQuery = cats.length === 0 ? "" : JSON.stringify(cats);
-    const typeQuery = selectedTypes.length === 0 ? "" : JSON.stringify(selectedTypes);
-    setSelectedCats(cats);
-    getDatasets(setDatasets, query, catQuery, typeQuery);
-  };
+  const filterPanel = (filter, toggle) => (
+    <Form>
+      <Form.Group grouped>
+        {filter.map((value) => (
+          <Form.Checkbox 
+            checked={selectedCats.includes(value.name) || selectedTypes.includes(value)}
+            onChange={() => toggle(value)}
+            label={value.name} 
+          />
+        ))}
+      </Form.Group>
+    </Form>
+  );
 
-  const toggleDataTypes = value => {
-    const types = selectedTypes.includes(value.name) ? selectedTypes.filter(x => x !== value.name) : [...selectedTypes, value.name];
-    const typeQuery = types.length === 0 ? "" : JSON.stringify(types);
-    const catQuery = selectedCats.length === 0 ? "" : JSON.stringify(selectedCats);
-    setSelectedTypes(types);
-    getDatasets(setDatasets, query, catQuery, typeQuery);
-  };
-
-  //console.log(selectedCats)
-
-  useEffect(() => {
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    var string = urlParams.get("search");
-    string = string === null ? "" : string;
-    setSearch(string);
-    getDatasets(setDatasets, string, "", "");
-  }, []); // @Meech please fix this error:
-  // "Line 69:6:  React Hook useEffect has a missing dependency: 'setSearch'. Either include it or remove the dependency array  react-hooks/exhaustive-deps"
+  const DatasetLoader = () => {
+    setTimeout(() => setTimer(false), 6000);
+    if (loaderTimer)  {
+      return (
+          <Loader active>
+            Finding datasets...
+          </Loader>          
+      )
+    }
+    else return <Header textAlign="center" content="No datasets matched your search criteria." />
+  }
 
   const filters = [
     {
@@ -83,7 +72,6 @@ const Datasets = () => {
       onTitleClick: (e, data) => setOpenTypePanel(!data.active)
     }
   ];
-  /* finding search from prev page*/
 
   return (
     <Grid stackable style={{ marginBottom: "50px"}}>
@@ -92,10 +80,11 @@ const Datasets = () => {
           <Form onSubmit={() => { 
               const cat = selectedCats.length === 0 ? "" : JSON.stringify(selectedCats); 
               const dat = selectedTypes.length === 0 ? "" : JSON.stringify(selectedTypes); 
-              getDatasets(setDatasets, query, cat, dat);
+              populateDatasets(query, cat, dat);
+              setTimer(true);
             }}
           >
-            <Input value={query} onChange={e => setSearch(e.target.value)} fluid icon="search" />
+            <Input value={query} onChange={e => setQuery(e.target.value)} fluid icon="search" />
           </Form>
         </Grid.Column>
       </Grid.Row>
@@ -111,7 +100,7 @@ const Datasets = () => {
           </Grid.Row>
         </Grid.Column>
         <Grid.Column width={12}>
-        {datasets.length === 0 ? <Header textAlign="center" content="No datasets matched your search criteria." /> :
+        {datasets.length === 0 ? <DatasetLoader /> :
           <Menu vertical text fluid>
             {datasets.map((x) => (
               <Menu.Item>

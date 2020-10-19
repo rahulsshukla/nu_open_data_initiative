@@ -2,20 +2,14 @@ import React from "react";
 import {
   Button,
   Header,
-  // Icon,
   Modal,
   Form,
-  // Select,
-  // Input,
-  // TextArea,
   Grid,
-  // GridRow,
-  // Container,
+  Icon,
   Label,
   Checkbox,
 } from "semantic-ui-react";
 import "../styles/Dataset.css";
-// import { Link } from "react-router-dom";
 import moment from "moment";
 
 const Download = ({ ds }) => {
@@ -64,8 +58,8 @@ const Dataset = ({ dataset }) => {
       size="small"
       dimmer="blurring"
       trigger={
-        <Button className="m-but" class="ui button">
-          <i aria-hidden="true" class="plus icon"></i>
+        <Button className="m-but">
+          <Icon aria-hidden="true" name="plus"></Icon>
         </Button>
       }
       closeIcon
