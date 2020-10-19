@@ -33,7 +33,7 @@ const MainPage = () => {
 
   return (
     <div>
-      <div>
+      <div className="FullsearchMain">
         <img
           id="imageMain"
           height="400px"
