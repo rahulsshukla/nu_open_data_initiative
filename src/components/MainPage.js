@@ -15,7 +15,7 @@ import { useHistory } from "react-router-dom";
 
 const MainPage = () => {
   const state = useContext(AppState);
-  const { categories, query, setQuery, populateDatasets, toggleCategories } = state;
+  const { categories, query, setQuery, populateDatasets, categoryLink } = state;
   const history = useHistory();
 
   const Search = () => {
@@ -27,8 +27,9 @@ const MainPage = () => {
 
   const selectCategory = (category) => {
     history.push("datasets");
-    toggleCategories(category);
-  }
+    setQuery("");
+    categoryLink(category);
+  };
 
   return (
     <div>
@@ -70,7 +71,7 @@ const MainPage = () => {
             {categories.slice(0, 6).map((c) => (
               <Grid.Column width={3} textAlign="center" key={c.name}>
                 <div className="pop-cat">
-                  <button onClick={() => selectCategory(c)} className="cat-but">
+                  <button onClick={() => selectCategory(c.name)} className="cat-but">
                     <Icon
                       name={c.icon_name}
                       size="huge"
@@ -82,7 +83,6 @@ const MainPage = () => {
               </Grid.Column>
             ))}
           </div>
-          {/* <div class="ui divider"></div> */}
         </div>
       </div>
     </div>

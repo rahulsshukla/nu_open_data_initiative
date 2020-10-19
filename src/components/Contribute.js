@@ -35,12 +35,12 @@ const Contribute = () => {
 
   return (
     <div>
-      <div class="ui four column grid" id="container">
-        <div class="row start" id="header1">
+      <div className="ui four column grid" id="container">
+        <div className="row start" id="header1">
           Contribute a dataset!
         </div>
-        <div class="middle aligned row first">
-          <div class="inf">
+        <div className="middle aligned row first">
+          <div className="inf">
             Submit datasets that you have or request datasets that you may need. Before publishing any dataset, our team has a robust verification process to minimize the chance that sensitive information is revealed.
             If any questions or concerns arise, please contact nuopendata@gmail.com
           </div>

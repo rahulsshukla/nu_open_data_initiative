@@ -36,8 +36,9 @@ const Datasets = () => {
     <Form>
       <Form.Group grouped>
         {filter.map((value) => (
-          <Form.Checkbox 
-            checked={selectedCats.includes(value.name) || selectedTypes.includes(value)}
+          <Form.Checkbox
+            key={value.name}
+            checked={selectedCats.includes(value.name) || selectedTypes.includes(value.name)}
             onChange={() => toggle(value)}
             label={value.name} 
           />
@@ -102,8 +103,8 @@ const Datasets = () => {
         <Grid.Column width={12}>
         {datasets.length === 0 ? <DatasetLoader /> :
           <Menu vertical text fluid>
-            {datasets.map((x) => (
-              <Menu.Item>
+            {datasets.map((x, i) => (
+              <Menu.Item key={i}>
                 <Grid>
                   <Grid.Column width={15}>
                     <Grid.Row>
@@ -154,7 +155,6 @@ const DatasetsPage = () => {
           className="logo"
         />
         <h1 id="bottom" className="search-bar2">
-          {" "}
           Search for Datasets
         </h1>
       </div>

@@ -1,17 +1,19 @@
-import React from "react";
-import "semantic-ui-css/semantic.min.css";
+import React, { useContext } from "react";
+import { Button } from "semantic-ui-react";
 import "../styles/Banner.css";
 import logo from "../NODI.png";
 import { Link } from "react-router-dom";
-
+import { AppState } from "../data/context";
 
 /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
 
 const Banner = () => {
-  function sayHello(){
+  const state = useContext(AppState);
+  const { clearQueries } = state;
+
+  function mobileNav(){
     var x = document.getElementById("myTopnav");
     if (x.className === "topnav") {
-      // alert('Hello!');
       x.className += " responsive";
     } 
     else {
@@ -20,23 +22,25 @@ const Banner = () => {
   }
   return (
    <div className="banner">
-      <Link to={{ pathname: `/` }}>
+      <Link to="/" onClick={() => clearQueries(false)}>
         <img src={logo} alt="Northwestern Open Data Portal" width="180px" className="logonav"/>
       </Link>
-      <a href="javascript:void(0);" className="ico" onClick={sayHello}>&#9776;</a>
+      <span className="ico" name="menu" onClick={mobileNav}>&#9776;</span>
       <div className="topnav" id="myTopnav"> 
-        <button id="button" onClick={() => window.location.href = "/datasets"} className="ui button">
-          Datasets
-        </button>
-        <Link to={{ pathname: `/contribute` }}>
-          <button id="button" className="ui button">
-            Contribute a Dataset
-          </button>
+        <Link to="/datasets" onClick={() => clearQueries(true)}>
+          <Button id="button">
+            Datasets
+          </Button>
         </Link>
-        <Link to={{ pathname: `/aboutus` }}>
-          <button id="button" className="ui button">
+        <Link to="/contribute" onClick={() => clearQueries(false)}>
+          <Button id="button">
+            Contribute a Dataset
+          </Button>
+        </Link>
+        <Link to="/aboutus" onClick={() => clearQueries(false)}>
+          <Button id="button">
             About Us
-          </button>
+          </Button>
         </Link>
       </div>
   </div>

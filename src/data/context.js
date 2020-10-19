@@ -35,11 +35,26 @@ const StateProvider = ({ children }) => {
     setSelectedTypes(types);
     populateDatasets(query, catQuery, typeQuery);
   };
+
+  const categoryLink = value => {
+    const categoryQuery = JSON.stringify([value]);
+    setSelectedCats([value])
+    populateDatasets("", categoryQuery, "");
+  }
+
+  const clearQueries = (newPage) => { 
+    if (newPage) {
+      populateDatasets("", "", "");
+    }
+    setSelectedCats([]);
+    setSelectedTypes([]);
+    setQuery("");
+  };
   
   useEffect(() => {
     getCategories(setCategories);
     getDataTypes(setDataTypes);
-    populateDatasets(query, categories, dataTypes);
+    populateDatasets("", "", "");
   }, []);
 
   const api = { 
@@ -52,7 +67,9 @@ const StateProvider = ({ children }) => {
     selectedCats, 
     selectedTypes, 
     toggleCategories, 
-    toggleDataTypes 
+    toggleDataTypes,
+    categoryLink,
+    clearQueries 
   };
   return <Provider value={api}>{children}</Provider>;
 };
