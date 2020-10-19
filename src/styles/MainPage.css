@@ -13,6 +13,14 @@
   height: 5% !important;
   margin-left: 47% !important;
 }
+.FullsearchMain {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 #oneMain {
   background-color: #ffffff;
@@ -67,6 +75,7 @@ h3 {
 }
 
 #imageMain {
+  width: 100%;
   background-size: cover !important;
   background-position: center center;
   background-attachment: fixed;
