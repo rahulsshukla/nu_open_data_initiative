@@ -82,9 +82,9 @@ h3 {
   filter: brightness(80%) !important;
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 375px) {
   #imageMain {
-    width: 400px;
+    width: 375px;
     object-fit: cover;
   }
 }

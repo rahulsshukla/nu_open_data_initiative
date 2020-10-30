@@ -29,13 +29,6 @@ const Datasets = () => {
   } = state;
   const [openTypePanel, setOpenTypePanel] = useState(false);
   const [loaderTimer, setTimer] = useState(true);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [selectedDataset, setSelectedDataset] = useState(datasets[0])
-
-  const selectDataset = (data) => {
-    setModalOpen(true);
-    setSelectedDataset(data);
-  };
 
   const filterPanel = (filter, toggle) => (
     <Form>

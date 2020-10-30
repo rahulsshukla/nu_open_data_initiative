@@ -7,6 +7,7 @@ import {
   Icon,
   Form,
   Input,
+  Header,
 } from "semantic-ui-react";
 import "../styles/MainPage.css";
 import { AppState } from "../data/context";
@@ -65,6 +66,7 @@ const MainPage = () => {
           <div className="row next" id="pop-header">
             Dataset Categories
           </div>
+
           <div className="small-grid">
             {categories.slice(0, 6).map((c) => (
               <Grid.Column width={3} textAlign="center" key={c.name}>

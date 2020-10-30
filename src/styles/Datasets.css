@@ -37,7 +37,7 @@
   filter: brightness(80%) !important;
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 375px) {
   #imageDatasets {
     width: 375px;
     object-fit: cover;
