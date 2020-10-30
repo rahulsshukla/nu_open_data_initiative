@@ -82,6 +82,13 @@ h3 {
   filter: brightness(80%) !important;
 }
 
+@media only screen and (max-width: 400px) {
+  #imageMain {
+    width: 400px;
+    object-fit: cover;
+  }
+}
+
 .featured-datasets {
   display: flex;
   justify-content: center;
