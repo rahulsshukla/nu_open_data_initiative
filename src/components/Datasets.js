@@ -2,17 +2,14 @@ import React, { useContext, useState } from "react";
 import {
   Grid,
   Header,
-  Divider,
   Accordion,
   Form,
   Input,
   Menu,
-  Label,
   Loader
 } from "semantic-ui-react";
 import nu from "../nu.jpg";
 import "../styles/Datasets.css";
-import Dataset from "./Dataset";
 import { AppState } from "../data/context";
 import DatasetModal from "./DatasetModal";
 
