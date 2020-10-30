@@ -27,11 +27,13 @@ const Banner = () => {
       </Link>
       <span className="ico" name="menu" onClick={mobileNav}>&#9776;</span>
       <div className="topnav" id="myTopnav"> 
+        {/* 
         <Link to="/datasets" onClick={() => clearQueries(true)}>
           <Button id="button">
             Datasets
           </Button>
         </Link>
+        */}
         <Link to="/contribute" onClick={() => clearQueries(false)}>
           <Button id="button">
             Contribute a Dataset
