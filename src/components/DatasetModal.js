@@ -48,6 +48,8 @@ const DatasetModal = ({ dataset, key }) => {
     > 
       <Modal.Header content={dataset.name} />
       <Modal.Content>
+        <p><strong style={{ color: purple}}>{"Category: "}</strong>{dataset.categories[0].name}</p>
+        <p><strong style={{ color: purple}}>{"File Type: "}</strong>{dataset.datatype.name}</p>
         <p><strong style={{ color: purple}}>{"Publish Date: "}</strong>{moment(dataset.metadata.publish_date).format("MM-DD-YYYY")}</p>
         <p><strong style={{ color: purple}}>{"Owned By: "}</strong>{dataset.metadata.department_ownership}</p>
         <p><strong style={{ color: purple}}>{"Resident Expert: "}</strong>{dataset.metadata.resident_expert}</p>
