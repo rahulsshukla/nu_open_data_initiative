@@ -14,6 +14,7 @@ import nu from "../nu.jpg";
 import "../styles/Datasets.css";
 import Dataset from "./Dataset";
 import { AppState } from "../data/context";
+import DatasetModal from "./DatasetModal";
 
 const Datasets = () => {
   const state = useContext(AppState);
@@ -31,6 +32,13 @@ const Datasets = () => {
   } = state;
   const [openTypePanel, setOpenTypePanel] = useState(false);
   const [loaderTimer, setTimer] = useState(true);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedDataset, setSelectedDataset] = useState(datasets[0])
+
+  const selectDataset = (data) => {
+    setModalOpen(true);
+    setSelectedDataset(data);
+  };
 
   const filterPanel = (filter, toggle) => (
     <Form>
@@ -110,42 +118,13 @@ const Datasets = () => {
         {datasets.length === 0 ? <DatasetLoader /> :
           <Menu vertical text fluid>
             {datasets.map((x, i) => (
-              <Menu.Item key={i}>
-                <Grid>
-                  <Grid.Column width={15}>
-                    <Grid.Row>
-                      <Header>
-                        {x.name}
-                      </Header>
-                      <Label.Group id="data-labels">
-                        <Label
-                          content={x.categories[0].name}
-                          style={{
-                            backgroundColor: "#4e2a84",
-                            color: "white",
-                          }}
-                        />
-                        <Label content={x.datatype.name} />
-                      </Label.Group>
-                    </Grid.Row>
-                    <Grid.Row>
-                      <Header.Subheader>
-                        {x.metadata.description}
-                      </Header.Subheader>
-                    </Grid.Row>
-                  </Grid.Column>
-                  <Grid.Column width={1}>
-                    <Dataset dataset={x}></Dataset>
-                  </Grid.Column>
-                </Grid>
-                <Divider />
-              </Menu.Item>
+              <DatasetModal dataset={x} key={i} />
             ))}
           </Menu>
         }
         </Grid.Column>
       </Grid.Row>
-      </React.Fragment>
+    </React.Fragment>
   );
 };
 
