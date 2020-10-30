@@ -78,7 +78,6 @@ const AboutUs = () => {
       </div>
       <div className="ui four column grid">
         <div className="row" id="header">
-          Partnerships
         </div>
         <div className="row" id="two">
           <div className="eight wide column side">
