@@ -129,11 +129,26 @@ class DataSetViewSet(viewsets.ModelViewSet):
         datatypes = request.query_params.get('datatypes', [])
         categories = request.query_params.get('categories', [])
 
+        #filters based on name query
+        #-takes out categories mentioned in name and filters full set using them
+        #-if categories query exist:
+        #   -adds categories-in-name to categories query so they don't get filtered out later
+        #-filters full set using the words-in-name
+        #-unions the two filtered sets
         if name:
-            wordsinname = name.split(" ")
-            for word in wordsinname:
+            sSet = DataSet.objects.none()
+            cats = [str(cat) for cat in Category.objects.all()]
+            catsInName = filter(lambda cat: cat.lower() in name.lower(), cats)
+            for cat in catsInName:
+                sSet = sSet | fSet.filter(categories__name__in=[cat])
+                if (categories) and (cat not in categories):
+                    categories = categories[:-1]+",\""+cat+"\"]"
+            wordsInName = name.split(" ")
+            for word in wordsInName:
                 fSet = fSet.filter(name__icontains=word)
+            fSet = (fSet | sSet).distinct()
 
+        #filters based on datatypes query
         if datatypes:
             sSet = DataSet.objects.none()
             datatypes = eval(datatypes)
@@ -141,6 +156,7 @@ class DataSetViewSet(viewsets.ModelViewSet):
                 sSet = sSet | fSet.filter(datatype__name__exact=dat)
             fSet = sSet
 
+        #filters based on categories query
         if categories:
             sSet = DataSet.objects.none()
             categories = eval(categories)
