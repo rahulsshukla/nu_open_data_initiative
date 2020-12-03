@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { Button } from "semantic-ui-react";
+import { Button, Dropdown } from "semantic-ui-react";
 import "../styles/Banner.css";
 import logo from "../NODI.png";
 import { Link } from "react-router-dom";
 import { AppState } from "../data/context";
-
+import RelatedLinks from './RelatedLinks.js';
 /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
 
 const Banner = () => {
@@ -44,6 +44,7 @@ const Banner = () => {
             About Us
           </Button>
         </Link>
+        <RelatedLinks />
       </div>
   </div>
   );
