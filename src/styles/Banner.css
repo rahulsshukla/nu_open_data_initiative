@@ -13,10 +13,12 @@
 
 #dropdown_item {
   margin-left: 20px;
+  margin-right: 15px;
   background-color: white;
-  font-family: OpenSans;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 13px;
-  color: #4e2a84;
+  font-weight: medium;
+  color: black;
   padding-bottom: 5vi;
 }
 
