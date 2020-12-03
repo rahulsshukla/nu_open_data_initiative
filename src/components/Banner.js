@@ -4,7 +4,7 @@ import "../styles/Banner.css";
 import logo from "../NODI.png";
 import { Link } from "react-router-dom";
 import { AppState } from "../data/context";
-import RelatedLinks from './RelatedLinks.js';
+import RelatedLinks2 from './RelatedLinks.js';
 /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
 
 const Banner = () => {
@@ -44,7 +44,7 @@ const Banner = () => {
             About Us
           </Button>
         </Link>
-        <RelatedLinks />
+        <RelatedLinks2 />
       </div>
   </div>
   );
