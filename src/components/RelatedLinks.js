@@ -9,8 +9,8 @@ const trigger = (
 );
 
 const RelatedLinks = () => (
-    <Dropdown trigger={trigger} icon={null}>
-        <Dropdown.Menu direction="right" id="dropdown_item">
+    <Dropdown trigger={trigger} icon={null} id="menu">
+        <Dropdown.Menu direction="right" id="menu">
             <Dropdown.Item text='Open Data Campus' id="dropdown_item" onClick={(e) => (window.open('http://www.opendatacampus.com', '_blank'))}/>
         </Dropdown.Menu>
     </Dropdown>
