@@ -8,6 +8,27 @@ Admin Panel:
 https://www.nodi.nu/admin/
 (see slack for login info)
 
+Knowledge Base
+https://medium.com/@grepdennis/how-a-sql-database-engine-works-c67364e5cdfd
+https://blog.hubspot.com/marketing/sql-tutorial-introduction
+https://www.smashingmagazine.com/2018/01/understanding-using-rest-api/
+
+Database GUI (for viewing the data)
+https://tableplus.com/
+
+### Django Docs
+https://docs.djangoproject.com/en/3.1/
+
+How we get the data from the database
+https://docs.djangoproject.com/en/3.1/ref/models/querysets/
+
+How non devs access the data
+https://docs.djangoproject.com/en/3.1/ref/contrib/admin/
+
+How we display the react page (and handle endpoints)
+https://docs.djangoproject.com/en/3.1/topics/http/urls/
+
+
 ## Django Setup
 
 Activate venv: 
