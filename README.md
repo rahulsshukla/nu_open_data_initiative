@@ -1,5 +1,13 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Important Links
+Home Page:
+https://www.nodi.nu
+
+Admin Panel:
+https://www.nodi.nu/admin/
+(see slack for login info)
+
 ## Django Setup
 
 Activate venv: 
