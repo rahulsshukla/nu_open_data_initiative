@@ -1,12 +1,14 @@
 import React from "react";
 import ReactGA from "react-ga";
+
 //component imports
-import MainPage from "../src/components/MainPage";
-import Banner from "../src/components/Banner";
 import AboutUs from "../src/components/AboutUs";
+import Banner from "../src/components/Banner";
 import Contribute from "../src/components/Contribute";
 import Datasets from "../src/components/Datasets";
 import Footer from "../src/components/Footer";
+import Home from "../src/components/Home"
+import MainPage from "../src/components/MainPage";
 import TempMainPage from "../src/components/TempMainPage";
 
 //firebase imports
@@ -23,6 +25,7 @@ const App = () => {
       <Banner></Banner>
       <Switch>
         <Route path="/" exact component={TempMainPage} />
+        <Route path="/home" exact component={Home} />
         <Route path="/aboutus" exact component={AboutUs} />
         <Route path="/contribute" exact component={Contribute} />
         <Route path="/datasets" exact component={Datasets} />

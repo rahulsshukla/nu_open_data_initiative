@@ -55,12 +55,16 @@ DB_PSWD=
 ```
 
 ### DB setup
-Install postgresql
+Install postgresql (Mac)
 ```
 $ brew install postgresql
 $ brew services start postgresql
 ```
-
+Install postgresql (Linux)
+```
+$ brew install postgresql
+$ brew services start postgresql
+```
 Create DB
 ```
 $ psql postgres
