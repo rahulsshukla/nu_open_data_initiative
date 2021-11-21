@@ -5,7 +5,6 @@ import {
   Divider,
   Card
 } from 'semantic-ui-react';
-import "semantic-ui-css/semantic.min.css";
 import "../styles/AboutUs.css";
 import amit from "../amit.jpg";
 import AboutCard from "./AboutCard.js"
