@@ -1,5 +1,10 @@
 import React from "react";
-import { Button, Accordion, Dropdown, Icon  } from "semantic-ui-react";
+import {
+    Button,
+    Accordion,
+    Dropdown,
+    Icon
+} from "semantic-ui-react";
 import "../styles/Banner.css";
 
 const trigger = (
@@ -11,7 +16,9 @@ const trigger = (
 const RelatedLinks = () => (
     <Dropdown trigger={trigger} icon={null} id="menu">
         <Dropdown.Menu direction="right" id="menu">
-            <Dropdown.Item text='Open Data Campus' id="dropdown_item" onClick={(e) => (window.open('http://www.opendatacampus.com', '_blank'))}/>
+            <Dropdown.Item text='Open Data Campus' id="dropdown_item" 
+            onClick={(e) => (window.open('http://www.opendatacampus.com',
+                '_blank'))}/>
         </Dropdown.Menu>
     </Dropdown>
 ); 
