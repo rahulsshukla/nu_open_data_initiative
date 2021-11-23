@@ -1,71 +1,17 @@
-
-#header{
-  font-family: OpenSans;
-  font-size: 25px;
-  color: #4e2a84;
-  justify-content: center;
-  padding-top: 40px;
-  /* margin-right: 14px !important; */
+.Container {
+  margin:  20px;
+  padding: 20px;
+  width:  100%;
 }
 
-.ui.grid{
-  padding: 0 9% 0 9%;
-  margin-top: 0;
-  /* width: 75%; */
-  /* align-content: center; */
+.card {
+  align-items: center;
+  margin:  10px;
 }
 
-.start{
-  padding-bottom: 40px !important;
-  justify-content: left !important;
-}
-
-#one {
-  background-color: #f2f2f2;
-  padding-bottom: 75px;
-  font-family: OpenSans;
-  color: #6d6f73;
-  padding-bottom: 100px;
-  padding-top: 47px;
-}
-
-.next{
-  border-bottom: #4e2a84 solid 3px;
-  line-height: 2px;
-  justify-content: left !important;
-  margin-bottom: 10px;
-}
-
-#person{
-  height: 40.69% !important;
-  width: 100% !important;
-  object-fit:cover;
-  justify-content: center !important;
-  padding-bottom: 10px;
-}
-
-#faculty{
-  height: 88.18% !important;
-  width: 100% !important;
-  /* height: 137px !important;
-  width: 181px !important; */
-  object-fit:cover;
-  justify-content: left !important;
-  padding: 5%;
-}
-
-.four.wide.column{
-  padding: 0 10% 0 10%;
-}
-
-.name{
-  color: #6d6f73;
-  background-color: #f2f2f2;
-  text-align: center;
-  padding: 5px 0 5px 0;
-  font-family: OpenSans;
-  font-size: 10px;
-  /* font-size: 1vw; */
+.profile {
+  border-radius: 50%;
+  height: 100px;
 }
 
 #fixed1{

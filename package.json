@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
+    "@testing-library/jest-dom": "^5.15.0",
+    "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^7.2.1",
     "moment": "^2.26.0",
     "react": "^16.13.0",
@@ -12,7 +12,7 @@
     "react-ga": "^3.1.2",
     "react-items-carousel": "^2.8.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.0",
+    "react-scripts": "^4.0.3",
     "semantic-ui-carousel-react": "^1.1.1",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.88.2"
@@ -41,5 +41,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8000"
+  "proxy": "http://localhost:3000"
 }
