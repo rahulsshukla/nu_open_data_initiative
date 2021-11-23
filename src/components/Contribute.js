@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from "react";
-import "semantic-ui-css/semantic.min.css";
 import {
   Container,
-  // Search,
-  // Grid,
-  // Header,
-  // Segment,
-  // Row,
   Message,
   Button,
   ButtonGroup,
+  Header
 } from "semantic-ui-react";
 import "../styles/Contribute.css";
 import Upload from "./Upload";
@@ -35,22 +30,15 @@ const Contribute = () => {
 
   return (
     <div>
-      <div className="ui four column grid" id="container">
-        <div className="row start" id="header1">
-          Contribute a dataset!
-        </div>
-        <div className="middle aligned row first">
-          <div className="inf">
-            Submit datasets that you have or request datasets that you may need. Before publishing any dataset, our team has a robust verification process to minimize the chance that sensitive information is revealed.
-            If any questions or concerns arise, please contact nuopendata@gmail.com
-          </div>
-        </div>
-      </div>
-      <div>
+      <Container text fluid className="Container">
+        <Header as="h2">Contribute a dataset!</Header>
+        <p>
+        Submit datasets that you have or request datasets that you may need. Before publishing any dataset, our team has a robust verification process to minimize the chance that sensitive information is revealed.
+              If any questions or concerns arise, please contact nuopendata@gmail.com
+        </p>
         <UploadConfirmedMessage />
-      </div>
-      <Container id="form-container">
-        <h3 id="start">Upload or Request a Northwestern Dataset</h3>
+      </Container>
+      <Container className="Container">
         <ButtonGroup id="button-group">
           <Button
             id="request"
@@ -58,10 +46,10 @@ const Contribute = () => {
             href="https://forms.gle/XCFkSw6KMTxfzeZRA"
             target="_blank"
           >
-            Request
+            Request A Dataset
           </Button>
           <Button className="upload-button" onClick={() => setModalOpen(true)}>
-            Upload
+            Upload A Dataset
           </Button>
           <Upload
             modalOpen={modalOpen}
